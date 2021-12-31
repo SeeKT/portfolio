@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="jp"
+  data-theme=""
+><head>
+  <title>
+    Ai Tachibana (Kosuke Toda)
+      |
+      最適制御問題: 最適制御問題の数値解法
+
+
+    
+
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.91.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta
+    name="description"
+    content="
+      Ai Tachibana
+
+
+    "
+  />
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="https://SeeKT.github.io/portfolio/css/main.min.861c630407a306e1a79890bffbab9b381c5a0b03cd0c3b79755cc5eeea04b6b0.css"
+    integrity="sha256-hhxjBAejBuGnmJC/&#43;6ubOBxaCwPNDDt5dVzF7uoEtrA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="https://SeeKT.github.io/portfolio/css/markupHighlight.min.058b31f17db60602cc415fd63b0427e7932fbf35c70d8e341a4c39385f5f6f3e.css"
+    integrity="sha256-BYsx8X22BgLMQV/WOwQn55MvvzXHDY40Gkw5OF9fbz4="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous"
+  />
+  
+  <link rel="shortcut icon" href="https://SeeKT.github.io/portfolio/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://SeeKT.github.io/portfolio/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://SeeKT.github.io/portfolio/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://SeeKT.github.io/portfolio/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://SeeKT.github.io/portfolio/post/optimal_control_numerical/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/anatole-header.min.2a2cd9614b7d007dfbb75e8da19e3a0fa872ceab53c6d000c00b7a0c89b85bfc.js"
+    integrity="sha256-KizZYUt9AH37t16NoZ46D6hyzqtTxtAAwAt6DIm4W/w="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="https://SeeKT.github.io/portfolio/js/anatole-theme-switcher.min.7fd87181cdd7e8413aa64b6867bb32f3a8dc242e684fc7d5bbb9f600dbc2b6eb.js"
+      integrity="sha256-f9hxgc3X6EE6pktoZ7sy86jcJC5oT8fVu7n2ANvCtus="
+      crossorigin="anonymous"
+    ></script>
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://SeeKT.github.io/portfolio/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="最適制御問題: 最適制御問題の数値解法"/>
+<meta name="twitter:description" content="0. はじめに 先日，6章の内容をまとめた (最適制御問題: 動的計画法と最小原理)．7章の数値解法のあたりでかなり詰まってしまっていた．今回は他の文献も用いてまとめたいと思う．
+理解が間違えている箇所もあるかもしれないので，ミスに気付いたら修正したいと思っている．
+0.1. 目次  1 導入  1."/>
+
+
+
+  
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "最適制御問題: 最適制御問題の数値解法",
+        "headline": "最適制御問題: 最適制御問題の数値解法",
+        "alternativeHeadline": "",
+        "description": "
+      
+        0. はじめに 先日，6章の内容をまとめた (最適制御問題: 動的計画法と最小原理)．7章の数値解法のあたりでかなり詰まってしまっていた．今回は他の文献も用いてまとめたいと思う．\n理解が間違えている箇所もあるかもしれないので，ミスに気付いたら修正したいと思っている．\n0.1. 目次  1 導入  1.
+
+
+      
+
+
+    ",
+        "inLanguage": "jp",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/SeeKT.github.io\/portfolio\/post\/optimal_control_numerical\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "copyrightYear" : "2021",
+        "dateCreated": "2021-08-27T22:55:15.00Z",
+        "datePublished": "2021-08-27T22:55:15.00Z",
+        "dateModified": "2021-08-27T22:55:15.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Ai Tachibana (Kosuke Toda)",
+            "url": "https://SeeKT.github.io/portfolio/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/SeeKT.github.io\/portfolio\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://SeeKT.github.io/portfolio/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/SeeKT.github.io\/portfolio\/post\/optimal_control_numerical\/",
+        "wordCount" : "862",
+        "genre" : [ 
+      
+      "Optimal control"
+
+    ],
+        "keywords" : [ 
+      
+      "Optimal control"
+
+    
+      
+        ,
+
+      
+      "Python"
+
+    ]
+    }
+  </script>
+
+
+
+</head>
+<body>
+    <header><div
+  class="page-top 
+    animated fadeInDown
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a>
+  <nav>
+    <ul class="nav__list" id="navMenu">
+      <div class="nav__links">
+        
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/"
+              
+              title=""
+              >Home</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/post/"
+              
+              title=""
+              >Posts</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/profile/"
+              
+              title=""
+              >Profile</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/publication/"
+              
+              title=""
+              >Publication</a
+            >
+          </li>
+
+        
+      </div>
+      <ul>
+        
+        
+          <li>
+            <a class="theme-switch" title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </li>
+
+        
+      </ul>
+    </ul>
+  </nav>
+</div>
+</header>
+    <div class="wrapper">
+      <aside><div
+  class="sidebar
+    animated fadeInDown
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://SeeKT.github.io/portfolio/images/avater.jpg" alt="profile picture" />
+        <h3 title=""><a href="https://SeeKT.github.io/portfolio/">立ち話</a></h3>
+        <div class="description">
+          <p>Ai Tachibana</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+      
+        <li>
+          <a href="https://github.com/SeeKT/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li>
+          <a href="https://twitter.com/tcbn_ai" rel="me" aria-label="twitter" title="twitter">
+            <i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+    </ul>
+  </div><footer class="footer footer--sidebar">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          Ai Tachibana (Kosuke Toda)
+          2021
+
+
+        
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
+    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
+    crossorigin="anonymous"
+  ></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR&#43;zwDAROtph0PXGte6ia8heboACF9R5l/DiY&#43;WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous" /><script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8&#43;w2LAIftJEULZABrF9PPFv&#43;tVkH" crossorigin="anonymous"></script><script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+      integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB&#43;w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script></div>
+</aside>
+      <main>
+        <div class="autopagerize_page_element">
+          <div class="content">
+  <div
+    class="post 
+      animated fadeInDown
+
+    "
+  >
+    <div class="post-content">
+      
+      <div class="post-title">
+        <h1>最適制御問題: 最適制御問題の数値解法</h1>
+        
+          <div class="info">
+            <em class="fas fa-calendar-day"></em>
+            <span class="date"
+              >
+                2021/8/27
+
+
+              </span
+            >
+            <em class="fas fa-stopwatch"></em>
+            <span class="reading-time"></span>
+          </div>
+
+        
+      </div><h3 id="0-はじめに">0. はじめに</h3>
+
+<p>先日，6章の内容をまとめた (<a href="https://SeeKT.github.io/portfolio/post/optimal_control_dp/">最適制御問題: 動的計画法と最小原理</a>)．7章の数値解法のあたりでかなり詰まってしまっていた．今回は他の文献も用いてまとめたいと思う．</p>
+
+<p>理解が間違えている箇所もあるかもしれないので，ミスに気付いたら修正したいと思っている．</p>
+
+<h4 id="01-目次">0.1. 目次</h4>
+
+<ul>
+<li>1 <a href="#section1">導入</a>
+
+<ul>
+<li>1.1 <a href="#section1.1">最適制御のアプローチ</a></li>
+</ul></li>
+<li>2 <a href="#section2">直接法</a>
+
+<ul>
+<li>2.1 <a href="#section2.1">Direct Single Shooting</a></li>
+<li>2.2 <a href="#section2.2">Collocation</a></li>
+<li>2.3 <a href="#section2.3">Direct Multiple Shooting</a></li>
+</ul></li>
+<li>3 <a href="#section3">実装</a></li>
+<li>4 <a href="#section4">手書きメモ</a></li>
+<li>5 <a href="#section5">まとめ</a></li>
+</ul>
+
+<h3 id="1-a-namesection1導入a">1. <a name="section1">導入</a></h3>
+
+<p>ここで扱う最適制御問題は，以下の形式をしているものとする．</p>
+
+<p><span  class="math">\[\underset{x(\cdot), u(\cdot)}{\mathrm{minimize}} \ \ \varphi(x(T)) + \int_0^T L(x(t), u(t)) dt \tag{1}\]</span></p>
+
+<p>subject to</p>
+
+<p><span  class="math">\[\begin{cases} x(0) - x_0 = 0, & (\text{initial value}) \\\ \dot{x}(t) - f(x(t), u(t)) = 0, \ \forall t \in [0, T], & (\text{state equation}) \\\ h(x(t), u(t)) \geq 0, \ \forall t \in [0, T], & (\text{path constraints}) \\\ r(x(T)) = 0. & (\text{terminal constraints}) \end{cases}\]</span></p>
+
+<p>例えば，ロボットがトルクや角度に関する制約を満たしながらある所望の終端状態になるように動作するというものはこのような問題として記述される．</p>
+
+<h4 id="11-a-namesection11最適制御のアプローチa">1.1. <a name="section1.1">最適制御のアプローチ</a></h4>
+
+<p>最適制御問題の数値解法として，主に以下の3つのアプローチがある<sup class="footnote-ref" id="fnref:1"><a class="footnote" href="#fn:1">1</a></sup>．</p>
+
+<ol>
+<li>Dynamic programming</li>
+<li>Indirect methods</li>
+<li>Direct methods</li>
+</ol>
+
+<h5 id="dynamic-programming-動的計画法">Dynamic programming (動的計画法)</h5>
+
+<ul>
+<li>最適性の原理を使用して任意の時刻<span  class="math">\(t\)</span>および任意の初期状態<span  class="math">\(x_0\)</span>に対するフィードバック制御を再帰的に計算する．</li>
+<li>連続時間の場合，Hamilton-Jacobi-Bellman (HJB) 方程式という状態空間上の偏微分方程式が導かれる．</li>
+<li>近似的に数値計算する方法はあるが，「次元の呪い」によって小さい次元に制限される．</li>
+</ul>
+
+<h5 id="indirect-methods-間接法">Indirect methods (間接法)</h5>
+
+<ul>
+<li>無限次元の最適化の必要条件を使用して，常微分方程式の初期値境界値問題を導出する．</li>
+<li>&quot;first optimize, then discretize&quot;</li>
+<li>変分法</li>
+<li>初期値境界値問題を解くのが難しい．</li>
+</ul>
+
+<h5 id="direct-methods-直接法">Direct methods (直接法)</h5>
+
+<ul>
+<li>無限次元の最適化問題を有限次元の非線形計画問題に変換し，非線形計画問題を数値的に解く．</li>
+<li>&quot;first discretize, then optimize&quot;</li>
+<li>制御軌道の有限次元のパラメータ化に基づく．</li>
+</ul>
+
+<p>実世界への実装ではdirect methodsが広く用いられている．次節でdirect methodsについて簡単にまとめる．</p>
+
+<h3 id="2-a-namesection2直接法a">2. <a name="section2">直接法</a></h3>
+
+<p>直接法は，無限次元の最適制御問題 (1) を有限次元の非線形計画問題 (NLP)</p>
+
+<p><span  class="math">\[\underset{w}{\text{minimize}} \ a(w) \ \ \text{subject to} \  b(w) = 0, \ c(w) \geq 0 \tag{2}\]</span></p>
+
+<p>に帰着させる方法である．ただし，<span  class="math">\(w\)</span> は最適化の自由度を表す有限次元ベクトル，<span  class="math">\(a\)</span> は微分可能関数 (スカラー)，<span  class="math">\(b, c\)</span> は微分可能関数 (ベクトル) である． 直接法はまず制御軌道をパラメータ化するが，状態軌道の処理方法は&quot;sequential&quot; approach と &quot;simultaneous&quot; approachに分けられる．</p>
+
+<h5 id="sequential-approach">Sequential approach</h5>
+
+<ul>
+<li>状態の軌道 <span  class="math">\(x(t)\)</span> は制御入力 <span  class="math">\(u(t)\)</span> と初期状態 <span  class="math">\(x_0\)</span> の陰関数とみなされる．</li>
+<li>(例) Direct single shooting. ODE solverによるforward simulation.</li>
+<li>Simulationとoptimizationのiterationsは順番に進む．</li>
+<li>離散化された制御入力が得られる．</li>
+</ul>
+
+<h5 id="simultaneous-approach">Simultaneous approach</h5>
+
+<ul>
+<li>状態の軌道 <span  class="math">\(x(t)\)</span> をNLP内の最適化変数として記述し，ODEモデルを表す等式制約を追加する．</li>
+<li>Simulationとoptimizationは同時に進行する．</li>
+<li>制御入力の軌道に対応する状態の軌道がNLPの解として得られる．</li>
+<li>(例) Direct collocation, direct multiple shooting.</li>
+</ul>
+
+<p>次に，直接法の代表的な3つの手法，(i) direct single shooting, (ii) direct collocation, (iii) direct multiple shooting の考え方についてまとめる．</p>
+
+<h4 id="21-a-namesection21direct-single-shootinga">2.1. <a name="section2.1">Direct Single Shooting</a></h4>
+
+<p>Single shootingではまず，制御入力を離散化する．評価区間<span  class="math">\([0, T]\)</span>を<span  class="math">\(0 = t_0 < t_1 < \cdots < t_N = T\)</span>の<span  class="math">\(N\)</span>個に分割し，制御入力<span  class="math">\(u(t)\)</span>を</p>
+
+<p><span  class="math">\[u(t) = q_i \ \ \text{for} \ \ t \in [t_i, t_{i + 1}]\]</span></p>
+
+<p>のようにpiecewise constantになるようにする．つまり，<span  class="math">\(u(t)\)</span>は制御パラメータ<span  class="math">\(q = (q_0, q_1, \ldots, q_{N - 1})\)</span>にのみ依存し，<span  class="math">\(u(t; q)\)</span>と書くことができる．よって，初期値問題</p>
+
+<p><span  class="math">\[x(0) = x_0, \ \dot{x}(t) = f(x(t), u(t; q)), \ \ \forall t \in [0, T]\]</span></p>
+
+<p>を考え，<span  class="math">\(t \in [0, T]\)</span>における状態<span  class="math">\(x(t)\)</span>を従属変数として<span  class="math">\(x(t; q)\)</span>と表す．Direct single shootingは例えば下の図のように表される．</p>
+
+<p><figure><img src="./direct_single_shooting.png" alt="fig_1" title="Direct single shootingの例"><figcaption>Direct single shootingの例</figcaption></figure></p>
+
+<p>Semi-infinite problemにならないようにするために，Path constraintsも離散化することを考える．例えば，<span  class="math">\(h(x(t), u(t)) \geq 0\)</span>が点<span  class="math">\(t_i\)</span>でのみ成り立つようにする．</p>
+
+<p>以上をまとめると，以下のような有限次元の非線形計画問題を得る．</p>
+
+<p><span  class="math">\[\underset{q}{\text{minimize}} \ \ \varphi(x(T; q)) + \int_0^T L(x(t; q), u(t;q)) dt \tag{3}\]</span></p>
+
+<p>subject to</p>
+
+<p><span  class="math">\[\begin{cases} h(x(t_i; q), u(t_i; q)) \geq 0, \ \ i = 0, \ldots, N & (\text{discretized path constraints}) \\\ r(x(T; q)) = 0 & (\text{terminal constraints}) \end{cases}\]</span></p>
+
+<p>この問題は有限次元の最適化ソルバで解くことができる．例えば，<a href="https://github.com/coin-or/Ipopt">IPOPT</a><sup class="footnote-ref" id="fnref:-"><a class="footnote" href="#fn:-">0</a></sup> などを用いることができる．</p>
+
+<h5 id="direct-single-shootingの利点">Direct single shootingの利点</h5>
+
+<ol>
+<li>最先端のODEまたはDAEソルバーを使用できること．</li>
+<li>大規模なODEまたはDAEシステムでも最適化の自由度が少ないこと．</li>
+<li>必要なことが制御入力の自由度の初期推定のみであること．</li>
+</ol>
+
+<h5 id="direct-single-shootingの欠点">Direct single shootingの欠点</h5>
+
+<ol>
+<li>初期化で状態の軌道$x$の知識を使用できない．</li>
+<li>ODEの解$x(t; q)$が$q$の非線形性に依存する可能性がある．</li>
+</ol>
+
+<p>実装の容易さなどからsingle shooting approachは工学的応用の観点ではよく用いられる．</p>
+
+<h4 id="22-a-namesection22collocationa">2.2. <a name="section2.2">Collocation</a></h4>
+
+<p>ここでは，collocationの考え方について簡単にまとめる．まず，制御入力と状態を離散化する．特に，制御入力が各<span  class="math">\([t_i, t_{i + 1}]\)</span>で<span  class="math">\(q_i\)</span>である (piecewise constantである) ように選ぶ．また，点<span  class="math">\(t_i\)</span>における状態が<span  class="math">\(s_i \approx x(t_i)\)</span>であるとする．</p>
+
+<p>このとき，無限次元のODE</p>
+
+<p><span  class="math">\[\dot{x}(t) - f(x(t), u(t)) = 0, \ \ t \in [0, T]\]</span></p>
+
+<p>は有限個の等式制約</p>
+
+<p><span  class="math">\[c_i(q_i, s_i, s_i^{\prime}, s_{i + 1}) = 0, \ \ i = 0, \ldots, N - 1\]</span></p>
+
+<p>に置き換えられる．ただし，<span  class="math">\(s_i^{\prime}\)</span>は区間<span  class="math">\([t_i, t_{i + 1}]\)</span>中の &quot;collocation points&quot; における状態の軌道を表すものとする．これらの点の位置を適切に選択することで，高いオーダーでの近似が達成される．通常<span  class="math">\(s_i^{\prime}\)</span>は直交多項式の零点になるように選ばれる．</p>
+
+<p>ここでは簡単のため，中間変数<span  class="math">\(s_i^{\prime}\)</span>が存在しない場合について述べる．このとき，追加の等式制約は以下のように表される．</p>
+
+<p><span  class="math">\[c(q_i, s_i, s_{i + 1}) := \frac{s_{i + 1} - s_i}{t_{i + 1} - t_i} - f\left( \frac{s_i + s_{i + 1}}{2}, q_i \right).\]</span></p>
+
+<p>次に，collocation intervals内の積分を近似する．例えば，</p>
+
+<p><span  class="math">\[l_i(q_i, s_i, s_{i + 1}) := L\left( \frac{s_i + s_{i + 1}}{2}, q_i \right) (t_{i + 1} - t_i) \approx \int_{t_i}^{t_{i + 1}} L(x(t), u(t)) dt\]</span></p>
+
+<p>のようにする．このような離散化をすると，巨大だがスパースなNLPを得る．</p>
+
+<p><span  class="math">\[\underset{s, q}{\text{minimize}} \ \ \varphi(s_N) + \sum_{i = 0}^{N - 1} l(q_i, s_i, s_{i + 1})\]</span></p>
+
+<p>subject to</p>
+
+<p><span  class="math">\[\begin{cases} s_0 - x_0 = 0, & (\text{fixed initial value}) \\\ c_i(q_i, s_i, s_{i + 1}) = 0, \ i = 0, \ldots, N - 1, & (\text{discretized ODE model}) \\\ h(s_i, q_i) = 0, \ i = 0, \ldots, N, & (\text{discretized path constraints}) \\\ r(s_N) = 0. & (\text{terminal constraints}) \end{cases}\]</span></p>
+
+<p>この問題は内点法を用いたソルバで解くことができる．効率的なNLPの手法では通常，反復が実行可能に保たれないので，離散化されたODE modelの方程式はNLPの解でのみ満たされる．つまり，simulationとoptimizationが同時に進行する．</p>
+
+<h5 id="collocation-methodsの利点">Collocation methodsの利点</h5>
+
+<ol>
+<li>非常にスパースなNLPが得られること．</li>
+<li>初期化で状態軌道<span  class="math">\(x\)</span>の知識を使用できること．</li>
+<li>局所収束が高速であること．</li>
+<li>不安定なシステムを扱うことができること．</li>
+<li>状態と終端制約の処理が容易であること．</li>
+</ol>
+
+<h5 id="collocation-methodsの欠点">Collocation methodsの欠点</h5>
+
+<ul>
+<li>離散化の誤差を適応的に制御しようとすると，再度grid化を行う必要があり，NLPの次元を変更する必要があること．
+
+<ul>
+<li>そのため，collocationのapplicationでは適切な離散化誤差の制御の問題に対処しないことがよくある．</li>
+</ul></li>
+</ul>
+
+<p>Collocation methodsは実用的な最適制御問題にも使われている．</p>
+
+<h4 id="23-a-namesection23direct-multiple-shootinga">2.3. <a name="section2.3">Direct Multiple Shooting</a></h4>
+
+<p>Direct multiple shooting methodは，simultaneous method (e.g. collocation) とsingle shootingの利点を組み合わせ，adaptive, error controlled ODE solversを使えるようにしたものである．</p>
+
+<p>まず，制御入力を</p>
+
+<p><span  class="math">\[u(t) = q_i \ \ \text{for} \ \ t \in [t_i, t_{i + 1}]\]</span></p>
+
+<p>のようにpicewise constantになるようにする．ただし，<span  class="math">\(t_i\)</span>と<span  class="math">\(t_{i + 1}\)</span>の間隔はsingle shootingと同じになるようにする．</p>
+
+<p>次に，各時間区間<span  class="math">\([t_i, t_{i + 1}]\)</span>において独立に，人工的な初期値<span  class="math">\(s_i\)</span>からODEを解く．</p>
+
+<p><span  class="math">\[\dot{x}_i(t) = f(x_i(t), q_i), \ \ t \in [t_i, t_{i + 1}],\]</span></p>
+
+<p><span  class="math">\[x_i(t_i) = s_i.\]</span></p>
+
+<p>ここまでで得られる制御入力と軌道は，例えば下の図のようになる．
+<figure><img src="./direct_multiple_shooting.png" alt="fig_2" title="Direct Multiple Shootingの例"><figcaption>Direct Multiple Shootingの例</figcaption></figure></p>
+
+<p>この初期値問題を数値的に解くことによって，軌道<span  class="math">\(x(t; s_i, q_i)\)</span>を得る．このODEの解の計算と同時に積分</p>
+
+<p><span  class="math">\[l_i(s_i, q_i) := \int_{t_i}^{t_{i + 1}} L(x_i(t_i; s_i, q_i)) dt\]</span></p>
+
+<p>を数値的に計算する．</p>
+
+<p>人工的な変数<span  class="math">\(s_i\)</span>を物理的に意味のある値に拘束するために，連続性の条件</p>
+
+<p><span  class="math">\[s_{i + 1} = x_i(t_{i + 1}; s_i, q_i)\]</span></p>
+
+<p>を課す．このようにして，single shootingで得られたNLPと等価でありながら，余剰の変数$s_i$を含み，block sparse structureを持つNLPの定式化を得る．</p>
+
+<p><span  class="math">\[\underset{s, q}{\text{minimize}} \ \ \varphi(s_N) + \sum_{i = 0}^{N - 1} l_i(s_i, q_i) \tag{4}\]</span></p>
+
+<p>subject to</p>
+
+<p><span  class="math">\[\begin{cases} s_0 - x_0 = 0, & (\text{initial value}) \\\ s_{i + 1} - x_i(t_{i + 1}; s_i, q_i) = 0, \ \ i = 0, \ldots, N - 1, & (\text{continuity}) \\\ h(s_i, q_i) \geq 0, \ \ i = 0, \ldots, N, & (\text{discretized path constraints}) \\\ r(s_N) = 0. & (\text{terminal constraints}) \end{cases}\]</span></p>
+
+<p>すべての変数を<span  class="math">\(w := (s_0, q_0, s_1, q_1, \ldots, s_N)\)</span>とまとめると，(2)の形式のNLPを得る．</p>
+
+<p>Direct multiple shootingは，sequential methodとsimultaneous methodの利点を両方持つ．オフラインの最適制御問題の数値計算の他，オンライン最適化やMPCにも応用されている．</p>
+
+<h3 id="3-a-namesection3実装a">3. <a name="section3">実装</a></h3>
+
+<p>以下の例題を数値的に解く．</p>
+
+<p><span  class="math">\[\underset{x(\cdot) \in \mathbb{R}^2, u(\cdot) \in \mathbb{R}}{\text{minimize}} \ \ \int_0^T (x_1^2 + x_2^2 + u^2) dt\]</span></p>
+
+<p>subject to</p>
+
+<p><span  class="math">\[\begin{cases} x(0) = x_0, & (\text{initial value}) \\\ \dot{x}_0 = (1 - x_1^2)x_0 - x_1 + u, \ \ \dot{x}_1 = x_0 \ \ t \in [0, T], & (\text{state equation})  \\\ x_1 \geq -0.25, |u(t)| \leq 1, \ \ t \in [0, T], & (\text{bounds}) \end{cases}\]</span></p>
+
+<p>初期値を<span  class="math">\(x_0 = [0, 1]^{\mathrm{T}}\)</span>とし，<span  class="math">\(T = 10, N = 20\)</span>とする．</p>
+
+<p><a href="https://web.casadi.org/">CasADi</a><sup class="footnote-ref" id="fnref:3"><a class="footnote" href="#fn:3">2</a></sup> を用いてdirect single shooting methodを実装した．実装したコードは<a href="https://SeeKT.github.io/portfolio/post/optimal_control_direct_method/">最適制御問題: 直接法 (プログラム)</a> に載せている．</p>
+
+<p>実行後得られた最適制御および状態を以下に示す．</p>
+
+<p><figure><img src="./direct_single_shooting_2_3.svg" alt="fig_3" title="得られた最適制御と状態"><figcaption>得られた最適制御と状態</figcaption></figure></p>
+
+<h3 id="4a-namesection4手書きメモa">4.<a name="section4">手書きメモ</a></h3>
+
+<p>非線形最適制御問題入門<sup class="footnote-ref" id="fnref:4"><a class="footnote" href="#fn:4">3</a></sup>の7章では，最適制御問題の数値解法がいくつか紹介されている．</p>
+
+<table>
+<thead>
+<tr>
+<th>数値解法</th>
+<th>長所</th>
+<th>短所</th>
+<th>適する用途</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>勾配法</td>
+<td>$H$の高階導関数が不要</td>
+<td>最適解近傍での収束が遅い</td>
+<td>最適解のおおよその様子を手軽に知りたいとき</td>
+</tr>
+
+<tr>
+<td>シューティング法</td>
+<td>未知量が有限次元</td>
+<td>計算が発散しやすい</td>
+<td>良好な初期推定解が選べるとき</td>
+</tr>
+
+<tr>
+<td>入力関数のニュートン法</td>
+<td>最適解近傍での収束が速い</td>
+<td>$H$の2階偏導関数が必要で，各反復での計算量が多い</td>
+<td>最適解を精度よく求めたいとき</td>
+</tr>
+
+<tr>
+<td>動的計画法</td>
+<td>状態フィードバック制御が得られる</td>
+<td>状態の次元が高いと記憶量が膨大</td>
+<td>状態の次元が低いか，狭い範囲だけ考慮すればよいとき</td>
+</tr>
+</tbody>
+</table>
+
+<p>以下に手書きメモを掲載する．</p>
+
+<ul>
+<li><a href="https://SeeKT.github.io/portfolio/files/optimal_control/Sec7.1.pdf">7.1節</a></li>
+<li><a href="https://SeeKT.github.io/portfolio/files/optimal_control/Sec7.2.pdf">7.2節</a></li>
+<li><a href="https://SeeKT.github.io/portfolio/files/optimal_control/Sec7.3.pdf">7.3節</a></li>
+<li><a href="https://SeeKT.github.io/portfolio/files/optimal_control/Sec7.4-7.6.pdf">7.4節-7.6節</a></li>
+</ul>
+
+<h3 id="5a-namesection5まとめa">5.<a name="section5">まとめ</a></h3>
+
+<p>この記事では，最適制御の数値解法について簡単にまとめ，例題を数値的に解いた．理解が間違えている箇所があるかもしれないので，もう一度確認したいと思っている．</p>
+<div class="footnotes">
+
+<hr>
+
+<ol>
+<li id="fn:1">M. Diehl, et al., &quot;<a href="https://www.researchgate.net/publication/29603798_Fast_Direct_Multiple_Shooting_Algorithms_for_Optimal_Robot_Control">Fast direct multiple shooting algorithms for optimal robot control</a>,&quot; Fast motions in biomechanics and robotics, pp. 66-93, Springer, 2006.<br>
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:3">J. A. E.Andersson, et al, &quot;<a href="https://link.springer.com/article/10.1007/s12532-018-0139-4">CasADi - A software framework for nonlinear optimization and potimal control</a>,&quot; Mathematical Programming Computation, In Press, 2018.
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+<li id="fn:4">大塚，<a href="https://www.coronasha.co.jp/np/isbn/9784339033182/">非線形最適制御問題入門</a>，コロナ社，2011.
+ <a class="footnote-return" href="#fnref:4"><sup>[return]</sup></a></li>
+</ol>
+</div>
+</div>
+    <div class="post-footer">
+      <div class="info">
+        
+          <span class="separator"><a class="category" href="https://SeeKT.github.io/portfolio/categories/optimal-control/">Optimal control</a></span>
+
+
+
+
+        
+
+        
+          <span class="separator"><a class="tag" href="https://SeeKT.github.io/portfolio/tags/optimal-control/">Optimal control</a><a class="tag" href="https://SeeKT.github.io/portfolio/tags/python/">Python</a></span>
+
+
+
+
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+
+          </div>
+        </div>
+      </main>
+    </div><footer class="footer footer--base">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          Ai Tachibana (Kosuke Toda)
+          2021
+
+
+        
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
+    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
+    crossorigin="anonymous"
+  ></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR&#43;zwDAROtph0PXGte6ia8heboACF9R5l/DiY&#43;WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous" /><script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8&#43;w2LAIftJEULZABrF9PPFv&#43;tVkH" crossorigin="anonymous"></script><script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+      integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB&#43;w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script></body>
+</html>

@@ -20,6 +20,31 @@ Plotly を用いると，3d plot をとてもきれいにできる．今回は�
     </item>
     
     <item>
+      <title>最適制御問題: 直接法 (プログラム)</title>
+      <link>https://SeeKT.github.io/portfolio/post/optimal_control_direct_method/</link>
+      <pubDate>Fri, 27 Aug 2021 23:15:59 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/optimal_control_direct_method/</guid>
+      
+        <description>0. はじめに 最適制御問題: 最適制御問題の数値解法 のdirect single shootingを実装したものを載せる．
+1. コード ########## Packages ########## from casadi import * import numpy as np import os import matplotlib.</description>
+      
+    </item>
+    
+    <item>
+      <title>最適制御問題: 最適制御問題の数値解法</title>
+      <link>https://SeeKT.github.io/portfolio/post/optimal_control_numerical/</link>
+      <pubDate>Fri, 27 Aug 2021 22:55:15 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/optimal_control_numerical/</guid>
+      
+        <description>0. はじめに 先日，6章の内容をまとめた (最適制御問題: 動的計画法と最小原理)．7章の数値解法のあたりでかなり詰まってしまっていた．今回は他の文献も用いてまとめたいと思う．
+理解が間違えている箇所もあるかもしれないので，ミスに気付いたら修正したいと思っている．
+0.1. 目次  1 導入  1.</description>
+      
+    </item>
+    
+    <item>
       <title>Python3の開発環境をDocker containerとして作る</title>
       <link>https://SeeKT.github.io/portfolio/post/docker_python/</link>
       <pubDate>Thu, 08 Jul 2021 18:58:51 +0900</pubDate>

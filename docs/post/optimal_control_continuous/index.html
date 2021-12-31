@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="jp"
+  data-theme=""
+><head>
+  <title>
+    Ai Tachibana (Kosuke Toda)
+      |
+      最適制御問題: 連続時間システムの最適制御
+
+
+    
+
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.91.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta
+    name="description"
+    content="
+      Ai Tachibana
+
+
+    "
+  />
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="https://SeeKT.github.io/portfolio/css/main.min.861c630407a306e1a79890bffbab9b381c5a0b03cd0c3b79755cc5eeea04b6b0.css"
+    integrity="sha256-hhxjBAejBuGnmJC/&#43;6ubOBxaCwPNDDt5dVzF7uoEtrA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="https://SeeKT.github.io/portfolio/css/markupHighlight.min.058b31f17db60602cc415fd63b0427e7932fbf35c70d8e341a4c39385f5f6f3e.css"
+    integrity="sha256-BYsx8X22BgLMQV/WOwQn55MvvzXHDY40Gkw5OF9fbz4="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous"
+  />
+  
+  <link rel="shortcut icon" href="https://SeeKT.github.io/portfolio/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://SeeKT.github.io/portfolio/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://SeeKT.github.io/portfolio/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://SeeKT.github.io/portfolio/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://SeeKT.github.io/portfolio/post/optimal_control_continuous/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/anatole-header.min.2a2cd9614b7d007dfbb75e8da19e3a0fa872ceab53c6d000c00b7a0c89b85bfc.js"
+    integrity="sha256-KizZYUt9AH37t16NoZ46D6hyzqtTxtAAwAt6DIm4W/w="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="https://SeeKT.github.io/portfolio/js/anatole-theme-switcher.min.7fd87181cdd7e8413aa64b6867bb32f3a8dc242e684fc7d5bbb9f600dbc2b6eb.js"
+      integrity="sha256-f9hxgc3X6EE6pktoZ7sy86jcJC5oT8fVu7n2ANvCtus="
+      crossorigin="anonymous"
+    ></script>
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://SeeKT.github.io/portfolio/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="最適制御問題: 連続時間システムの最適制御"/>
+<meta name="twitter:description" content="0. はじめに 先日は，4章の内容をまとめた (最適制御問題: 変分法)．今回は，5章の内容をまとめる．
+1. 5章の概要 5章では，連続時間システムに対する最適制御問題を扱っている．最適制御問題の基本的な問題設定，変分法から導出した停留条件 (オイラー・ラグランジュ方程式)，局所最適性の十分条件，最適解の摂動についてまとめられている．このブログではオイラー・ラグランジュ方程式までをまとめる (詳しい導出は省略)．詳しい導出とそれ以降の内容は手書きの資料に載せている．"/>
+
+
+
+  
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "最適制御問題: 連続時間システムの最適制御",
+        "headline": "最適制御問題: 連続時間システムの最適制御",
+        "alternativeHeadline": "",
+        "description": "
+      
+        0. はじめに 先日は，4章の内容をまとめた (最適制御問題: 変分法)．今回は，5章の内容をまとめる．\n1. 5章の概要 5章では，連続時間システムに対する最適制御問題を扱っている．最適制御問題の基本的な問題設定，変分法から導出した停留条件 (オイラー・ラグランジュ方程式)，局所最適性の十分条件，最適解の摂動についてまとめられている．このブログではオイラー・ラグランジュ方程式までをまとめる (詳しい導出は省略)．詳しい導出とそれ以降の内容は手書きの資料に載せている．
+
+
+      
+
+
+    ",
+        "inLanguage": "jp",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/SeeKT.github.io\/portfolio\/post\/optimal_control_continuous\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "copyrightYear" : "2021",
+        "dateCreated": "2021-07-22T16:14:47.00Z",
+        "datePublished": "2021-07-22T16:14:47.00Z",
+        "dateModified": "2021-07-22T16:14:47.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Ai Tachibana (Kosuke Toda)",
+            "url": "https://SeeKT.github.io/portfolio/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/SeeKT.github.io\/portfolio\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://SeeKT.github.io/portfolio/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/SeeKT.github.io\/portfolio\/post\/optimal_control_continuous\/",
+        "wordCount" : "147",
+        "genre" : [ 
+      
+      "Optimal control"
+
+    ],
+        "keywords" : [ 
+      
+      "Optimal control"
+
+    ]
+    }
+  </script>
+
+
+
+</head>
+<body>
+    <header><div
+  class="page-top 
+    animated fadeInDown
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a>
+  <nav>
+    <ul class="nav__list" id="navMenu">
+      <div class="nav__links">
+        
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/"
+              
+              title=""
+              >Home</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/post/"
+              
+              title=""
+              >Posts</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/profile/"
+              
+              title=""
+              >Profile</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/publication/"
+              
+              title=""
+              >Publication</a
+            >
+          </li>
+
+        
+      </div>
+      <ul>
+        
+        
+          <li>
+            <a class="theme-switch" title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </li>
+
+        
+      </ul>
+    </ul>
+  </nav>
+</div>
+</header>
+    <div class="wrapper">
+      <aside><div
+  class="sidebar
+    animated fadeInDown
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://SeeKT.github.io/portfolio/images/avater.jpg" alt="profile picture" />
+        <h3 title=""><a href="https://SeeKT.github.io/portfolio/">立ち話</a></h3>
+        <div class="description">
+          <p>Ai Tachibana</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+      
+        <li>
+          <a href="https://github.com/SeeKT/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li>
+          <a href="https://twitter.com/tcbn_ai" rel="me" aria-label="twitter" title="twitter">
+            <i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+    </ul>
+  </div><footer class="footer footer--sidebar">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          Ai Tachibana (Kosuke Toda)
+          2021
+
+
+        
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
+    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
+    crossorigin="anonymous"
+  ></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR&#43;zwDAROtph0PXGte6ia8heboACF9R5l/DiY&#43;WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous" /><script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8&#43;w2LAIftJEULZABrF9PPFv&#43;tVkH" crossorigin="anonymous"></script><script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+      integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB&#43;w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script></div>
+</aside>
+      <main>
+        <div class="autopagerize_page_element">
+          <div class="content">
+  <div
+    class="post 
+      animated fadeInDown
+
+    "
+  >
+    <div class="post-content">
+      
+      <div class="post-title">
+        <h1>最適制御問題: 連続時間システムの最適制御</h1>
+        
+          <div class="info">
+            <em class="fas fa-calendar-day"></em>
+            <span class="date"
+              >
+                2021/7/22
+
+
+              </span
+            >
+            <em class="fas fa-stopwatch"></em>
+            <span class="reading-time"></span>
+          </div>
+
+        
+      </div><h3 id="0-はじめに">0. はじめに</h3>
+
+<p>先日は，4章の内容をまとめた (<a href="https://SeeKT.github.io/portfolio/post/optimal_control_validation/">最適制御問題: 変分法</a>)．今回は，5章の内容をまとめる．</p>
+
+<h3 id="1-5章の概要">1. 5章の概要</h3>
+
+<p>5章では，連続時間システムに対する最適制御問題を扱っている．最適制御問題の基本的な問題設定，変分法から導出した停留条件 (オイラー・ラグランジュ方程式)，局所最適性の十分条件，最適解の摂動についてまとめられている．このブログではオイラー・ラグランジュ方程式までをまとめる (詳しい導出は省略)．詳しい導出とそれ以降の内容は手書きの資料に載せている．</p>
+
+<p>ここで扱う最適制御問題は連続時間システム</p>
+
+<p><span  class="math">\[\dot{x}(t) = f(x(t), u(t), t) \tag{5.1}\]</span></p>
+
+<p>(ただし，<span  class="math">\(x(t) \in \mathbb{R}^n\)</span>は状態ベクトル，<span  class="math">\(u(t) \in \mathbb{R}^m\)</span>は制御入力ベクトル) に対して，初期時刻<span  class="math">\(t_0\)</span>，終端時刻<span  class="math">\(t_f\)</span>，初期状態<span  class="math">\(x(t_0) = x_0\)</span>が与えられた下で評価関数</p>
+
+<p><span  class="math">\[J = \varphi(x(t_f)) + \int_{t_0}^{t_f} L(x(t), u(t), t) dt \tag{5.2}\]</span></p>
+
+<p>が与えられ，それを最小化するような最適制御<span  class="math">\(u(t)\)</span>を求める，というような問題である．つまり，ここで考える最適制御問題は，関数<span  class="math">\(x(t)\)</span>と<span  class="math">\(u(t)\)</span>の汎関数である評価関数<span  class="math">\(J\)</span>を，等式制約である状態方程式の下で最小化する変分問題である．</p>
+
+<p>等式制約</p>
+
+<p><span  class="math">\[f(x, u, t) - \dot{x} = 0\]</span></p>
+
+<p>に対応するラグランジュ乗数のベクトルを<span  class="math">\(\lambda(t) \in \mathbb{R}^n\)</span>として，制約条件の下での停留条件を求めるための汎関数<span  class="math">\(\overline{J}\)</span>を構成すると，</p>
+
+<p><span  class="math">\[\overline{J} = \varphi(x(t_f)) + \int_{t_0}^{t_f} \{L(x, u, t + \lambda^{\mathrm{T}} (f - \dot{x}) \}dt \tag{5.3}\]</span></p>
+
+<p>となる．ここで，スカラー値関数<span  class="math">\(H\)</span>を</p>
+
+<p><span  class="math">\[H(x, u, \lambda, t) := L(x, u, t) + \lambda^{\mathrm{T}} f(x, u, t)\]</span></p>
+
+<p>と定義する．<span  class="math">\(H\)</span>は最適制御問題の<strong>ハミルトン関数</strong>と呼ばれる．この<span  class="math">\(H\)</span>を用いると，汎関数<span  class="math">\(\overline{J}\)</span>は，以下のように<span  class="math">\(\dot{x}\)</span>の項とそれ以外の項に分けて書き直される．</p>
+
+<p><span  class="math">\[\overline{J} = \varphi(x(t_f)) + \int_{t_0}^{t_f} \left(H(x, u, \lambda, t) - \lambda^{\mathrm{T}}\dot{x}\right)  dt\]</span></p>
+
+<p>上記の問題設定の下で，評価関数 (5.2) を最小にする最適制御 <span  class="math">\(u(t) \ (t_0 \leq t \leq t_f)\)</span> が存在するとし，対応する最適軌道を<span  class="math">\(x(t)\)</span>とすると，<span  class="math">\(n\)</span>次元ベクトル値関数<span  class="math">\(\lambda(t)\)</span>が存在して以下の<strong>オイラー・ラグランジュ方程式</strong>が成り立つ．</p>
+
+<p><span  class="math">\[\dot{x} = f(x, u, t), \ x(t_0) = x_0 \tag{5.4}\]</span></p>
+
+<p><span  class="math">\[\dot{\lambda} = - \left(\frac{\partial H}{\partial x} \right)^{\mathrm{T}}(x, u, \lambda, t), \ \lambda(t_f) = \left( \frac{\partial \varphi}{\partial x} \right)(x(t_f)) \tag{5.5}\]</span></p>
+
+<p><span  class="math">\[\frac{\partial H}{\partial u}(x, u, \lambda, t) = 0 \tag{5.6}\]</span></p>
+
+<p>これは，<span  class="math">\(x(t)\)</span>と<span  class="math">\(u(t)\)</span>の連立微分方程式とみなすことができるが，<span  class="math">\(x(t)\)</span>は初期状態<span  class="math">\(x(t_0)\)</span>が与えられているのに対し，<span  class="math">\(\lambda(t)\)</span>は終端値<span  class="math">\(\lambda(t_f)\)</span>に対する条件が与えられている．このような問題を<strong>2点境界値問題</strong>という．多くの場合，非線形の微分方程式の解析解は得られないので，初期状態を未知のパラメータとして終端条件が成り立つための条件を書き下すことは困難である．</p>
+
+<p>以下に，各節の内容をまとめた手書きのメモを掲載する．</p>
+
+<ul>
+<li><a href="https://SeeKT.github.io/portfolio/files/optimal_control/Sec5.1.pdf">5.1節</a></li>
+<li><a href="https://SeeKT.github.io/portfolio/files/optimal_control/Sec5.2.pdf">5.2節</a></li>
+<li><a href="https://SeeKT.github.io/portfolio/files/optimal_control/Sec5.3.pdf">5.3節</a></li>
+<li><a href="https://SeeKT.github.io/portfolio/files/optimal_control/Sec5.4.pdf">5.4節</a></li>
+</ul>
+
+<h3 id="2-まとめ">2. まとめ</h3>
+
+<p>ここまで読んで，最適制御問題は状態と入力の汎関数である評価関数を等式制約である状態方程式の下で最小化する変分問題であり，最適制御と最適軌道，ラグランジュ乗数に対してオイラー・ラグランジュ方程式が成り立つことは分かったが，その後どうするのかまだ分かっていない．連休中にやる気があれば6章と7章を読みたいと思っている．</p>
+</div>
+    <div class="post-footer">
+      <div class="info">
+        
+          <span class="separator"><a class="category" href="https://SeeKT.github.io/portfolio/categories/optimal-control/">Optimal control</a></span>
+
+
+
+
+        
+
+        
+          <span class="separator"><a class="tag" href="https://SeeKT.github.io/portfolio/tags/optimal-control/">Optimal control</a></span>
+
+
+
+
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+
+          </div>
+        </div>
+      </main>
+    </div><footer class="footer footer--base">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          Ai Tachibana (Kosuke Toda)
+          2021
+
+
+        
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
+    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
+    crossorigin="anonymous"
+  ></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR&#43;zwDAROtph0PXGte6ia8heboACF9R5l/DiY&#43;WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous" /><script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8&#43;w2LAIftJEULZABrF9PPFv&#43;tVkH" crossorigin="anonymous"></script><script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+      integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB&#43;w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script></body>
+</html>
