@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on 立ち話</title>
+    <link>https://SeeKT.github.io/portfolio/tags/linux/</link>
+    <description>Recent content in Linux on 立ち話</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language>
+    <lastBuildDate>Sat, 20 Nov 2021 09:20:14 +0900</lastBuildDate><atom:link href="https://SeeKT.github.io/portfolio/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>KVM を使って仮想マシンを作成する (試験勉強用)</title>
+      <link>https://SeeKT.github.io/portfolio/post/setting_kvm/</link>
+      <pubDate>Sat, 20 Nov 2021 09:20:14 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/setting_kvm/</guid>
+      
+        <description>0. はじめに Linux の試験を受けようと考えている．普段家で使っている OS は Ubuntu 20.04 であるが，試験勉強用の環境を普段使っている OS とは隔離された形で作りたいと思った．</description>
+      
+    </item>
+    
+  </channel>
+</rss>

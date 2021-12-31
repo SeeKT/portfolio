@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Introduction on 立ち話</title>
+    <link>https://SeeKT.github.io/portfolio/categories/introduction/</link>
+    <description>Recent content in Introduction on 立ち話</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language>
+    <lastBuildDate>Thu, 08 Jul 2021 16:14:02 +0900</lastBuildDate><atom:link href="https://SeeKT.github.io/portfolio/categories/introduction/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>自己紹介</title>
+      <link>https://SeeKT.github.io/portfolio/post/first-post/</link>
+      <pubDate>Thu, 08 Jul 2021 16:14:02 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/first-post/</guid>
+      
+        <description>0. 自己紹介 (2021年現在)  ハンドルネーム  たちばな / 橘 あい   居住地  大阪府   学歴  学士 現在修士2年   研究  計算機科学 非線形力学系   趣味  旅行 自転車 技術書を読んで手元で動かすこと    1.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

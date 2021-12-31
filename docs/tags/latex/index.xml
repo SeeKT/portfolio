@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LaTeX on 立ち話</title>
+    <link>https://SeeKT.github.io/portfolio/tags/latex/</link>
+    <description>Recent content in LaTeX on 立ち話</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language>
+    <lastBuildDate>Tue, 07 Dec 2021 22:17:14 +0900</lastBuildDate><atom:link href="https://SeeKT.github.io/portfolio/tags/latex/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker Container として LaTeX の執筆環境を作る</title>
+      <link>https://SeeKT.github.io/portfolio/post/docker_latex/</link>
+      <pubDate>Tue, 07 Dec 2021 22:17:14 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/docker_latex/</guid>
+      
+        <description>0. はじめに 現在，Ubuntu 20.04 上に TeXLive をインストールして LaTeX の文書を作成している．今後，仕事等で使うマシンが Windows になる可能性がある．そこで，OS に依らずに使える執筆環境として Docker Container を用いるものを作成した．</description>
+      
+    </item>
+    
+  </channel>
+</rss>

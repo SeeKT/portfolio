@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="jp"
+  data-theme=""
+><head>
+  <title>
+    Ai Tachibana (Kosuke Toda)
+      |
+      RStudio ServerをDockerで使うときのメモ
+
+
+    
+
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.91.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta
+    name="description"
+    content="
+      Ai Tachibana
+
+
+    "
+  />
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="https://SeeKT.github.io/portfolio/css/main.min.861c630407a306e1a79890bffbab9b381c5a0b03cd0c3b79755cc5eeea04b6b0.css"
+    integrity="sha256-hhxjBAejBuGnmJC/&#43;6ubOBxaCwPNDDt5dVzF7uoEtrA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="https://SeeKT.github.io/portfolio/css/markupHighlight.min.058b31f17db60602cc415fd63b0427e7932fbf35c70d8e341a4c39385f5f6f3e.css"
+    integrity="sha256-BYsx8X22BgLMQV/WOwQn55MvvzXHDY40Gkw5OF9fbz4="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous"
+  />
+  
+  <link rel="shortcut icon" href="https://SeeKT.github.io/portfolio/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://SeeKT.github.io/portfolio/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://SeeKT.github.io/portfolio/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://SeeKT.github.io/portfolio/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://SeeKT.github.io/portfolio/post/docker_r/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/anatole-header.min.2a2cd9614b7d007dfbb75e8da19e3a0fa872ceab53c6d000c00b7a0c89b85bfc.js"
+    integrity="sha256-KizZYUt9AH37t16NoZ46D6hyzqtTxtAAwAt6DIm4W/w="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="https://SeeKT.github.io/portfolio/js/anatole-theme-switcher.min.7fd87181cdd7e8413aa64b6867bb32f3a8dc242e684fc7d5bbb9f600dbc2b6eb.js"
+      integrity="sha256-f9hxgc3X6EE6pktoZ7sy86jcJC5oT8fVu7n2ANvCtus="
+      crossorigin="anonymous"
+    ></script>
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://SeeKT.github.io/portfolio/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="RStudio ServerをDockerで使うときのメモ"/>
+<meta name="twitter:description" content="0. はじめに RとRStudioもDocker containerとして使えれば少しめんどくさかったインストール工程 (Ubuntu20.04にRとRStudioをインストールする) をやらなくても良いのではないだろうか，と考えた．
+調べたところ，RockerというものでRStudio ServerをDockerで使えるらしい1．
+今回は備忘録として，Rockerを使ったときのメモを残すことにした．
+1. 準備 最低限必要なことは，Docker Engineのインストールである．UbuntuへのDocker Engineのインストールは以前記事にした2．WindowsやMacについては他にも様々な記事があると思う．"/>
+
+
+
+  
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "RStudio ServerをDockerで使うときのメモ",
+        "headline": "RStudio ServerをDockerで使うときのメモ",
+        "alternativeHeadline": "",
+        "description": "
+      
+        0. はじめに RとRStudioもDocker containerとして使えれば少しめんどくさかったインストール工程 (Ubuntu20.04にRとRStudioをインストールする) をやらなくても良いのではないだろうか，と考えた．\n調べたところ，RockerというものでRStudio ServerをDockerで使えるらしい1．\n今回は備忘録として，Rockerを使ったときのメモを残すことにした．\n1. 準備 最低限必要なことは，Docker Engineのインストールである．UbuntuへのDocker Engineのインストールは以前記事にした2．WindowsやMacについては他にも様々な記事があると思う．
+
+
+      
+
+
+    ",
+        "inLanguage": "jp",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/SeeKT.github.io\/portfolio\/post\/docker_r\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "copyrightYear" : "2021",
+        "dateCreated": "2021-08-30T09:15:39.00Z",
+        "datePublished": "2021-08-30T09:15:39.00Z",
+        "dateModified": "2021-08-30T09:15:39.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Ai Tachibana (Kosuke Toda)",
+            "url": "https://SeeKT.github.io/portfolio/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/SeeKT.github.io\/portfolio\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://SeeKT.github.io/portfolio/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/SeeKT.github.io\/portfolio\/post\/docker_r\/",
+        "wordCount" : "179",
+        "genre" : [ 
+      
+      "Docker"
+
+    ],
+        "keywords" : [ 
+      
+      "Docker"
+
+    
+      
+        ,
+
+      
+      "R"
+
+    ]
+    }
+  </script>
+
+
+
+</head>
+<body>
+    <header><div
+  class="page-top 
+    animated fadeInDown
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a>
+  <nav>
+    <ul class="nav__list" id="navMenu">
+      <div class="nav__links">
+        
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/"
+              
+              title=""
+              >Home</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/post/"
+              
+              title=""
+              >Posts</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/profile/"
+              
+              title=""
+              >Profile</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/publication/"
+              
+              title=""
+              >Publication</a
+            >
+          </li>
+
+        
+      </div>
+      <ul>
+        
+        
+          <li>
+            <a class="theme-switch" title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </li>
+
+        
+      </ul>
+    </ul>
+  </nav>
+</div>
+</header>
+    <div class="wrapper">
+      <aside><div
+  class="sidebar
+    animated fadeInDown
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://SeeKT.github.io/portfolio/images/avater.jpg" alt="profile picture" />
+        <h3 title=""><a href="https://SeeKT.github.io/portfolio/">立ち話</a></h3>
+        <div class="description">
+          <p>Ai Tachibana</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+      
+        <li>
+          <a href="https://github.com/SeeKT/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li>
+          <a href="https://twitter.com/tcbn_ai" rel="me" aria-label="twitter" title="twitter">
+            <i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+    </ul>
+  </div><footer class="footer footer--sidebar">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          Ai Tachibana (Kosuke Toda)
+          2021
+
+
+        
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
+    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
+    crossorigin="anonymous"
+  ></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR&#43;zwDAROtph0PXGte6ia8heboACF9R5l/DiY&#43;WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous" /><script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8&#43;w2LAIftJEULZABrF9PPFv&#43;tVkH" crossorigin="anonymous"></script><script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+      integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB&#43;w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script></div>
+</aside>
+      <main>
+        <div class="autopagerize_page_element">
+          <div class="content">
+  <div
+    class="post 
+      animated fadeInDown
+
+    "
+  >
+    <div class="post-content">
+      
+      <div class="post-title">
+        <h1>RStudio ServerをDockerで使うときのメモ</h1>
+        
+          <div class="info">
+            <em class="fas fa-calendar-day"></em>
+            <span class="date"
+              >
+                2021/8/30
+
+
+              </span
+            >
+            <em class="fas fa-stopwatch"></em>
+            <span class="reading-time"></span>
+          </div>
+
+        
+      </div><h3 id="0-はじめに">0. はじめに</h3>
+<p>RとRStudioもDocker containerとして使えれば少しめんどくさかったインストール工程 (<a href="https://tachibana-ai.netlify.app/post/ubuntu_rstudio/">Ubuntu20.04にRとRStudioをインストールする</a>) をやらなくても良いのではないだろうか，と考えた．</p>
+<p>調べたところ，RockerというものでRStudio ServerをDockerで使えるらしい<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>．</p>
+<p>今回は備忘録として，Rockerを使ったときのメモを残すことにした．</p>
+<h3 id="1-準備">1. 準備</h3>
+<p>最低限必要なことは，Docker Engineのインストールである．UbuntuへのDocker Engineのインストールは以前記事にした<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>．WindowsやMacについては他にも様々な記事があると思う．</p>
+<h3 id="2-使い方">2. 使い方</h3>
+<p>今回は，<a href="https://hub.docker.com/r/rocker/tidyverse"><code>rocker/tidyverse</code></a> を使う．おそらく<code>rocker/verse</code> なども同様の方法でできると思う．</p>
+<p>まず，イメージファイルをローカルなマシンに落とす．これは，<code>docker pull</code> コマンドを用いればよい．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker pull rocker/tidyverse
+</code></pre></div><p>イメージファイルがあるかどうかは，次のコマンドで調べられる．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker image ls <span class="p">|</span> grep tidyverse
+</code></pre></div><p>例えば，私のマシンで実行すると以下のように出力された．確かに <code>rocker/tidyverse</code> のイメージファイルがあることがわかる．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">tcbn@tcbn-V530-15ICR:~$ docker image ls <span class="p">|</span> grep tidyverse
+rocker/tidyverse                                latest                  63d48e0c8338   <span class="m">9</span> days ago      2.41GB
+</code></pre></div><p>イメージファイルがある状態で，以下のように <code>docker run</code> コマンドを実行すればバックグラウンドでRStudio Serverが立ち上がる．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker run --rm -d -p 8787:8787 -e <span class="nv">PASSWORD</span><span class="o">=[</span>yourpasswordhere<span class="o">]</span> -v <span class="o">[</span>mountdir<span class="o">]</span>:/home/rstudio rocker/tidyverse
+</code></pre></div><p>ここで，それぞれのオプションは以下のようなものである．</p>
+<ul>
+<li><code>--rm</code>: コンテナの終了後にコンテナを削除する．</li>
+<li><code>-d</code>: 端末から切り離してバックグラウンドで実行する．</li>
+<li><code>-p</code>: ポートマッピングを設定する．
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-p [port number (host)]:[port number (container)]
+</code></pre></div></li>
+<li><code>-e</code>: 環境変数を設定する．</li>
+<li><code>-v</code>: ボリュームをマウントする．
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-v [host directory]:[container directory]
+</code></pre></div></li>
+</ul>
+<p>このコマンドの実行後，<code>http://localhost:8787/</code> にアクセスすればユーザ名とパスワードの入力画面が出てくる．そこで，ユーザ名に <code>rstudio</code> を入力し，パスワードに <code>-e</code> で指定したパスワードを入力する．</p>
+<p>実際に私のマシンでやってみる．<code>~/r_sample</code> というディレクトリをマウントする．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">tcbn@tcbn-V530-15ICR:~/r_sample$ ls
+requirements.r  test.r
+tcbn@tcbn-V530-15ICR:~/r_sample$ docker run --rm -d -p 8787:8787 -e <span class="nv">PASSWORD</span><span class="o">=</span>mypassword -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/rstudio rocker/tidyverse
+83136d6a3c656386e74d14899e0ad55d4b10603ade1bad0dfe7dbde88e07e75c
+</code></pre></div><p>この状態で，<code>http://localhost:8787/</code> にアクセスすると，以下のようにユーザ名とパスワードの入力画面が出てくる．</p>
+<p><img src="./fig/input_userinfo.png" alt="fig1" title="ユーザ名とパスワードの入力画面"></p>
+<p>ユーザ名に <code>rstudio</code>，パスワードに指定したパスワードを入力し，サインインすると，次のような画面になる．</p>
+<p><img src="./fig/rstudio_server.png" alt="fig2" title="RStudio Server"></p>
+<p>先程見た<code>~/rsample</code> がマウントされていることがわかる．あとは必要なパッケージをインストールするなどしたら使えるようになる．</p>
+<p>コンテナ内のRStudio Server側でrのソースコードを書き換えるとそれがマウントしたローカルなディレクトリにも反映される．</p>
+<p>今起動しているDocker containerを <code>docker ps</code> コマンドで見ると，</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">tcbn@tcbn-V530-15ICR:~/r_sample$ docker ps
+CONTAINER ID   IMAGE              COMMAND   CREATED         STATUS         PORTS                                       NAMES
+83136d6a3c65   rocker/tidyverse   <span class="s2">&#34;/init&#34;</span>   <span class="m">7</span> minutes ago   Up <span class="m">7</span> minutes   0.0.0.0:8787-&gt;8787/tcp, :::8787-&gt;8787/tcp   inspiring_nash
+</code></pre></div><p>となっている．コンテナを <code>docker stop</code> コマンドで終了した後に <code>docker ps -a</code> コマンドでコンテナ一覧を見る．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">tcbn@tcbn-V530-15ICR:~/r_sample$ docker stop inspiring_nash 
+inspiring_nash
+tcbn@tcbn-V530-15ICR:~/r_sample$ docker ps -a <span class="p">|</span> grep tidyverse
+</code></pre></div><p><code>--rm</code> オプションで指定したとおり，終了後のコンテナが削除されている．</p>
+<h3 id="3-まとめ">3. まとめ</h3>
+<p>今回は，RStudio ServerをDockerで使うときのやり方を簡単にまとめた．例えば，<code>rocker/tidyverse</code> をイメージファイルに指定してDockerfileを作り，使いやすい環境を作るといったこともできる．</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://jsta.github.io/r-docker-tutorial/">R Docker tutorial</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://tachibana-ai.netlify.app/post/ubuntu_docker/">Ubuntu20.04にDocker Engineをインストールする</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</div>
+    <div class="post-footer">
+      <div class="info">
+        
+          <span class="separator"><a class="category" href="https://SeeKT.github.io/portfolio/categories/docker/">Docker</a></span>
+
+
+
+
+        
+
+        
+          <span class="separator"><a class="tag" href="https://SeeKT.github.io/portfolio/tags/docker/">Docker</a><a class="tag" href="https://SeeKT.github.io/portfolio/tags/r/">R</a></span>
+
+
+
+
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+
+          </div>
+        </div>
+      </main>
+    </div><footer class="footer footer--base">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          Ai Tachibana (Kosuke Toda)
+          2021
+
+
+        
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
+    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
+    crossorigin="anonymous"
+  ></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR&#43;zwDAROtph0PXGte6ia8heboACF9R5l/DiY&#43;WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous" /><script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8&#43;w2LAIftJEULZABrF9PPFv&#43;tVkH" crossorigin="anonymous"></script><script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+      integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB&#43;w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script></body>
+</html>

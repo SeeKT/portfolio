@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="jp"
+  data-theme=""
+><head>
+  <title>
+    Ai Tachibana (Kosuke Toda)
+      |
+      ファイルサーバを構築したときのログ (Ubuntu18.04)
+
+
+    
+
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.91.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta
+    name="description"
+    content="
+      Ai Tachibana
+
+
+    "
+  />
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="https://SeeKT.github.io/portfolio/css/main.min.861c630407a306e1a79890bffbab9b381c5a0b03cd0c3b79755cc5eeea04b6b0.css"
+    integrity="sha256-hhxjBAejBuGnmJC/&#43;6ubOBxaCwPNDDt5dVzF7uoEtrA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="https://SeeKT.github.io/portfolio/css/markupHighlight.min.058b31f17db60602cc415fd63b0427e7932fbf35c70d8e341a4c39385f5f6f3e.css"
+    integrity="sha256-BYsx8X22BgLMQV/WOwQn55MvvzXHDY40Gkw5OF9fbz4="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous"
+  />
+  
+  <link rel="shortcut icon" href="https://SeeKT.github.io/portfolio/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://SeeKT.github.io/portfolio/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://SeeKT.github.io/portfolio/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://SeeKT.github.io/portfolio/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://SeeKT.github.io/portfolio/post/create_server/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/anatole-header.min.2a2cd9614b7d007dfbb75e8da19e3a0fa872ceab53c6d000c00b7a0c89b85bfc.js"
+    integrity="sha256-KizZYUt9AH37t16NoZ46D6hyzqtTxtAAwAt6DIm4W/w="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="https://SeeKT.github.io/portfolio/js/anatole-theme-switcher.min.7fd87181cdd7e8413aa64b6867bb32f3a8dc242e684fc7d5bbb9f600dbc2b6eb.js"
+      integrity="sha256-f9hxgc3X6EE6pktoZ7sy86jcJC5oT8fVu7n2ANvCtus="
+      crossorigin="anonymous"
+    ></script>
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://SeeKT.github.io/portfolio/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="ファイルサーバを構築したときのログ (Ubuntu18.04)"/>
+<meta name="twitter:description" content="0. はじめに 以前ファイルサーバを構築したので，そのときのログを残す．
+色々と怪しい部分もあるかもしれないので，一個人の記録として見ていただければ幸いである．
+以下，LinuxサーバをUbuntu18.04とし，クライアント側はWindows10もしくはUbuntu20.04とする．Windows10の場合はGit Bashが導入済みであるものとする．
+ SSH接続の設定 Sambaの設定 バックアップの設定 CUI運用にする  という流れで実行した．"/>
+
+
+
+  
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "ファイルサーバを構築したときのログ (Ubuntu18.04)",
+        "headline": "ファイルサーバを構築したときのログ (Ubuntu18.04)",
+        "alternativeHeadline": "",
+        "description": "
+      
+        0. はじめに 以前ファイルサーバを構築したので，そのときのログを残す．\n色々と怪しい部分もあるかもしれないので，一個人の記録として見ていただければ幸いである．\n以下，LinuxサーバをUbuntu18.04とし，クライアント側はWindows10もしくはUbuntu20.04とする．Windows10の場合はGit Bashが導入済みであるものとする．\n SSH接続の設定 Sambaの設定 バックアップの設定 CUI運用にする  という流れで実行した．
+
+
+      
+
+
+    ",
+        "inLanguage": "jp",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/SeeKT.github.io\/portfolio\/post\/create_server\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "copyrightYear" : "2021",
+        "dateCreated": "2021-07-09T18:39:46.00Z",
+        "datePublished": "2021-07-09T18:39:46.00Z",
+        "dateModified": "2021-07-09T18:39:46.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Ai Tachibana (Kosuke Toda)",
+            "url": "https://SeeKT.github.io/portfolio/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/SeeKT.github.io\/portfolio\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://SeeKT.github.io/portfolio/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/SeeKT.github.io\/portfolio\/post\/create_server\/",
+        "wordCount" : "365",
+        "genre" : [ 
+      
+      "Ubuntu"
+
+    ],
+        "keywords" : [ 
+      
+      "Ubuntu"
+
+    
+      
+        ,
+
+      
+      "Server"
+
+    ]
+    }
+  </script>
+
+
+
+</head>
+<body>
+    <header><div
+  class="page-top 
+    animated fadeInDown
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a>
+  <nav>
+    <ul class="nav__list" id="navMenu">
+      <div class="nav__links">
+        
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/"
+              
+              title=""
+              >Home</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/post/"
+              
+              title=""
+              >Posts</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/profile/"
+              
+              title=""
+              >Profile</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/publication/"
+              
+              title=""
+              >Publication</a
+            >
+          </li>
+
+        
+      </div>
+      <ul>
+        
+        
+          <li>
+            <a class="theme-switch" title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </li>
+
+        
+      </ul>
+    </ul>
+  </nav>
+</div>
+</header>
+    <div class="wrapper">
+      <aside><div
+  class="sidebar
+    animated fadeInDown
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://SeeKT.github.io/portfolio/images/avater.jpg" alt="profile picture" />
+        <h3 title=""><a href="https://SeeKT.github.io/portfolio/">立ち話</a></h3>
+        <div class="description">
+          <p>Ai Tachibana</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+      
+        <li>
+          <a href="https://github.com/SeeKT/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li>
+          <a href="https://twitter.com/tcbn_ai" rel="me" aria-label="twitter" title="twitter">
+            <i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+    </ul>
+  </div><footer class="footer footer--sidebar">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          Ai Tachibana (Kosuke Toda)
+          2021
+
+
+        
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
+    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
+    crossorigin="anonymous"
+  ></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR&#43;zwDAROtph0PXGte6ia8heboACF9R5l/DiY&#43;WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous" /><script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8&#43;w2LAIftJEULZABrF9PPFv&#43;tVkH" crossorigin="anonymous"></script><script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+      integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB&#43;w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script></div>
+</aside>
+      <main>
+        <div class="autopagerize_page_element">
+          <div class="content">
+  <div
+    class="post 
+      animated fadeInDown
+
+    "
+  >
+    <div class="post-content">
+      
+      <div class="post-title">
+        <h1>ファイルサーバを構築したときのログ (Ubuntu18.04)</h1>
+        
+          <div class="info">
+            <em class="fas fa-calendar-day"></em>
+            <span class="date"
+              >
+                2021/7/9
+
+
+              </span
+            >
+            <em class="fas fa-stopwatch"></em>
+            <span class="reading-time"></span>
+          </div>
+
+        
+      </div><h3 id="0-はじめに">0. はじめに</h3>
+<p>以前ファイルサーバを構築したので，そのときのログを残す．</p>
+<p>色々と怪しい部分もあるかもしれないので，一個人の記録として見ていただければ幸いである．</p>
+<p>以下，LinuxサーバをUbuntu18.04とし，クライアント側はWindows10もしくはUbuntu20.04とする．Windows10の場合はGit Bashが導入済みであるものとする．</p>
+<ol>
+<li>SSH接続の設定</li>
+<li>Sambaの設定</li>
+<li>バックアップの設定</li>
+<li>CUI運用にする</li>
+</ol>
+<p>という流れで実行した．</p>
+<h3 id="1-ssh接続">1 SSH接続</h3>
+<p>サーバにリモートで接続して手元で扱うときには，SSH (Secure Shell) 接続を用いることが多い．SSHは，セキュアな通信でリモートアクセスするためのプロトコルであり，強固な認証と暗号化の機能がある (詳しい説明は省略)．ここでは，LinuxサーバのSSH設定の手順について述べる．認証方式は公開鍵認証とする．</p>
+<p>以下，サーバ側のシェルに<code>(server)</code>とし，接続するクライアント側のシェルに<code>(client)</code>と書くものとする．</p>
+<h4 id="1-sshdのインストールと自動起動の設定-サーバ側">(1) sshdのインストールと自動起動の設定 (サーバ側)</h4>
+<p>ホスト側でsshをインストールして，自動起動の設定を行う．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> sudo apt update <span class="o">&amp;&amp;</span> sudo apt -y upgrade
+<span class="o">(</span>server<span class="o">)</span> sudo apt -y install ssh
+<span class="o">(</span>server<span class="o">)</span> sudo systemctl start ssh.service
+<span class="o">(</span>server<span class="o">)</span> sudo systemctl <span class="nb">enable</span> ssh.service
+</code></pre></div><p>この後サーバを再起動し，以下のコマンドを実行．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> sudo systemctl is-enabled ssh.service
+<span class="o">(</span>server<span class="o">)</span> sudo systemctl status ssh.service
+</code></pre></div><p>上のコマンドを実行し，<code>enabled</code>と出力されれば，ブート時に起動する．下のコマンドを実行し，<code>Active: active (running)</code>と出力されれば現在sshdが起動している．</p>
+<p>この時点でサーバ側にパスワード認証で入ることができる．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>client<span class="o">)</span> ssh <span class="o">[</span>user<span class="o">]</span>@<span class="o">[</span>IP address of the server<span class="o">]</span>
+</code></pre></div><p>(userはサーバのユーザ名)とすると，特に設定が間違えていなければ接続できる．</p>
+<p>今回の目的は公開鍵認証で入ることなので，以下の手順を</p>
+<h4 id="2-キーペアを作る-クライアント側">(2) キーペアを作る (クライアント側)</h4>
+<p>クライアント側でキーペアを作る．キーペアの作り方については以下の記事を参考にした．</p>
+<p>Git Bash (Ubuntuはterminal)で，以下のコマンドを実行する．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>client<span class="o">)</span> ssh-keygen -t rsa -b <span class="m">4096</span> -C <span class="s2">&#34;comment&#34;</span>
+</code></pre></div><p>上記のコマンドを実行すると，鍵のパスを変えるか，パスフレーズは必要か聞かれる．鍵はデフォルトでは<code>&lt;user&gt;/.ssh</code>直下に<code>id_rsa</code>と<code>id_rsa.pub</code>として保存されるが，複数の鍵を作る場合は新しいディレクトリを<code>.ssh</code>以下に作るなどすれば良いと思う．</p>
+<p>commentは任意だが，複数人が管理するファイルサーバという機能を持たせると考えると，自分の名字にするのが良いように思う．</p>
+<h5 id="参考">参考</h5>
+<ul>
+<li><a href="https://qiita.com/suthio/items/2760e4cff0e185fe2db9">お前らのSSH Keysの作り方は間違っている</a></li>
+</ul>
+<h4 id="3-クライアント側からホスト側に公開鍵を送信する">(3) クライアント側からホスト側に公開鍵を送信する</h4>
+<p>(1)でSSH接続ができているとすると，クライアント側でscpコマンドを実行すると，サーバ側のuserのホームディレクトリ直下に公開鍵を転送できる．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>client<span class="o">)</span> scp <span class="o">[</span>client rsa pub key path<span class="o">]</span> <span class="o">[</span>user<span class="o">]</span>@<span class="o">[</span>IP address of the server<span class="o">]</span>:/home/<span class="o">[</span>user<span class="o">]</span>
+</code></pre></div><p>ここで，scpはSSHを使ってリモートホストとローカルホストの通信を暗号化した上で，ファイルの送信をするコマンドであり，<code>scp [from] [to]</code>のように書けば，fromのパスで指定したファイルがtoのパスの下に送られる．</p>
+<p><code>[client rsa pub key path]</code>は，キーペアを作るときに変えていなければ，(Windowsの場合は)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">C<span class="p">:</span><span class="nl">\Users\[user]\.ssh\id_rsa.pub</span>
+</code></pre></div><p>である．</p>
+<h4 id="4-authorized_keysファイルを作る">(4) <code>authorized_keys</code>ファイルを作る</h4>
+<p>次に，サーバ側で鍵の設定をする．(3)で，ホームディレクトリ直下に公開鍵が送られたとする．このファイルの内容を<code>authorized_keys</code>ファイルにコピーする．その後，<code>chmod</code>コマンドで所有者のみが読めるようにする．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> cat id_rsa.pub &gt;&gt; ./.ssh/authorized_keys
+<span class="o">(</span>server<span class="o">)</span> chmod <span class="m">700</span> ./.ssh
+<span class="o">(</span>server<span class="o">)</span> chmod <span class="m">600</span> ./.ssh/authorized_keys
+<span class="o">(</span>server<span class="o">)</span> rm -rf id_rsa.pub
+</code></pre></div><h4 id="5-sshd_configの設定-サーバ側">(5) <code>sshd_config</code>の設定 (サーバ側)</h4>
+<p>公開鍵認証を有効化するために，sshdの設定ファイルを編集する．一旦バックアップをとる．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> <span class="nb">cd</span> /etc/ssh
+<span class="o">(</span>server<span class="o">)</span> sudo cp sshd_config sshd_config.bk
+<span class="o">(</span>server<span class="o">)</span> sudo vim sshd_config
+</code></pre></div><p>以下の行のコメントを外し，有効化する．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">#PubkeyAuthentication yes
+#AuthorizedKeysFile .ssh/authorized_keys  .ssh/authorized_keys2
+</code></pre></div><p>一応Rootでのログインはできないようにしておく．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">PermitRootLogin no
+</code></pre></div><h5 id="参考-1">参考</h5>
+<ul>
+<li><a href="https://qiita.com/gotohiro55/items/36a22516de2b381b3c6e">SSHの鍵認証設定</a></li>
+</ul>
+<h4 id="6-sshのconfigファイルの設定-クライアント側">(6) <code>.ssh</code>のconfigファイルの設定 (クライアント側)</h4>
+<p>(5)までで公開鍵認証でSSH接続できるようになった．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">ssh -i [client rsa private key path] [user]@[IP address of the server]
+</code></pre></div><p>接続のたびにこのコマンドを打つのはめんどくさいので，エイリアス設定をする．<code>.ssh/config</code>ファイルに以下を追加 (Windowsの場合．秘密鍵が<code>.ssh</code>直下にあるとする)．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">Host [server name]
+  HostName xxx.xxx.xxx.xxx  # IP address of the server
+  User [user]               # user name of the server
+  Identityfile C:\Users\[user]\.ssh\id_rsa
+</code></pre></div><p>このようにすると，</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ssh [servername]
+</code></pre></div><p>でサーバに接続できる．</p>
+<h3 id="2-sambaの設定">2 Sambaの設定</h3>
+<p>Sambaとは，Linux上でWindowsのネットワーク機能を実現するソフトウェアである．これを使うことで，ファイルサーバの機能が実現される．</p>
+<p>以下，ホームディレクトリ直下の<code>Share_dir</code>を共有するものとする．ここでは，同一のネットワークのホストに対してフルパーミッションで権限を与える場合を想定する．</p>
+<h5 id="参考-2">参考</h5>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=eVVfJYXq1ug&amp;list=LL&amp;index=1&amp;t=740s">【Linux】Ubuntuでファイルサーバーを作って遊ぼう！(中級者～上級者向け)【世界一わかりやすい解説(かもしれない)】</a>
+<ul>
+<li>このYouTubeの動画を参考にした．</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-sambaのインストール">(1) Sambaのインストール</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> sudo apt install -y samba
+</code></pre></div><h4 id="2-sambaconfのバックアップと編集">(2) <code>samba.conf</code>のバックアップと編集</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> <span class="nb">cd</span> /etc/samba/
+<span class="o">(</span>server<span class="o">)</span> sudo cp smb.conf smb.conf.bk
+<span class="o">(</span>server<span class="o">)</span> sudo vim smb.conf
+</code></pre></div><p>末尾に以下を追加．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"># fileserver
+[fileserver]
+comment = Ubuntu FileServer
+path = /home/[user]/Share_dir/
+browseable = yes
+read only = no
+guest ok = yes
+guest only = yes
+create mode = 0777
+directory mode = 0777
+</code></pre></div><h4 id="3-再起動と自動起動の設定">(3) 再起動と自動起動の設定</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> sudo systemctl restart smbd nmbd
+<span class="o">(</span>server<span class="o">)</span> sudo systemctl <span class="nb">enable</span> smbd nmbd
+</code></pre></div><h3 id="3-バックアップ">3. バックアップ</h3>
+<p>共有したディレクトリをHDDなどにバックアップすることを考える．これは，突然PCが落ちてデータが飛ぶようなリスクへの対策となる．</p>
+<p>ここではHDDがマウントポイント<code>/mnt/Elements</code>にマウントされているとし，システム起動時にマウントするように設定したとする．</p>
+<h4 id="1-バックアップ用のディレクトリの作成">(1) バックアップ用のディレクトリの作成</h4>
+<p><code>Server_backup</code>ディレクトリにバックアップを取るものとする．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> mkdir /mnt/Elements/Server_backup
+</code></pre></div><h4 id="2-バックアップの設定">(2) バックアップの設定</h4>
+<p>ここでは，差分バックアップを取るものとする．このときに使うコマンドは<code>rsync</code>である．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> sudo rsync -av /home/<span class="o">[</span>user<span class="o">]</span>/Share_dir/ /mnt/Elements/Server_backup
+</code></pre></div><p>これは，<code>Share_dir</code>の中身を<code>/mnt/Elements/Server_backup</code>にバックアップするというようなものである．ここで，引数<code>-av</code>は，今どこをコピーしているのかを表示出力するためのものである．</p>
+<h4 id="3-バックアップのスケジューラの設定">(3) バックアップのスケジューラの設定</h4>
+<p>毎日バックアップを更新するために，スケジューラを用いる．crontabを編集すれば良い．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> sudo vim /etc/crontab
+</code></pre></div><p>以下を追加した．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># m h dom mon dow user	command</span>
+<span class="m">00</span> 3	* * *	root    rsync -av /home/<span class="o">[</span>user<span class="o">]</span>/Share_dir/ /mnt/Elements/Server_backup
+</code></pre></div><h3 id="4-cui運用にする">4. CUI運用にする</h3>
+<p>ファイルサーバとしての運用であれば，CUI運用の方が良い．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 一時的にCUIモードにする</span>
+<span class="o">(</span>server<span class="o">)</span> sudo systemctl isolate multi-user.target
+<span class="c1"># デフォルトをCUIモードにする</span>
+<span class="o">(</span>server<span class="o">)</span> sudo systemctl set-default multi-user.target
+</code></pre></div><p>GUIに戻したいときは以下のコマンドを実行．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 一時的にGUIモードにする</span>
+<span class="o">(</span>server<span class="o">)</span> sudo systemctl isolate graphical.target
+<span class="c1"># デフォルトをGUIモードにする</span>
+<span class="o">(</span>server<span class="o">)</span> sudo systemctl set-default graphical.target
+</code></pre></div><h3 id="5-まとめ">5. まとめ</h3>
+<p>ファイルサーバを作った際のログを残した．</p>
+</div>
+    <div class="post-footer">
+      <div class="info">
+        
+          <span class="separator"><a class="category" href="https://SeeKT.github.io/portfolio/categories/ubuntu/">Ubuntu</a></span>
+
+
+
+
+        
+
+        
+          <span class="separator"><a class="tag" href="https://SeeKT.github.io/portfolio/tags/ubuntu/">Ubuntu</a><a class="tag" href="https://SeeKT.github.io/portfolio/tags/server/">Server</a></span>
+
+
+
+
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+
+          </div>
+        </div>
+      </main>
+    </div><footer class="footer footer--base">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          Ai Tachibana (Kosuke Toda)
+          2021
+
+
+        
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
+    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
+    crossorigin="anonymous"
+  ></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR&#43;zwDAROtph0PXGte6ia8heboACF9R5l/DiY&#43;WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous" /><script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8&#43;w2LAIftJEULZABrF9PPFv&#43;tVkH" crossorigin="anonymous"></script><script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+      integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB&#43;w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script></body>
+</html>

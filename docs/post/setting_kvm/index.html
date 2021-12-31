@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="jp"
+  data-theme=""
+><head>
+  <title>
+    Ai Tachibana (Kosuke Toda)
+      |
+      KVM を使って仮想マシンを作成する (試験勉強用)
+
+
+    
+
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.91.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta
+    name="description"
+    content="
+      Ai Tachibana
+
+
+    "
+  />
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="https://SeeKT.github.io/portfolio/css/main.min.861c630407a306e1a79890bffbab9b381c5a0b03cd0c3b79755cc5eeea04b6b0.css"
+    integrity="sha256-hhxjBAejBuGnmJC/&#43;6ubOBxaCwPNDDt5dVzF7uoEtrA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="https://SeeKT.github.io/portfolio/css/markupHighlight.min.058b31f17db60602cc415fd63b0427e7932fbf35c70d8e341a4c39385f5f6f3e.css"
+    integrity="sha256-BYsx8X22BgLMQV/WOwQn55MvvzXHDY40Gkw5OF9fbz4="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous"
+  />
+  
+  <link rel="shortcut icon" href="https://SeeKT.github.io/portfolio/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://SeeKT.github.io/portfolio/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://SeeKT.github.io/portfolio/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://SeeKT.github.io/portfolio/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://SeeKT.github.io/portfolio/post/setting_kvm/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/anatole-header.min.2a2cd9614b7d007dfbb75e8da19e3a0fa872ceab53c6d000c00b7a0c89b85bfc.js"
+    integrity="sha256-KizZYUt9AH37t16NoZ46D6hyzqtTxtAAwAt6DIm4W/w="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="https://SeeKT.github.io/portfolio/js/anatole-theme-switcher.min.7fd87181cdd7e8413aa64b6867bb32f3a8dc242e684fc7d5bbb9f600dbc2b6eb.js"
+      integrity="sha256-f9hxgc3X6EE6pktoZ7sy86jcJC5oT8fVu7n2ANvCtus="
+      crossorigin="anonymous"
+    ></script>
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://SeeKT.github.io/portfolio/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="KVM を使って仮想マシンを作成する (試験勉強用)"/>
+<meta name="twitter:description" content="0. はじめに Linux の試験を受けようと考えている．普段家で使っている OS は Ubuntu 20.04 であるが，試験勉強用の環境を普段使っている OS とは隔離された形で作りたいと思った．"/>
+
+
+
+  
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "KVM を使って仮想マシンを作成する (試験勉強用)",
+        "headline": "KVM を使って仮想マシンを作成する (試験勉強用)",
+        "alternativeHeadline": "",
+        "description": "
+      
+        0. はじめに Linux の試験を受けようと考えている．普段家で使っている OS は Ubuntu 20.04 であるが，試験勉強用の環境を普段使っている OS とは隔離された形で作りたいと思った．
+
+
+      
+
+
+    ",
+        "inLanguage": "jp",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/SeeKT.github.io\/portfolio\/post\/setting_kvm\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "copyrightYear" : "2021",
+        "dateCreated": "2021-11-20T09:20:14.00Z",
+        "datePublished": "2021-11-20T09:20:14.00Z",
+        "dateModified": "2021-11-20T09:20:14.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Ai Tachibana (Kosuke Toda)",
+            "url": "https://SeeKT.github.io/portfolio/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/SeeKT.github.io\/portfolio\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://SeeKT.github.io/portfolio/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/SeeKT.github.io\/portfolio\/post\/setting_kvm\/",
+        "wordCount" : "428",
+        "genre" : [ 
+      
+      "Ubuntu"
+
+    ],
+        "keywords" : [ 
+      
+      "Ubuntu"
+
+    
+      
+        ,
+
+      
+      "KVM"
+
+    
+      
+        ,
+
+      
+      "Linux"
+
+    ]
+    }
+  </script>
+
+
+
+</head>
+<body>
+    <header><div
+  class="page-top 
+    animated fadeInDown
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a>
+  <nav>
+    <ul class="nav__list" id="navMenu">
+      <div class="nav__links">
+        
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/"
+              
+              title=""
+              >Home</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/post/"
+              
+              title=""
+              >Posts</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/profile/"
+              
+              title=""
+              >Profile</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/publication/"
+              
+              title=""
+              >Publication</a
+            >
+          </li>
+
+        
+      </div>
+      <ul>
+        
+        
+          <li>
+            <a class="theme-switch" title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </li>
+
+        
+      </ul>
+    </ul>
+  </nav>
+</div>
+</header>
+    <div class="wrapper">
+      <aside><div
+  class="sidebar
+    animated fadeInDown
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://SeeKT.github.io/portfolio/images/avater.jpg" alt="profile picture" />
+        <h3 title=""><a href="https://SeeKT.github.io/portfolio/">立ち話</a></h3>
+        <div class="description">
+          <p>Ai Tachibana</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+      
+        <li>
+          <a href="https://github.com/SeeKT/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li>
+          <a href="https://twitter.com/tcbn_ai" rel="me" aria-label="twitter" title="twitter">
+            <i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+    </ul>
+  </div><footer class="footer footer--sidebar">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          Ai Tachibana (Kosuke Toda)
+          2021
+
+
+        
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
+    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
+    crossorigin="anonymous"
+  ></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR&#43;zwDAROtph0PXGte6ia8heboACF9R5l/DiY&#43;WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous" /><script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8&#43;w2LAIftJEULZABrF9PPFv&#43;tVkH" crossorigin="anonymous"></script><script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+      integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB&#43;w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script></div>
+</aside>
+      <main>
+        <div class="autopagerize_page_element">
+          <div class="content">
+  <div
+    class="post 
+      animated fadeInDown
+
+    "
+  >
+    <div class="post-content">
+      
+      <div class="post-title">
+        <h1>KVM を使って仮想マシンを作成する (試験勉強用)</h1>
+        
+          <div class="info">
+            <em class="fas fa-calendar-day"></em>
+            <span class="date"
+              >
+                2021/11/20
+
+
+              </span
+            >
+            <em class="fas fa-stopwatch"></em>
+            <span class="reading-time"></span>
+          </div>
+
+        
+      </div><h3 id="0-はじめに">0. はじめに</h3>
+<p>Linux の試験を受けようと考えている．普段家で使っている OS は Ubuntu 20.04 であるが，試験勉強用の環境を普段使っている OS とは隔離された形で作りたいと思った．</p>
+<p>そこで，今回は Ubuntu の仮想化機能である KVM を用いて仮想マシンを作成する．あくまで試験勉強用の環境であり，一般用途として使う際に適しているとは限らない．</p>
+<h5 id="目次">目次</h5>
+<ul>
+<li>1 <a href="#section1">構成と仕様</a></li>
+<li>2 <a href="#section2">KVM の導入と仮想マシンの作成</a>
+<ul>
+<li>2.1 <a href="#section2-1">KVM の導入</a></li>
+<li>2.2 <a href="#section2-2">仮想マシンの作成</a></li>
+</ul>
+</li>
+<li>3 <a href="#section3">SSH 接続の設定</a></li>
+<li>4 <a href="#section4">まとめ</a></li>
+</ul>
+<h3 id="1-a-namesection1構成と仕様a">1. <a name="section1">構成と仕様</a></h3>
+<p>試験では Debian 系の OS と Red Hat 系の OS の両方の知識が求められると考えられるので，両方を導入する．Debian 系 OS として Ubuntu 20.04 を導入し，Red Hat 系 OS として CentOS 7 を導入する．</p>
+<p>また，練習用途として利用するために，次のようなことを求める．</p>
+<ul>
+<li>インターネットに接続できる．</li>
+<li>ホスト OS と ssh で接続できる．</li>
+</ul>
+<h3 id="2-a-namesection2kvm-の導入と仮想マシンの作成a">2. <a name="section2">KVM の導入と仮想マシンの作成</a></h3>
+<h4 id="21-a-namesection2-1kvm-の導入a">2.1. <a name="section2-1">KVM の導入</a></h4>
+<p>仮想化機能の KVM を導入する (参考:<a href="https://www.tecmint.com/install-kvm-on-ubuntu/">How to Install KVM on Ubuntu 20.04</a>)．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(Host)
+sudo apt -y install virt-manager qemu-system
+</code></pre></div><p>KVM をインストールすると，デフォルトで <code>virbr0</code> というブリッジが作成される (参考: <a href="https://qiita.com/yoshiyasu1111/items/8d07a4fd55116fba07f7">KVMでゲストOSをブリッジ接続する</a>)．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(Host)
+tcbn@tcbn-V530-15ICR:~$ ifconfig virbr0
+virbr0: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500
+        inet 192.168.122.1  netmask 255.255.255.0  broadcast 192.168.122.255
+        ether 52:54:00:fe:91:8f  txqueuelen 1000  (Ethernet)
+        RX packets 291159  bytes 16410705 (16.4 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 582378  bytes 822922760 (822.9 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+</code></pre></div><p><code>192.168.122.0</code> というネットワークであり，ホスト OS は <code>192.168.122.1</code> という IP address でゲスト OS と接続できる．</p>
+<h4 id="22-a-namesection2-2仮想マシンの作成a">2.2. <a name="section2-2">仮想マシンの作成</a></h4>
+<h5 id="手順">手順</h5>
+<p>まず，ISO ファイルを入手する．</p>
+<ul>
+<li><a href="https://jp.ubuntu.com/download">Ubuntu 20.04</a></li>
+<li><a href="https://www.centos.org/download/">CentOS 7</a></li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(Host)
+virt-manager
+</code></pre></div><p>で virt-manager を起動し，&ldquo;Create a new virtual machine&rdquo; を選択する．基本的に手順にしたがって新しい仮想マシンを作成する．ネットワークは，Virtual network &lsquo;default&rsquo;: NAT を選択する (これを選択するとインターネットに接続できたため．他の方法もあるだろう)．</p>
+<p><img src="./step1.png" alt="" title="Step 1 of 5, Local install media を選択．"></p>
+<p><img src="./step2.png" alt="" title="Step 2 of 5, Browse を選択し，Browse Local で先程インストールした ISO ファイルを指定する．"></p>
+<p><img src="./step3.png" alt="" title="Step 3 of 5, 割り当てるメモリと CPU を適当に指定する．"></p>
+<p><img src="./step4.png" alt="" title="Step 4 of 5, 仮想マシンのディスクイメージのサイズを適当に指定する．"></p>
+<p><img src="./step5.png" alt="" title="Step 5 of 5, Network selection で Virtual network 'default': NAT を選択する．"></p>
+<p>あとは通常の OS のインストールと同様の操作である．</p>
+<h3 id="3-a-namesection3ssh-接続の設定a">3. <a name="section3">SSH 接続の設定</a></h3>
+<p>以降，Ubuntu での操作を載せる．CentOS は異なるコマンドだが，同様の操作をすることで実現できる．</p>
+<p>OS のインストール後は <code>update</code> と <code>upgrade</code> を行う．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(Guest)
+sudo apt update &amp;&amp; sudo apt -y upgrade
+</code></pre></div><p>次に，SSH 接続のために OpenSSH Server を導入する．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(Guest)
+sudo apt -y install openssh-server
+</code></pre></div><p>また，<code>ssh.service</code> が active か，マシンの起動後に active になるか (enable か) を確認する．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(Guest)
+sudo systemctl is-enabled ssh
+sudo systemctl status ssh
+</code></pre></div><p><img src="./ssh.png" alt="" title="ssh の状態の確認．"></p>
+<p>ゲスト OS の IP address を <code>ip addr</code> で確認する．</p>
+<p><img src="./ipaddr.png" alt="" title="IP address の確認．"></p>
+<p>今回，Ubuntu 20.04 には <code>192.168.122.165</code> という IP address が割り当てられている．この IP address は <a href="https://www.nic.ad.jp/ja/basics/terms/dhcp.html#:~:text=DHCP%E3%81%A8%E3%81%AF%E3%80%8CDynamic%20Host,%E8%A1%8C%E3%81%86%E3%81%9F%E3%82%81%E3%81%AE%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB%E3%81%A7%E3%81%99%E3%80%82&amp;text=%E3%81%AA%E3%81%8ADHCP%E3%81%AB%E3%81%AF%E8%AA%8D%E8%A8%BC,%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E8%84%86%E5%BC%B1%E3%81%A7%E3%81%99%E3%80%82">DHCP</a> で割り当てられたものである<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>．</p>
+<p>ホスト OS とゲスト OS 間の接続ができるかどうか，確認する．</p>
+<p>ホスト OS → ゲスト OS:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">tcbn@tcbn-V530-15ICR:~$ ping -c 3 192.168.122.165
+PING 192.168.122.165 (192.168.122.165) 56(84) bytes of data.
+64 bytes from 192.168.122.165: icmp_seq=1 ttl=64 time=0.544 ms
+64 bytes from 192.168.122.165: icmp_seq=2 ttl=64 time=0.201 ms
+64 bytes from 192.168.122.165: icmp_seq=3 ttl=64 time=0.366 ms
+
+--- 192.168.122.165 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2043ms
+rtt min/avg/max/mdev = 0.201/0.370/0.544/0.140 ms
+</code></pre></div><p>ゲスト OS → ホスト OS:
+<img src="./ping.png" alt="" title="ゲスト OS → ホスト OS に ping."></p>
+<p>両方向に接続できていることが確認される．</p>
+<p>SSH 接続を行う．学習用環境なので，パスワード認証で十分だろう． ホスト OS 側で <code>ssh [username]@[IP address]</code> とする．初回接続時は確認が出るが，yes を選択する．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(Host)
+tcbn@tcbn-V530-15ICR:~$ ssh ai@192.168.122.165
+ai@192.168.122.165&#39;s password: 
+Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.11.0-40-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+0 updates can be applied immediately.
+
+Your Hardware Enablement Stack (HWE) is supported until April 2025.
+Last login: Sat Nov 20 09:08:44 2021 from 192.168.122.1
+</code></pre></div><p>毎回このコマンドを打つのは面倒 (特に，公開鍵認証を用いている場合) なので，ホスト OS 側の <code>~/.ssh/config</code> ファイルに設定を書く (パスはこれではない可能性もある)．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Host Host_name
+    HostName [IP address]
+    User [username]
+</code></pre></div><p>という書式である (参考: <a href="https://linux.die.net/man/5/ssh_config">ssh_config(5) - Linux man page</a>)．<code>ssh Host_name</code> で接続できる<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>．</p>
+<h3 id="4-a-namesection4まとめa">4. <a name="section4">まとめ</a></h3>
+<p>学習用の環境を仮想マシンで作った．特にインターネット接続あたりで詰まったので，備忘録としてまとめた．</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>IP address を固定しようと思ったが，固定するとインターネット接続ができなくなったので DHCP で割り当てられた IP address を用いることにした．原因が分からなかったので，いずれ調べたいと思う．&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>VS Code に優秀な拡張機能 Remote - SSH があるので，使うのをおすすめする．接続先のファイルをまるで手元で扱っているかのように編集できる．&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</div>
+    <div class="post-footer">
+      <div class="info">
+        
+          <span class="separator"><a class="category" href="https://SeeKT.github.io/portfolio/categories/ubuntu/">Ubuntu</a></span>
+
+
+
+
+        
+
+        
+          <span class="separator"><a class="tag" href="https://SeeKT.github.io/portfolio/tags/ubuntu/">Ubuntu</a><a class="tag" href="https://SeeKT.github.io/portfolio/tags/kvm/">KVM</a><a class="tag" href="https://SeeKT.github.io/portfolio/tags/linux/">Linux</a></span>
+
+
+
+
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+
+          </div>
+        </div>
+      </main>
+    </div><footer class="footer footer--base">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          Ai Tachibana (Kosuke Toda)
+          2021
+
+
+        
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
+    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
+    crossorigin="anonymous"
+  ></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR&#43;zwDAROtph0PXGte6ia8heboACF9R5l/DiY&#43;WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous" /><script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8&#43;w2LAIftJEULZABrF9PPFv&#43;tVkH" crossorigin="anonymous"></script><script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+      integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB&#43;w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script></body>
+</html>

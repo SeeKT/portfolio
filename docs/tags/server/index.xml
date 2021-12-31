@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Server on 立ち話</title>
+    <link>https://SeeKT.github.io/portfolio/tags/server/</link>
+    <description>Recent content in Server on 立ち話</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language>
+    <lastBuildDate>Fri, 09 Jul 2021 18:39:46 +0900</lastBuildDate><atom:link href="https://SeeKT.github.io/portfolio/tags/server/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ファイルサーバを構築したときのログ (Ubuntu18.04)</title>
+      <link>https://SeeKT.github.io/portfolio/post/create_server/</link>
+      <pubDate>Fri, 09 Jul 2021 18:39:46 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/create_server/</guid>
+      
+        <description>0. はじめに 以前ファイルサーバを構築したので，そのときのログを残す．
+色々と怪しい部分もあるかもしれないので，一個人の記録として見ていただければ幸いである．
+以下，LinuxサーバをUbuntu18.04とし，クライアント側はWindows10もしくはUbuntu20.04とする．Windows10の場合はGit Bashが導入済みであるものとする．
+ SSH接続の設定 Sambaの設定 バックアップの設定 CUI運用にする  という流れで実行した．</description>
+      
+    </item>
+    
+  </channel>
+</rss>

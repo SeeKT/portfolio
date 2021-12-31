@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on 立ち話</title>
+    <link>https://SeeKT.github.io/portfolio/tags/python/</link>
+    <description>Recent content in Python on 立ち話</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language>
+    <lastBuildDate>Fri, 17 Sep 2021 22:28:21 +0900</lastBuildDate><atom:link href="https://SeeKT.github.io/portfolio/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PythonのPlotlyで遊んだ</title>
+      <link>https://SeeKT.github.io/portfolio/post/python_plotly/</link>
+      <pubDate>Fri, 17 Sep 2021 22:28:21 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/python_plotly/</guid>
+      
+        <description>0. はじめに Plotly1 をご存知だろうか．統計や金融，科学等の幅広い分野で用いられている，データの可視化のためのライブラリであり，Python や R などで用いることができる．
+Plotly を用いると，3d plot をとてもきれいにできる．今回は，Plotly を用いて適当なグラフを描画して遊ぼうと思う．</description>
+      
+    </item>
+    
+    <item>
+      <title>Python3の開発環境をDocker containerとして作る</title>
+      <link>https://SeeKT.github.io/portfolio/post/docker_python/</link>
+      <pubDate>Thu, 08 Jul 2021 18:58:51 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/docker_python/</guid>
+      
+        <description>0. はじめに この記事では，Docker containerとしてPythonの開発環境を作ったときのメモを残す． この記事の内容は，GitHubのサブのアカウントのpublicリポジトリで公開している．
+1. 必要なもの  Docker Engineのインストール VSCodeのインストール  Remote Developementの導入    2.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

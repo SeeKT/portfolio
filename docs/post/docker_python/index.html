@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="jp"
+  data-theme=""
+><head>
+  <title>
+    Ai Tachibana (Kosuke Toda)
+      |
+      Python3の開発環境をDocker containerとして作る
+
+
+    
+
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.91.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta
+    name="description"
+    content="
+      Ai Tachibana
+
+
+    "
+  />
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="https://SeeKT.github.io/portfolio/css/main.min.861c630407a306e1a79890bffbab9b381c5a0b03cd0c3b79755cc5eeea04b6b0.css"
+    integrity="sha256-hhxjBAejBuGnmJC/&#43;6ubOBxaCwPNDDt5dVzF7uoEtrA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="https://SeeKT.github.io/portfolio/css/markupHighlight.min.058b31f17db60602cc415fd63b0427e7932fbf35c70d8e341a4c39385f5f6f3e.css"
+    integrity="sha256-BYsx8X22BgLMQV/WOwQn55MvvzXHDY40Gkw5OF9fbz4="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous"
+  />
+  
+  <link rel="shortcut icon" href="https://SeeKT.github.io/portfolio/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://SeeKT.github.io/portfolio/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://SeeKT.github.io/portfolio/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://SeeKT.github.io/portfolio/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://SeeKT.github.io/portfolio/post/docker_python/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/anatole-header.min.2a2cd9614b7d007dfbb75e8da19e3a0fa872ceab53c6d000c00b7a0c89b85bfc.js"
+    integrity="sha256-KizZYUt9AH37t16NoZ46D6hyzqtTxtAAwAt6DIm4W/w="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="https://SeeKT.github.io/portfolio/js/anatole-theme-switcher.min.7fd87181cdd7e8413aa64b6867bb32f3a8dc242e684fc7d5bbb9f600dbc2b6eb.js"
+      integrity="sha256-f9hxgc3X6EE6pktoZ7sy86jcJC5oT8fVu7n2ANvCtus="
+      crossorigin="anonymous"
+    ></script>
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://SeeKT.github.io/portfolio/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Python3の開発環境をDocker containerとして作る"/>
+<meta name="twitter:description" content="0. はじめに この記事では，Docker containerとしてPythonの開発環境を作ったときのメモを残す． この記事の内容は，GitHubのサブのアカウントのpublicリポジトリで公開している．
+1. 必要なもの  Docker Engineのインストール VSCodeのインストール  Remote Developementの導入    2."/>
+
+
+
+  
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "Python3の開発環境をDocker containerとして作る",
+        "headline": "Python3の開発環境をDocker containerとして作る",
+        "alternativeHeadline": "",
+        "description": "
+      
+        0. はじめに この記事では，Docker containerとしてPythonの開発環境を作ったときのメモを残す． この記事の内容は，GitHubのサブのアカウントのpublicリポジトリで公開している．\n1. 必要なもの  Docker Engineのインストール VSCodeのインストール  Remote Developementの導入    2.
+
+
+      
+
+
+    ",
+        "inLanguage": "jp",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/SeeKT.github.io\/portfolio\/post\/docker_python\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "copyrightYear" : "2021",
+        "dateCreated": "2021-07-08T18:58:51.00Z",
+        "datePublished": "2021-07-08T18:58:51.00Z",
+        "dateModified": "2021-07-08T18:58:51.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Ai Tachibana (Kosuke Toda)",
+            "url": "https://SeeKT.github.io/portfolio/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/SeeKT.github.io\/portfolio\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://SeeKT.github.io/portfolio/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/SeeKT.github.io\/portfolio\/post\/docker_python\/",
+        "wordCount" : "180",
+        "genre" : [ 
+      
+      "Docker"
+
+    ],
+        "keywords" : [ 
+      
+      "Python"
+
+    
+      
+        ,
+
+      
+      "Docker"
+
+    ]
+    }
+  </script>
+
+
+
+</head>
+<body>
+    <header><div
+  class="page-top 
+    animated fadeInDown
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a>
+  <nav>
+    <ul class="nav__list" id="navMenu">
+      <div class="nav__links">
+        
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/"
+              
+              title=""
+              >Home</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/post/"
+              
+              title=""
+              >Posts</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/profile/"
+              
+              title=""
+              >Profile</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/publication/"
+              
+              title=""
+              >Publication</a
+            >
+          </li>
+
+        
+      </div>
+      <ul>
+        
+        
+          <li>
+            <a class="theme-switch" title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </li>
+
+        
+      </ul>
+    </ul>
+  </nav>
+</div>
+</header>
+    <div class="wrapper">
+      <aside><div
+  class="sidebar
+    animated fadeInDown
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://SeeKT.github.io/portfolio/images/avater.jpg" alt="profile picture" />
+        <h3 title=""><a href="https://SeeKT.github.io/portfolio/">立ち話</a></h3>
+        <div class="description">
+          <p>Ai Tachibana</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+      
+        <li>
+          <a href="https://github.com/SeeKT/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li>
+          <a href="https://twitter.com/tcbn_ai" rel="me" aria-label="twitter" title="twitter">
+            <i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+    </ul>
+  </div><footer class="footer footer--sidebar">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          Ai Tachibana (Kosuke Toda)
+          2021
+
+
+        
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
+    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
+    crossorigin="anonymous"
+  ></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR&#43;zwDAROtph0PXGte6ia8heboACF9R5l/DiY&#43;WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous" /><script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8&#43;w2LAIftJEULZABrF9PPFv&#43;tVkH" crossorigin="anonymous"></script><script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+      integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB&#43;w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script></div>
+</aside>
+      <main>
+        <div class="autopagerize_page_element">
+          <div class="content">
+  <div
+    class="post 
+      animated fadeInDown
+
+    "
+  >
+    <div class="post-content">
+      
+      <div class="post-title">
+        <h1>Python3の開発環境をDocker containerとして作る</h1>
+        
+          <div class="info">
+            <em class="fas fa-calendar-day"></em>
+            <span class="date"
+              >
+                2021/7/8
+
+
+              </span
+            >
+            <em class="fas fa-stopwatch"></em>
+            <span class="reading-time"></span>
+          </div>
+
+        
+      </div><h3 id="0-はじめに">0. はじめに</h3>
+<p>この記事では，Docker containerとしてPythonの開発環境を作ったときのメモを残す．
+この記事の内容は，GitHubのサブのアカウントの<a href="https://github.com/tcbn-ai/Docker_python_env">publicリポジトリ</a>で公開している．</p>
+<h3 id="1-必要なもの">1. 必要なもの</h3>
+<ul>
+<li>Docker Engineのインストール</li>
+<li>VSCodeのインストール
+<ul>
+<li>Remote Developementの導入</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-基本構成">2. 基本構成</h3>
+<ul>
+<li>Docker Image
+<ul>
+<li><a href="https://hub.docker.com/_/python">python</a>の<a href="https://github.com/docker-library/python/blob/e0e01b8482ea14352c710134329cdd93ece88317/3.8/buster/Dockerfile">3.8.10-buster</a>を使っている．</li>
+</ul>
+</li>
+<li>ディレクトリ構成
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">|- test_code/   # コードを置いている
+|- .devcontainer/
+    |- devcontainer.json
+    |- docker-compose.yml
+    |- dockerfile
+    |- requirements.txt
+</code></pre></div></li>
+</ul>
+<h4 id="各種ファイル">各種ファイル</h4>
+<ul>
+<li><code>devcontainer.json</code>
+<ul>
+<li>VSCodeのRemoteを使うときの設定
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="c1">// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+</span><span class="c1">// https://github.com/microsoft/vscode-dev-containers/tree/v0.177.0/containers/docker-existing-dockerfile
+</span><span class="c1"></span><span class="p">{</span>
+  <span class="c1">// 名前は任意
+</span><span class="c1"></span>  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Docker-Python&#34;</span><span class="p">,</span>
+  <span class="c1">// dockercomposefileの場所 (同階層に置いている)
+</span><span class="c1"></span>  <span class="nt">&#34;dockerComposeFile&#34;</span><span class="p">:</span> <span class="s2">&#34;docker-compose.yml&#34;</span><span class="p">,</span>
+  <span class="c1">// 使う拡張機能
+</span><span class="c1"></span>  <span class="nt">&#34;extensions&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&#34;ms-python.python&#34;</span>
+  <span class="p">],</span>
+  <span class="c1">// ここに記載している&#34;service&#34;名とdocker-compose.ymlに記載している&#34;service&#34;を一致させる
+</span><span class="c1"></span>  <span class="nt">&#34;service&#34;</span><span class="p">:</span> <span class="s2">&#34;python&#34;</span><span class="p">,</span>
+  <span class="c1">// コンテナ内に入ったときのworkdir
+</span><span class="c1"></span>  <span class="nt">&#34;workspaceFolder&#34;</span><span class="p">:</span> <span class="s2">&#34;/code&#34;</span><span class="p">,</span>
+  <span class="c1">// VSCodeを閉じたときのアクション
+</span><span class="c1"></span>  <span class="nt">&#34;shutdownAction&#34;</span><span class="p">:</span> <span class="s2">&#34;stopCompose&#34;</span>
+<span class="p">}</span>
+</code></pre></div></li>
+</ul>
+</li>
+<li><code>docker-compose.yml</code>
+<ul>
+<li>複数のコンテナを定義し，実行することができる．</li>
+<li>今回は，1つのコンテナに対する処理を記述
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3&#34;</span><span class="w">    </span><span class="c"># 3が最新版</span><span class="w">
+</span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w"> 
+</span><span class="w">    </span><span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="c"># ここの名前とdevcontainer.jsonの&#34;service&#34;を一致させる</span><span class="w">
+</span><span class="w">        </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l">.   </span><span class="w"> </span><span class="c"># 同階層のdockerfileからビルドする</span><span class="w">
+</span><span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l">sleep infinity</span><span class="w">
+</span><span class="w">        </span><span class="nt">volumes</span><span class="p">:</span><span class="w"> 
+</span><span class="w">            </span>- <span class="l">../:/code </span><span class="w"> </span><span class="c"># 上階層のディレクトリをDocker Container上のworkdirにマウント</span><span class="w">
+</span><span class="w">        </span><span class="nt">environment</span><span class="p">:</span><span class="w"> 
+</span><span class="w">            </span><span class="nt">SHELL</span><span class="p">:</span><span class="w"> </span><span class="l">/bin/bash</span><span class="w">
+</span></code></pre></div></li>
+</ul>
+</li>
+<li><code>dockerfile</code>
+<ul>
+<li>コンテナを作るための処理
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="c">########### Image file ###########</span><span class="err">
+</span><span class="err"></span><span class="k">FROM</span><span class="s"> python:3.8.10-buster</span><span class="err">
+</span><span class="err"></span><span class="c">##################################</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c">########### update and install packages ###########</span><span class="err">
+</span><span class="err"></span><span class="c"># apt-get upgradeに-yを付けないとexit 1になります．追加しました．(5/23)</span><span class="err">
+</span><span class="err"></span><span class="k">RUN</span> apt-get update <span class="o">&amp;&amp;</span> <span class="se">\
+</span><span class="se"></span>    apt-get -y upgrade <span class="o">&amp;&amp;</span> <span class="se">\
+</span><span class="se"></span>    apt-get install -y vim git <span class="o">&amp;&amp;</span> <span class="se">\
+</span><span class="se"></span>    rm -rf /var/lib/apt/lists*<span class="err">
+</span><span class="err"></span><span class="c">###################################################</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c">########### create workspace ###########</span><span class="err">
+</span><span class="err"></span><span class="k">RUN</span> mkdir /code<span class="err">
+</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /code</span><span class="err">
+</span><span class="err"></span><span class="k">ADD</span> ./requirements.txt /code/<span class="err">
+</span><span class="err"></span><span class="c">########################################</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c">########### install packages via pip ###########</span><span class="err">
+</span><span class="err"></span><span class="k">RUN</span> pip3 install -r requirements.txt<span class="err">
+</span><span class="err"></span><span class="k">ADD</span> . /code/<span class="err">
+</span><span class="err"></span><span class="c">################################################</span><span class="err">
+</span></code></pre></div></li>
+</ul>
+</li>
+<li><code>requirements.txt</code>
+<ul>
+<li><code>pip install</code>するファイル
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">############ Requirements Packages ############
+pylint
+numpy
+scipy
+sympy
+matplotlib
+statsmodels
+sklearn
+pandas
+networkx
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h3 id="3-使用時">3. 使用時</h3>
+<ul>
+<li><code>test_code</code>と同階層に自分のコードを格納したフォルダを配置して，VSCodeの左下の&quot;Open Remote Window&quot;を選択．</li>
+<li>Reopen in Containerを選択．</li>
+<li>ワークスペースが開いたら，terminalを開き，<code>python *.py</code>で実行する．</li>
+</ul>
+<h3 id="4-いろいろ変えたいとき">4. いろいろ変えたいとき</h3>
+<ul>
+<li><code>pip install</code>するパッケージを変更したいとき
+<ul>
+<li><code>requirements.txt</code>を書き換える</li>
+</ul>
+</li>
+<li>Pythonのバージョンを3の別バージョンに変えたいとき
+<ul>
+<li><code>dockerfile</code>のイメージファイル (2行目の<code>FROM</code>以下) を書き換える．</li>
+</ul>
+</li>
+<li>Pythonのバージョンを2にしたいとき
+<ul>
+<li><a href="https://hub.docker.com/_/python">python</a>には2系がないので，イメージファイルをUbuntu等にして1からインストールする．</li>
+</ul>
+</li>
+</ul>
+</div>
+    <div class="post-footer">
+      <div class="info">
+        
+          <span class="separator"><a class="category" href="https://SeeKT.github.io/portfolio/categories/docker/">Docker</a></span>
+
+
+
+
+        
+
+        
+          <span class="separator"><a class="tag" href="https://SeeKT.github.io/portfolio/tags/python/">Python</a><a class="tag" href="https://SeeKT.github.io/portfolio/tags/docker/">Docker</a></span>
+
+
+
+
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+
+          </div>
+        </div>
+      </main>
+    </div><footer class="footer footer--base">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          Ai Tachibana (Kosuke Toda)
+          2021
+
+
+        
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
+    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
+    crossorigin="anonymous"
+  ></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR&#43;zwDAROtph0PXGte6ia8heboACF9R5l/DiY&#43;WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous" /><script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8&#43;w2LAIftJEULZABrF9PPFv&#43;tVkH" crossorigin="anonymous"></script><script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+      integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB&#43;w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script></body>
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on 立ち話</title>
+    <link>https://SeeKT.github.io/portfolio/categories/docker/</link>
+    <description>Recent content in Docker on 立ち話</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language>
+    <lastBuildDate>Tue, 07 Dec 2021 22:17:14 +0900</lastBuildDate><atom:link href="https://SeeKT.github.io/portfolio/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker Container として LaTeX の執筆環境を作る</title>
+      <link>https://SeeKT.github.io/portfolio/post/docker_latex/</link>
+      <pubDate>Tue, 07 Dec 2021 22:17:14 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/docker_latex/</guid>
+      
+        <description>0. はじめに 現在，Ubuntu 20.04 上に TeXLive をインストールして LaTeX の文書を作成している．今後，仕事等で使うマシンが Windows になる可能性がある．そこで，OS に依らずに使える執筆環境として Docker Container を用いるものを作成した．</description>
+      
+    </item>
+    
+    <item>
+      <title>RStudio ServerをDockerで使うときのメモ</title>
+      <link>https://SeeKT.github.io/portfolio/post/docker_r/</link>
+      <pubDate>Mon, 30 Aug 2021 09:15:39 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/docker_r/</guid>
+      
+        <description>0. はじめに RとRStudioもDocker containerとして使えれば少しめんどくさかったインストール工程 (Ubuntu20.04にRとRStudioをインストールする) をやらなくても良いのではないだろうか，と考えた．
+調べたところ，RockerというものでRStudio ServerをDockerで使えるらしい1．
+今回は備忘録として，Rockerを使ったときのメモを残すことにした．
+1. 準備 最低限必要なことは，Docker Engineのインストールである．UbuntuへのDocker Engineのインストールは以前記事にした2．WindowsやMacについては他にも様々な記事があると思う．</description>
+      
+    </item>
+    
+    <item>
+      <title>Python3の開発環境をDocker containerとして作る</title>
+      <link>https://SeeKT.github.io/portfolio/post/docker_python/</link>
+      <pubDate>Thu, 08 Jul 2021 18:58:51 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/docker_python/</guid>
+      
+        <description>0. はじめに この記事では，Docker containerとしてPythonの開発環境を作ったときのメモを残す． この記事の内容は，GitHubのサブのアカウントのpublicリポジトリで公開している．
+1. 必要なもの  Docker Engineのインストール VSCodeのインストール  Remote Developementの導入    2.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

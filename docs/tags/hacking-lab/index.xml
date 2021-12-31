@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hacking-lab on 立ち話</title>
+    <link>https://SeeKT.github.io/portfolio/tags/hacking-lab/</link>
+    <description>Recent content in Hacking-lab on 立ち話</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language>
+    <lastBuildDate>Tue, 13 Jul 2021 21:47:32 +0900</lastBuildDate><atom:link href="https://SeeKT.github.io/portfolio/tags/hacking-lab/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>古いバージョンのKali linuxをインストールしようとした</title>
+      <link>https://SeeKT.github.io/portfolio/post/kali-linux-log/</link>
+      <pubDate>Tue, 13 Jul 2021 21:47:32 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/kali-linux-log/</guid>
+      
+        <description>0. はじめに ハッキング・ラボのつくりかたという本を読み進めていたところ，最新版のKali linux 2021.2では実行できない部分があったので (4章, 252ページ等)，書籍の環境である Kali linux 2018.2に合わせることにした．インストールにかなり苦戦した．</description>
+      
+    </item>
+    
+    <item>
+      <title>書籍を読みながらMetasploitを使ってみて詰まったところ</title>
+      <link>https://SeeKT.github.io/portfolio/post/hacking-lab_1/</link>
+      <pubDate>Tue, 13 Jul 2021 21:24:32 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/hacking-lab_1/</guid>
+      
+        <description>0. はじめに 最近，ハッキング・ラボのつくりかたという本を読んでいる．ツイートされていた方もいらっしゃったが，書籍第4章のWindowsに紹介されているmeterpreterのプロンプトでrun hashdumpやrun scraperが実行できない．
+ 該当ツイート  Meterpreterがスクリプトの実行をサポートしなくなったことが原因の1つだと考えたので，何とか書籍のコードを実行できないか試してみたいと思った．
+ 該当ツイートへのリプライ GitHubのmetasploit-framework-webexec  今回は，書籍の環境に合わせることで実行した．もっと良い方法があるはずだが，知識のない私にはこれが限界だった．</description>
+      
+    </item>
+    
+  </channel>
+</rss>

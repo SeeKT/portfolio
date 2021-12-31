@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PC on 立ち話</title>
+    <link>https://SeeKT.github.io/portfolio/tags/pc/</link>
+    <description>Recent content in PC on 立ち話</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language>
+    <lastBuildDate>Sat, 04 Sep 2021 17:26:46 +0900</lastBuildDate><atom:link href="https://SeeKT.github.io/portfolio/tags/pc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>研究室に入った後今までお世話になっている神サイト/ツールたち</title>
+      <link>https://SeeKT.github.io/portfolio/post/good_references/</link>
+      <pubDate>Sat, 04 Sep 2021 17:26:46 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/good_references/</guid>
+      
+        <description>0. はじめに 研究室に残す予定のものをまとめているときに，色々と参考にしたウェブサイトや記事，使ったツールなどを記録しておこうと思った．
+目次  1 Ubuntu関連 2 Python関連 3 Docker関連 4 進捗管理関連 5 文献管理関連 6 論文関連 7 プレゼン関連 8 まとめ  1.</description>
+      
+    </item>
+    
+    <item>
+      <title>大学生と大学院生のとき生活に必要だと思ったもの</title>
+      <link>https://SeeKT.github.io/portfolio/post/requirements/</link>
+      <pubDate>Fri, 27 Aug 2021 23:32:00 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/requirements/</guid>
+      
+        <description>0. はじめに 最近自分の生活について振り返る機会があった．今回は生活に必要だなと思ったものを何個か挙げていくことにする．
+私は理系 (情報系? 制御系?) の大学に進学し，そのまま同じ大学の研究科に進学した．私が大学入学時に欲しかった情報を書くことにする．
+目次  1 勉強・研究 2 日常生活 3 まとめ  1.</description>
+      
+    </item>
+    
+    <item>
+      <title>普段使っているPC周りの環境</title>
+      <link>https://SeeKT.github.io/portfolio/post/myenv/</link>
+      <pubDate>Thu, 08 Jul 2021 19:15:53 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/myenv/</guid>
+      
+        <description>0. はじめに この記事では，私が普段使っているPC周りの環境を書く．就職したらもっと良いのがほしい．
+1. 自宅の環境とノートPC  デスクトップ  Lenovo V530  色々手を加えた   OS: Windows11 SSD: 512GB  もともと256GB．換装した．   RAM: 16GB CPU: Core i5-9500 GPU (増設): GTX-1050Ti  PH-GTX1050TI-4G     ノート  iiyama 14インチ (BTO) OS: Ubuntu20.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

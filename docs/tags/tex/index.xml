@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TeX on 立ち話</title>
+    <link>https://SeeKT.github.io/portfolio/tags/tex/</link>
+    <description>Recent content in TeX on 立ち話</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language>
+    <lastBuildDate>Sat, 09 Oct 2021 17:37:18 +0900</lastBuildDate><atom:link href="https://SeeKT.github.io/portfolio/tags/tex/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>卒論・修論のテンプレート (TeX) について</title>
+      <link>https://SeeKT.github.io/portfolio/post/thesis_template/</link>
+      <pubDate>Sat, 09 Oct 2021 17:37:18 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/thesis_template/</guid>
+      
+        <description>0. はじめに 研究室単位で修論のテンプレートがあると思う．私の研究室にあったテンプレートはTeXソースの分割がされていないようなものだったので，テンプレートを作り直すついでに備忘録として残しておくことにする．
+作ったテンプレートと同様のものは，GitHubリポジトリ SeeKT/thesis_template にアップロードした．自分が使うためのテンプレートなので色々と問題点もあるだろうが，ご容赦願いたい．
+1. ディレクトリ構成 卒論や修論は文章の量が多くなるので，1つのTeXソースに全て書こうとするとTeXソースの行数が増え，修正が大変になる．そこで，修論本体のTeXソースに各章のTeXソースをinputするようにする．
+今回は，以下のようなディレクトリ構成にする．</description>
+      
+    </item>
+    
+    <item>
+      <title>Ubuntu20.04にTeX Liveをインストールする</title>
+      <link>https://SeeKT.github.io/portfolio/post/ubuntu_tex/</link>
+      <pubDate>Thu, 08 Jul 2021 18:00:11 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/ubuntu_tex/</guid>
+      
+        <description>0. はじめに  UbuntuにTeXを入れたときのメモ  1. やること 好きなエディタを入れる TeXLiveを入れる ~/.latexmkrcを作る 動作テスト  好きなエディタを入れる  私はTeXの文書を作るときはAtomを使うので，Atomを入れた．  公式サイト (https://atom.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

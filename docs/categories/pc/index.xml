@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PC on 立ち話</title>
+    <link>https://SeeKT.github.io/portfolio/categories/pc/</link>
+    <description>Recent content in PC on 立ち話</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language>
+    <lastBuildDate>Sat, 09 Oct 2021 17:37:18 +0900</lastBuildDate><atom:link href="https://SeeKT.github.io/portfolio/categories/pc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>卒論・修論のテンプレート (TeX) について</title>
+      <link>https://SeeKT.github.io/portfolio/post/thesis_template/</link>
+      <pubDate>Sat, 09 Oct 2021 17:37:18 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/thesis_template/</guid>
+      
+        <description>0. はじめに 研究室単位で修論のテンプレートがあると思う．私の研究室にあったテンプレートはTeXソースの分割がされていないようなものだったので，テンプレートを作り直すついでに備忘録として残しておくことにする．
+作ったテンプレートと同様のものは，GitHubリポジトリ SeeKT/thesis_template にアップロードした．自分が使うためのテンプレートなので色々と問題点もあるだろうが，ご容赦願いたい．
+1. ディレクトリ構成 卒論や修論は文章の量が多くなるので，1つのTeXソースに全て書こうとするとTeXソースの行数が増え，修正が大変になる．そこで，修論本体のTeXソースに各章のTeXソースをinputするようにする．
+今回は，以下のようなディレクトリ構成にする．</description>
+      
+    </item>
+    
+    <item>
+      <title>PythonのPlotlyで遊んだ</title>
+      <link>https://SeeKT.github.io/portfolio/post/python_plotly/</link>
+      <pubDate>Fri, 17 Sep 2021 22:28:21 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/python_plotly/</guid>
+      
+        <description>0. はじめに Plotly1 をご存知だろうか．統計や金融，科学等の幅広い分野で用いられている，データの可視化のためのライブラリであり，Python や R などで用いることができる．
+Plotly を用いると，3d plot をとてもきれいにできる．今回は，Plotly を用いて適当なグラフを描画して遊ぼうと思う．</description>
+      
+    </item>
+    
+    <item>
+      <title>研究室に入った後今までお世話になっている神サイト/ツールたち</title>
+      <link>https://SeeKT.github.io/portfolio/post/good_references/</link>
+      <pubDate>Sat, 04 Sep 2021 17:26:46 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/good_references/</guid>
+      
+        <description>0. はじめに 研究室に残す予定のものをまとめているときに，色々と参考にしたウェブサイトや記事，使ったツールなどを記録しておこうと思った．
+目次  1 Ubuntu関連 2 Python関連 3 Docker関連 4 進捗管理関連 5 文献管理関連 6 論文関連 7 プレゼン関連 8 まとめ  1.</description>
+      
+    </item>
+    
+    <item>
+      <title>普段使っているPC周りの環境</title>
+      <link>https://SeeKT.github.io/portfolio/post/myenv/</link>
+      <pubDate>Thu, 08 Jul 2021 19:15:53 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/myenv/</guid>
+      
+        <description>0. はじめに この記事では，私が普段使っているPC周りの環境を書く．就職したらもっと良いのがほしい．
+1. 自宅の環境とノートPC  デスクトップ  Lenovo V530  色々手を加えた   OS: Windows11 SSD: 512GB  もともと256GB．換装した．   RAM: 16GB CPU: Core i5-9500 GPU (増設): GTX-1050Ti  PH-GTX1050TI-4G     ノート  iiyama 14インチ (BTO) OS: Ubuntu20.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

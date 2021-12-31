@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="jp"
+  data-theme=""
+><head>
+  <title>
+    Ai Tachibana (Kosuke Toda)
+      |
+      PythonのPlotlyで遊んだ
+
+
+    
+
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.91.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta
+    name="description"
+    content="
+      Ai Tachibana
+
+
+    "
+  />
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="https://SeeKT.github.io/portfolio/css/main.min.861c630407a306e1a79890bffbab9b381c5a0b03cd0c3b79755cc5eeea04b6b0.css"
+    integrity="sha256-hhxjBAejBuGnmJC/&#43;6ubOBxaCwPNDDt5dVzF7uoEtrA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="https://SeeKT.github.io/portfolio/css/markupHighlight.min.058b31f17db60602cc415fd63b0427e7932fbf35c70d8e341a4c39385f5f6f3e.css"
+    integrity="sha256-BYsx8X22BgLMQV/WOwQn55MvvzXHDY40Gkw5OF9fbz4="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous"
+  />
+  
+  <link rel="shortcut icon" href="https://SeeKT.github.io/portfolio/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://SeeKT.github.io/portfolio/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://SeeKT.github.io/portfolio/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://SeeKT.github.io/portfolio/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://SeeKT.github.io/portfolio/post/python_plotly/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/anatole-header.min.2a2cd9614b7d007dfbb75e8da19e3a0fa872ceab53c6d000c00b7a0c89b85bfc.js"
+    integrity="sha256-KizZYUt9AH37t16NoZ46D6hyzqtTxtAAwAt6DIm4W/w="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="https://SeeKT.github.io/portfolio/js/anatole-theme-switcher.min.7fd87181cdd7e8413aa64b6867bb32f3a8dc242e684fc7d5bbb9f600dbc2b6eb.js"
+      integrity="sha256-f9hxgc3X6EE6pktoZ7sy86jcJC5oT8fVu7n2ANvCtus="
+      crossorigin="anonymous"
+    ></script>
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://SeeKT.github.io/portfolio/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="PythonのPlotlyで遊んだ"/>
+<meta name="twitter:description" content="0. はじめに Plotly1 をご存知だろうか．統計や金融，科学等の幅広い分野で用いられている，データの可視化のためのライブラリであり，Python や R などで用いることができる．
+Plotly を用いると，3d plot をとてもきれいにできる．今回は，Plotly を用いて適当なグラフを描画して遊ぼうと思う．"/>
+
+
+
+  
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "PythonのPlotlyで遊んだ",
+        "headline": "PythonのPlotlyで遊んだ",
+        "alternativeHeadline": "",
+        "description": "
+      
+        0. はじめに Plotly1 をご存知だろうか．統計や金融，科学等の幅広い分野で用いられている，データの可視化のためのライブラリであり，Python や R などで用いることができる．\nPlotly を用いると，3d plot をとてもきれいにできる．今回は，Plotly を用いて適当なグラフを描画して遊ぼうと思う．
+
+
+      
+
+
+    ",
+        "inLanguage": "jp",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/SeeKT.github.io\/portfolio\/post\/python_plotly\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "copyrightYear" : "2021",
+        "dateCreated": "2021-09-17T22:28:21.00Z",
+        "datePublished": "2021-09-17T22:28:21.00Z",
+        "dateModified": "2021-09-20T21:53:21.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Ai Tachibana (Kosuke Toda)",
+            "url": "https://SeeKT.github.io/portfolio/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/SeeKT.github.io\/portfolio\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://SeeKT.github.io/portfolio/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/SeeKT.github.io\/portfolio\/post\/python_plotly\/",
+        "wordCount" : "422",
+        "genre" : [ 
+      
+      "PC"
+
+    ],
+        "keywords" : [ 
+      
+      "Python"
+
+    ]
+    }
+  </script>
+
+
+
+</head>
+<body>
+    <header><div
+  class="page-top 
+    animated fadeInDown
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a>
+  <nav>
+    <ul class="nav__list" id="navMenu">
+      <div class="nav__links">
+        
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/"
+              
+              title=""
+              >Home</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/post/"
+              
+              title=""
+              >Posts</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/profile/"
+              
+              title=""
+              >Profile</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/publication/"
+              
+              title=""
+              >Publication</a
+            >
+          </li>
+
+        
+      </div>
+      <ul>
+        
+        
+          <li>
+            <a class="theme-switch" title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </li>
+
+        
+      </ul>
+    </ul>
+  </nav>
+</div>
+</header>
+    <div class="wrapper">
+      <aside><div
+  class="sidebar
+    animated fadeInDown
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://SeeKT.github.io/portfolio/images/avater.jpg" alt="profile picture" />
+        <h3 title=""><a href="https://SeeKT.github.io/portfolio/">立ち話</a></h3>
+        <div class="description">
+          <p>Ai Tachibana</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+      
+        <li>
+          <a href="https://github.com/SeeKT/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li>
+          <a href="https://twitter.com/tcbn_ai" rel="me" aria-label="twitter" title="twitter">
+            <i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+    </ul>
+  </div><footer class="footer footer--sidebar">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          Ai Tachibana (Kosuke Toda)
+          2021
+
+
+        
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
+    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
+    crossorigin="anonymous"
+  ></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR&#43;zwDAROtph0PXGte6ia8heboACF9R5l/DiY&#43;WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous" /><script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8&#43;w2LAIftJEULZABrF9PPFv&#43;tVkH" crossorigin="anonymous"></script><script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+      integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB&#43;w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script></div>
+</aside>
+      <main>
+        <div class="autopagerize_page_element">
+          <div class="content">
+  <div
+    class="post 
+      animated fadeInDown
+
+    "
+  >
+    <div class="post-content">
+      
+      <div class="post-title">
+        <h1>PythonのPlotlyで遊んだ</h1>
+        
+          <div class="info">
+            <em class="fas fa-calendar-day"></em>
+            <span class="date"
+              >
+                2021/9/17
+
+
+              </span
+            >
+            <em class="fas fa-stopwatch"></em>
+            <span class="reading-time"></span>
+          </div>
+
+        
+      </div><h3 id="0-はじめに">0. はじめに</h3>
+<p>Plotly<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> をご存知だろうか．統計や金融，科学等の幅広い分野で用いられている，データの可視化のためのライブラリであり，Python や R などで用いることができる．</p>
+<p>Plotly を用いると，3d plot をとてもきれいにできる．今回は，Plotly を用いて適当なグラフを描画して遊ぼうと思う．</p>
+<h3 id="1-a-namesection1準備a">1. <a name="section1">準備</a></h3>
+<h4 id="11-インストール">1.1. インストール</h4>
+<p>Python にインストールするのであれば，<code>pip install</code> すればよい．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">pip install plotly
+</code></pre></div><h4 id="12-プロットするもの">1.2. プロットするもの</h4>
+<p>最適化のためのテスト関数<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> の一部をプロットする．</p>
+<p>ここでは，次の2つの関数をプロットする．</p>
+<h5 id="rastrigin-function">Rastrigin function</h5>
+<ul>
+<li>
+<p>Definition
+$$f(\boldsymbol{x}) = An + \sum_{i = 1}^n (x_i^2 - A \cos (2 \pi x_i)), \ \ \text{where} \ \ A = 10.$$</p>
+</li>
+<li>
+<p>Search domain
+$$ -5.12 \leq x_i \leq 5.12, \ \ i = 1, \ldots, n. $$</p>
+</li>
+<li>
+<p>Global minimum
+$$ f(0, \ldots, 0) = 0. $$</p>
+</li>
+</ul>
+<h5 id="ackley-function">Ackley function</h5>
+<ul>
+<li>
+<p>Definition
+$$ f(x, y) = -20 \exp \left(-0.2 \sqrt{0.5(x^2 + y^2)} \right)$$$$\hspace{45mm} - \exp \left(0.5 (\cos 2 \pi x + \cos 2 \pi y)\right) + e + 20.$$</p>
+</li>
+<li>
+<p>Search domain
+$$ -5 \leq x, y \leq 5. $$</p>
+</li>
+<li>
+<p>Global minimum
+$$ f(0, 0) = 0. $$</p>
+</li>
+</ul>
+<h3 id="2-プロット">2. プロット</h3>
+<p>ここでは，3D Surface Plot を行う．コードの書き方は，<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>を参考にした．</p>
+<details>
+<summary>実装した Python のコード</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1">########## Packages ##########</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span> 
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">e</span> 
+<span class="c1">##############################</span>
+
+<span class="k">class</span> <span class="nc">Test_function</span><span class="p">():</span>
+    <span class="s2">&#34;&#34;&#34; 
+</span><span class="s2">    The class of test functions
+</span><span class="s2">    &#34;&#34;&#34;</span>
+    <span class="k">def</span> <span class="nf">rastrigin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="s2">&#34;&#34;&#34;
+</span><span class="s2">        Rastrigin function
+</span><span class="s2">        &#34;&#34;&#34;</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">*</span><span class="n">x</span><span class="o">.</span><span class="n">size</span> 
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+            <span class="n">val</span> <span class="o">+=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">10</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">val</span> 
+
+    <span class="k">def</span> <span class="nf">ackley</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="s2">&#34;&#34;&#34;
+</span><span class="s2">        Ackley function
+</span><span class="s2">        &#34;&#34;&#34;</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="o">-</span><span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">))))</span>
+        <span class="n">val</span> <span class="o">+=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span>
+        <span class="n">val</span> <span class="o">+=</span> <span class="n">e</span> <span class="o">+</span> <span class="mi">20</span> 
+        <span class="k">return</span> <span class="n">val</span> 
+
+<span class="k">class</span> <span class="nc">Plot_func</span><span class="p">():</span>
+    <span class="s2">&#34;&#34;&#34;
+</span><span class="s2">    The class to plot functions
+</span><span class="s2">    &#34;&#34;&#34;</span>
+    <span class="k">def</span> <span class="nf">func_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">x_range</span><span class="p">,</span> <span class="n">y_range</span><span class="p">):</span>
+        <span class="s2">&#34;&#34;&#34;
+</span><span class="s2">        get the value of the function (2 dim)
+</span><span class="s2">        Input:
+</span><span class="s2">            func: function
+</span><span class="s2">            x_range, y_range: numpy linspace
+</span><span class="s2">        Output:
+</span><span class="s2">            X, Y: numpy meshgrid
+</span><span class="s2">            Z: corresponding func value
+</span><span class="s2">        &#34;&#34;&#34;</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x_range</span><span class="p">,</span> <span class="n">y_range</span><span class="p">)</span>
+        <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
+                <span class="n">vec_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]])</span>
+                <span class="n">Z</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">vec_x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span>
+    
+    <span class="k">def</span> <span class="nf">plotly_surface_contour</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">x_range</span><span class="p">,</span> <span class="n">y_range</span><span class="p">):</span>
+        <span class="s2">&#34;&#34;&#34;
+</span><span class="s2">        plot the surface of the function using plotly,
+</span><span class="s2">        https://plotly.com/python/3d-surface-plots/
+</span><span class="s2">        &#34;&#34;&#34;</span>
+        <span class="c1">##### get the value of the function #####</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">func_value</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">x_range</span><span class="p">,</span> <span class="n">y_range</span><span class="p">)</span>
+        <span class="c1">#########################################</span>
+
+        <span class="c1">##### plot #####</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">go</span><span class="o">.</span><span class="n">Surface</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="n">Z</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">Y</span><span class="p">)])</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">contours_z</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">usecolormap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                            <span class="n">highlightcolor</span><span class="o">=</span><span class="s2">&#34;limegreen&#34;</span><span class="p">,</span> <span class="n">project_z</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">autosize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                            <span class="n">scene_camera_eye</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">1.87</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.88</span><span class="p">,</span> <span class="n">z</span><span class="o">=-</span><span class="mf">0.64</span><span class="p">),</span>
+                            <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+                            <span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="mi">65</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">65</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">90</span><span class="p">))</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="c1">################</span>
+
+<span class="c1">##### instance of the class #####</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">Test_function</span><span class="p">()</span>
+<span class="n">pf</span> <span class="o">=</span> <span class="n">Plot_func</span><span class="p">()</span>
+<span class="c1">#################################</span>
+
+<span class="c1">##### Plot Rastrigin function #####</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">5.12</span><span class="p">,</span> <span class="mf">5.12</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">5.12</span><span class="p">,</span> <span class="mf">5.12</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">pf</span><span class="o">.</span><span class="n">plotly_surface_contour</span><span class="p">(</span>
+    <span class="n">func</span><span class="o">=</span><span class="n">test</span><span class="o">.</span><span class="n">rastrigin</span><span class="p">,</span> 
+    <span class="n">x_range</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+    <span class="n">y_range</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+<span class="c1">###################################</span>
+
+<span class="c1">##### Plot Ackley function #####</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">pf</span><span class="o">.</span><span class="n">plotly_surface_contour</span><span class="p">(</span>
+    <span class="n">func</span><span class="o">=</span><span class="n">test</span><span class="o">.</span><span class="n">ackley</span><span class="p">,</span> 
+    <span class="n">x_range</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> 
+    <span class="n">y_range</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+<span class="c1">################################</span>
+</code></pre></div></details>
+<p>また，このコードを Jupyter notebook 形式にして html に変換したものを以下のリンクに置いている (表示に少し時間がかかる)．</p>
+<ul>
+<li><a href="https://tachibana-ai.netlify.app/post/python_plotly/test_function_blog.html">変換した Jupyter Notebook</a></li>
+</ul>
+<p>関数の表面がどうなっているか可視化されていて面白いと思う．また，動かすこともできるのが良い．</p>
+<h3 id="3-まとめ">3. まとめ</h3>
+<p>Plotly は面白いので，詳しくなりたい．</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://plotly.com/graphing-libraries/">plotly Graphing Libraries</a>, accessed on 2021.9.17.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://en.wikipedia.org/wiki/Test_functions_for_optimization">Test function for optimization (en: Wikipedia)</a>, accessed on 2021.9.17.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p><a href="https://plotly.com/python/3d-surface-plots/">plotly Graphing Libraries, 3D Surface Plots in Python</a>, accessed on 2021.9.17.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</div>
+    <div class="post-footer">
+      <div class="info">
+        
+          <span class="separator"><a class="category" href="https://SeeKT.github.io/portfolio/categories/pc/">PC</a></span>
+
+
+
+
+        
+
+        
+          <span class="separator"><a class="tag" href="https://SeeKT.github.io/portfolio/tags/python/">Python</a></span>
+
+
+
+
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+
+          </div>
+        </div>
+      </main>
+    </div><footer class="footer footer--base">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          Ai Tachibana (Kosuke Toda)
+          2021
+
+
+        
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
+    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
+    crossorigin="anonymous"
+  ></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR&#43;zwDAROtph0PXGte6ia8heboACF9R5l/DiY&#43;WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous" /><script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8&#43;w2LAIftJEULZABrF9PPFv&#43;tVkH" crossorigin="anonymous"></script><script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+      integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB&#43;w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script></body>
+</html>

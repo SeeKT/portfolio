@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="jp"
+  data-theme=""
+><head>
+  <title>
+    Ai Tachibana (Kosuke Toda)
+      |
+      Ubuntu20.04にDocker Engineをインストールする
+
+
+    
+
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.91.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta
+    name="description"
+    content="
+      Ai Tachibana
+
+
+    "
+  />
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="https://SeeKT.github.io/portfolio/css/main.min.861c630407a306e1a79890bffbab9b381c5a0b03cd0c3b79755cc5eeea04b6b0.css"
+    integrity="sha256-hhxjBAejBuGnmJC/&#43;6ubOBxaCwPNDDt5dVzF7uoEtrA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="https://SeeKT.github.io/portfolio/css/markupHighlight.min.058b31f17db60602cc415fd63b0427e7932fbf35c70d8e341a4c39385f5f6f3e.css"
+    integrity="sha256-BYsx8X22BgLMQV/WOwQn55MvvzXHDY40Gkw5OF9fbz4="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous"
+  />
+  
+  <link rel="shortcut icon" href="https://SeeKT.github.io/portfolio/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://SeeKT.github.io/portfolio/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://SeeKT.github.io/portfolio/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://SeeKT.github.io/portfolio/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://SeeKT.github.io/portfolio/post/ubuntu_docker/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/anatole-header.min.2a2cd9614b7d007dfbb75e8da19e3a0fa872ceab53c6d000c00b7a0c89b85bfc.js"
+    integrity="sha256-KizZYUt9AH37t16NoZ46D6hyzqtTxtAAwAt6DIm4W/w="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="https://SeeKT.github.io/portfolio/js/anatole-theme-switcher.min.7fd87181cdd7e8413aa64b6867bb32f3a8dc242e684fc7d5bbb9f600dbc2b6eb.js"
+      integrity="sha256-f9hxgc3X6EE6pktoZ7sy86jcJC5oT8fVu7n2ANvCtus="
+      crossorigin="anonymous"
+    ></script>
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://SeeKT.github.io/portfolio/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="Ubuntu20.04にDocker Engineをインストールする"/>
+<meta name="twitter:description" content="0. はじめに 私が学部4年から修士1年までに使っていたPythonの開発環境はUbuntu上にpipとpipenvを入れ，pipenvで仮想環境を作って使うというものだった．Ubuntuを20にアップグレードしたときにこれまで使っていた仮想環境でプログラムが動かない，ということが起こった．
+このように，OSに1つの環境を作って動かそうとした際には，更新に伴いプログラムが動かなくなるというリスクがある．さらに，以下のような問題が挙げられる．
+ OSが汚れる  OSに直接インストールするので，複数のバージョンが共存するといったことが起こる．   問題の切り分けが難しい  OSのアップグレードの問題なのか，パッケージの問題なのか分からなくなる．    そんなときDockerに出会う．Dockerの説明は省略するが，イメージは1つのサーバに独立した複数のサーバを同時に構築することができる，というものである．これは良いと思い，研究の開発環境をDocker container上に作ることにした．"/>
+
+
+
+  
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "Ubuntu20.04にDocker Engineをインストールする",
+        "headline": "Ubuntu20.04にDocker Engineをインストールする",
+        "alternativeHeadline": "",
+        "description": "
+      
+        0. はじめに 私が学部4年から修士1年までに使っていたPythonの開発環境はUbuntu上にpipとpipenvを入れ，pipenvで仮想環境を作って使うというものだった．Ubuntuを20にアップグレードしたときにこれまで使っていた仮想環境でプログラムが動かない，ということが起こった．\nこのように，OSに1つの環境を作って動かそうとした際には，更新に伴いプログラムが動かなくなるというリスクがある．さらに，以下のような問題が挙げられる．\n OSが汚れる  OSに直接インストールするので，複数のバージョンが共存するといったことが起こる．   問題の切り分けが難しい  OSのアップグレードの問題なのか，パッケージの問題なのか分からなくなる．    そんなときDockerに出会う．Dockerの説明は省略するが，イメージは1つのサーバに独立した複数のサーバを同時に構築することができる，というものである．これは良いと思い，研究の開発環境をDocker container上に作ることにした．
+
+
+      
+
+
+    ",
+        "inLanguage": "jp",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/SeeKT.github.io\/portfolio\/post\/ubuntu_docker\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "copyrightYear" : "2021",
+        "dateCreated": "2021-07-08T18:25:39.00Z",
+        "datePublished": "2021-07-08T18:25:39.00Z",
+        "dateModified": "2021-08-30T09:28:39.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Ai Tachibana (Kosuke Toda)",
+            "url": "https://SeeKT.github.io/portfolio/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/SeeKT.github.io\/portfolio\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://SeeKT.github.io/portfolio/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/SeeKT.github.io\/portfolio\/post\/ubuntu_docker\/",
+        "wordCount" : "228",
+        "genre" : [ 
+      
+      "Ubuntu"
+
+    ],
+        "keywords" : [ 
+      
+      "Docker"
+
+    
+      
+        ,
+
+      
+      "Ubuntu"
+
+    ]
+    }
+  </script>
+
+
+
+</head>
+<body>
+    <header><div
+  class="page-top 
+    animated fadeInDown
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a>
+  <nav>
+    <ul class="nav__list" id="navMenu">
+      <div class="nav__links">
+        
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/"
+              
+              title=""
+              >Home</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/post/"
+              
+              title=""
+              >Posts</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/profile/"
+              
+              title=""
+              >Profile</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/publication/"
+              
+              title=""
+              >Publication</a
+            >
+          </li>
+
+        
+      </div>
+      <ul>
+        
+        
+          <li>
+            <a class="theme-switch" title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </li>
+
+        
+      </ul>
+    </ul>
+  </nav>
+</div>
+</header>
+    <div class="wrapper">
+      <aside><div
+  class="sidebar
+    animated fadeInDown
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://SeeKT.github.io/portfolio/images/avater.jpg" alt="profile picture" />
+        <h3 title=""><a href="https://SeeKT.github.io/portfolio/">立ち話</a></h3>
+        <div class="description">
+          <p>Ai Tachibana</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+      
+        <li>
+          <a href="https://github.com/SeeKT/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li>
+          <a href="https://twitter.com/tcbn_ai" rel="me" aria-label="twitter" title="twitter">
+            <i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+    </ul>
+  </div><footer class="footer footer--sidebar">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          Ai Tachibana (Kosuke Toda)
+          2021
+
+
+        
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
+    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
+    crossorigin="anonymous"
+  ></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR&#43;zwDAROtph0PXGte6ia8heboACF9R5l/DiY&#43;WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous" /><script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8&#43;w2LAIftJEULZABrF9PPFv&#43;tVkH" crossorigin="anonymous"></script><script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+      integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB&#43;w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script></div>
+</aside>
+      <main>
+        <div class="autopagerize_page_element">
+          <div class="content">
+  <div
+    class="post 
+      animated fadeInDown
+
+    "
+  >
+    <div class="post-content">
+      
+      <div class="post-title">
+        <h1>Ubuntu20.04にDocker Engineをインストールする</h1>
+        
+          <div class="info">
+            <em class="fas fa-calendar-day"></em>
+            <span class="date"
+              >
+                2021/7/8
+
+
+              </span
+            >
+            <em class="fas fa-stopwatch"></em>
+            <span class="reading-time"></span>
+          </div>
+
+        
+      </div><h3 id="0-はじめに">0. はじめに</h3>
+<p>私が学部4年から修士1年までに使っていたPythonの開発環境はUbuntu上にpipとpipenvを入れ，pipenvで仮想環境を作って使うというものだった．Ubuntuを20にアップグレードしたときにこれまで使っていた仮想環境でプログラムが動かない，ということが起こった．</p>
+<p>このように，OSに1つの環境を作って動かそうとした際には，更新に伴いプログラムが動かなくなるというリスクがある．さらに，以下のような問題が挙げられる．</p>
+<ul>
+<li>OSが汚れる
+<ul>
+<li>OSに直接インストールするので，複数のバージョンが共存するといったことが起こる．</li>
+</ul>
+</li>
+<li>問題の切り分けが難しい
+<ul>
+<li>OSのアップグレードの問題なのか，パッケージの問題なのか分からなくなる．</li>
+</ul>
+</li>
+</ul>
+<p>そんなときDockerに出会う．Dockerの説明は省略するが，イメージは1つのサーバに独立した複数のサーバを同時に構築することができる，というものである．これは良いと思い，研究の開発環境をDocker container上に作ることにした．</p>
+<p>Ubuntu20.04にDocker Engineをインストールするためのシェルスクリプトを作ったので，この記事で共有する．</p>
+<h3 id="1-dockerの利点と欠点">1. Dockerの利点と欠点</h3>
+<p>私が思うDockerの利点と欠点を以下に示す．あまり詳しくないエアプ発言かもしれない．</p>
+<h4 id="利点">利点</h4>
+<ul>
+<li>Dockerfileに開発に必要なパッケージのインストールについて記述できるので，Dockerfileとして記述してしまえば，そのとおりに環境構築ができる．</li>
+<li>移植しやすい．</li>
+<li>Python等のバージョンが変わったときもDockerfileの内容を変えることで最新版にアップデートできる．</li>
+<li>OSのバージョンに依らない．依存関係に関する問題を，パッケージのバージョンにまで絞り込める．</li>
+<li>OSが汚れない．</li>
+<li>1つのPCの中に複数の異なる開発環境を構築できる．</li>
+<li>VSCodeの拡張機能が優秀で，使いやすい．</li>
+</ul>
+<h4 id="欠点">欠点</h4>
+<ul>
+<li>Windowsでエラーが出ることが多い気がする．Windowsで同じようなことをしようと思ってもうまく動かないことがある．</li>
+<li>WindowsではWSL2をバックエンドにしているので，メモリの消費量が多い．まともに動かそうと思うとメモリ16GBはないと厳しい．</li>
+<li>導入コスト．(自分が賢くないだけだけど) 難しい．</li>
+</ul>
+<h3 id="2-インストールのためのシェルスクリプト">2. インストールのためのシェルスクリプト</h3>
+<p>福山大学の<a href="https://www.kkaneko.jp/tools/docker/ubuntu_docker.html">金子邦彦先生のウェブサイト</a> がかなり参考になった．Docker Engineの導入以外にもかなり参考にさせていただいた．</p>
+<p>次のようなシェルスクリプトを作り，<code>~/install_docker.sh</code>として保存した．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>
+<span class="c1"># Written by A.Tachibana, 2021/3/19</span>
+
+<span class="c1"># Objective</span>
+<span class="c1">## To install docker in Ubuntu 20</span>
+
+<span class="c1"># Reference</span>
+<span class="c1">## https://www.kkaneko.jp/tools/docker/ubuntu_docker.html</span>
+
+<span class="c1">############ To execute ############</span>
+<span class="c1"># chmod 755 install_docker.sh</span>
+<span class="c1"># ./install_docker.sh</span>
+<span class="c1">####################################</span>
+
+
+<span class="c1"># Require password</span>
+<span class="nb">printf</span> <span class="s2">&#34;password: &#34;</span>
+<span class="nb">read</span> -s password
+
+<span class="c1"># Update and Upgrade</span>
+<span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$password</span><span class="s2">&#34;</span> <span class="p">|</span> sudo -S apt update <span class="o">&amp;&amp;</span> sudo -S apt -y upgrade
+
+<span class="c1"># Install Docker</span>
+<span class="c1">## Delete old version (if exists)</span>
+sudo -S apt -y remove docker docker-engine docker.io containerd docker-ce docker-ce-cli
+sudo -S apt -y autoremove
+<span class="c1">## Install required software</span>
+sudo -S apt update
+sudo -S apt -y install apt-transport-https ca-certificates curl software-properties-common
+sudo -S apt -y install linux-image-generic
+<span class="c1">## Set docker repository</span>
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="p">|</span> sudo apt-key add -
+apt-key fingerprint 0EBFCD88
+sudo -S add-apt-repository <span class="se">\
+</span><span class="se"></span>    <span class="s2">&#34;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+</span><span class="s2">    </span><span class="k">$(</span>lsb_release -sc<span class="k">)</span><span class="s2"> \
+</span><span class="s2">    stable&#34;</span>
+sudo -S apt update
+<span class="c1">## Install docker.io</span>
+sudo -S apt -y install docker.io containerd docker-compose
+<span class="c1">## Add authority</span>
+sudo -S usermod -aG docker <span class="nv">$USER</span>
+<span class="c1">## Set autostart</span>
+sudo -S systemctl unmask docker.service
+sudo -S systemctl <span class="nb">enable</span> docker
+sudo -S systemctl is-enabled docker
+<span class="c1">## let user ubuntu use docker</span>
+sudo gpasswd -a <span class="nv">$USER</span> docker
+</code></pre></div><p>このファイルに実行権限を与え，実行する．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">chmod <span class="m">755</span> install_docker.sh
+./install_docker.sh
+</code></pre></div><p>なお，このシェルスクリプトは，私のサブのGitHubアカウントの<a href="https://github.com/tcbn-ai/TIL/blob/main/Study_Docker/shellscript/install_docker.sh">publicリポジトリ</a>にアップロードしている．</p>
+<h4 id="参考">参考</h4>
+<ul>
+<li><a href="https://www.kkaneko.jp/cc/vm/ubuntu_docker.html">Docker Engine のインストールと使用法（Ubuntu 上）</a></li>
+</ul>
+</div>
+    <div class="post-footer">
+      <div class="info">
+        
+          <span class="separator"><a class="category" href="https://SeeKT.github.io/portfolio/categories/ubuntu/">Ubuntu</a></span>
+
+
+
+
+        
+
+        
+          <span class="separator"><a class="tag" href="https://SeeKT.github.io/portfolio/tags/docker/">Docker</a><a class="tag" href="https://SeeKT.github.io/portfolio/tags/ubuntu/">Ubuntu</a></span>
+
+
+
+
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+
+          </div>
+        </div>
+      </main>
+    </div><footer class="footer footer--base">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          Ai Tachibana (Kosuke Toda)
+          2021
+
+
+        
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
+    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
+    crossorigin="anonymous"
+  ></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR&#43;zwDAROtph0PXGte6ia8heboACF9R5l/DiY&#43;WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous" /><script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8&#43;w2LAIftJEULZABrF9PPFv&#43;tVkH" crossorigin="anonymous"></script><script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+      integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB&#43;w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script></body>
+</html>

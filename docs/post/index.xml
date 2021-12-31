@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 立ち話</title>
+    <link>https://SeeKT.github.io/portfolio/post/</link>
+    <description>Recent content in Posts on 立ち話</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language>
+    <lastBuildDate>Tue, 07 Dec 2021 22:17:14 +0900</lastBuildDate><atom:link href="https://SeeKT.github.io/portfolio/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker Container として LaTeX の執筆環境を作る</title>
+      <link>https://SeeKT.github.io/portfolio/post/docker_latex/</link>
+      <pubDate>Tue, 07 Dec 2021 22:17:14 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/docker_latex/</guid>
+      
+        <description>0. はじめに 現在，Ubuntu 20.04 上に TeXLive をインストールして LaTeX の文書を作成している．今後，仕事等で使うマシンが Windows になる可能性がある．そこで，OS に依らずに使える執筆環境として Docker Container を用いるものを作成した．</description>
+      
+    </item>
+    
+    <item>
+      <title>KVM を使って仮想マシンを作成する (試験勉強用)</title>
+      <link>https://SeeKT.github.io/portfolio/post/setting_kvm/</link>
+      <pubDate>Sat, 20 Nov 2021 09:20:14 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/setting_kvm/</guid>
+      
+        <description>0. はじめに Linux の試験を受けようと考えている．普段家で使っている OS は Ubuntu 20.04 であるが，試験勉強用の環境を普段使っている OS とは隔離された形で作りたいと思った．</description>
+      
+    </item>
+    
+    <item>
+      <title>よく聴く音楽</title>
+      <link>https://SeeKT.github.io/portfolio/post/fav_music/</link>
+      <pubDate>Tue, 26 Oct 2021 20:26:46 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/fav_music/</guid>
+      
+        <description>0. はじめに 最近 YouTube で自然音を聴きながら作業することが多いが，Amazon Music (Unlimited) で作ったプレイリストを聴きながら作業することも多かった (あまり良くないかもしれないが)．
+ここでは，よく聴く曲やサントラ，off vocal を共有したいと思う．どちらも30曲ずつのプレイリストを作成した．</description>
+      
+    </item>
+    
+    <item>
+      <title>卒論・修論のテンプレート (TeX) について</title>
+      <link>https://SeeKT.github.io/portfolio/post/thesis_template/</link>
+      <pubDate>Sat, 09 Oct 2021 17:37:18 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/thesis_template/</guid>
+      
+        <description>0. はじめに 研究室単位で修論のテンプレートがあると思う．私の研究室にあったテンプレートはTeXソースの分割がされていないようなものだったので，テンプレートを作り直すついでに備忘録として残しておくことにする．
+作ったテンプレートと同様のものは，GitHubリポジトリ SeeKT/thesis_template にアップロードした．自分が使うためのテンプレートなので色々と問題点もあるだろうが，ご容赦願いたい．
+1. ディレクトリ構成 卒論や修論は文章の量が多くなるので，1つのTeXソースに全て書こうとするとTeXソースの行数が増え，修正が大変になる．そこで，修論本体のTeXソースに各章のTeXソースをinputするようにする．
+今回は，以下のようなディレクトリ構成にする．</description>
+      
+    </item>
+    
+    <item>
+      <title>私の研究について</title>
+      <link>https://SeeKT.github.io/portfolio/post/my_research/</link>
+      <pubDate>Fri, 01 Oct 2021 22:19:21 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/my_research/</guid>
+      
+        <description>0. はじめに 最近，私の研究が引用されたという通知が来た．また，M1 の後半に取り組んでいた研究が論文誌に採択された．私の研究に興味を持ってくださる方が少ないながらもいるようで，嬉しく思う．この記事では，私の研究のことを少し書きたいと思う．
+ちなみにこれまでの研究については Publications に載せている．
+1. 研究でやりたいこと ここで書くことは，私が学部生の頃から考えていたことではなく，研究をしていく中で自分がしたい研究について少しずつ固まっていった後に考えていたことである．</description>
+      
+    </item>
+    
+    <item>
+      <title>自分のこと (2)</title>
+      <link>https://SeeKT.github.io/portfolio/post/blog_old_self_2/</link>
+      <pubDate>Mon, 27 Sep 2021 19:18:20 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/blog_old_self_2/</guid>
+      
+        <description>0. はじめに 自分のこと の記事で，自分のことを少し書いた．今回も自分のことを少し書きたいと思う．
+1. ハンドルネームの由来 もともと『たちばな』というハンドルネームで Twitter をしていた．今のハンドルネームの『橘あい』は，そこから来ている．
+『たちばな』というハンドルネームは，好きなキャラクターの2人からとっている．パワプロシリーズの橘みずきと，ニセコイの橘万里花である．</description>
+      
+    </item>
+    
+    <item>
+      <title>自分のこと</title>
+      <link>https://SeeKT.github.io/portfolio/post/blog_old_self/</link>
+      <pubDate>Sun, 26 Sep 2021 00:18:45 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/blog_old_self/</guid>
+      
+        <description>0. はじめに 気が向いたので，自分のことを少しだけ書きたいと思う (恥ずかしくなったら draft に戻そうと思う)．自己紹介の記事は，情報量があまりないので．
+1. 昔のこと (大学入学前) 剣道を小学校からやっていたが，そもそも運動が苦手でセンスもなく，長くやっている割には全然強くなれなかった．そのため中学の頃は同期から色々と言われたし，それで少し傷つくなどしていた．その頃から私は運動に関する自分の才能のなさに気付いており，そもそも体を動かすことが嫌いになっていた．高校まで剣道を続けたが，高校卒業を機に剣道から離れた．</description>
+      
+    </item>
+    
+    <item>
+      <title>この1年半体験したオンラインの物事についての所感</title>
+      <link>https://SeeKT.github.io/portfolio/post/blog_online/</link>
+      <pubDate>Mon, 20 Sep 2021 22:10:44 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/blog_online/</guid>
+      
+        <description>0. はじめに 私が修士の間，私の研究科の講義はすべてオンライン開講である (他研究科の講義や集中講義は対面開講のものもあったが)．私がこれまでに参加した学会は国内，国際共に全てオンラインであったし，就活も全てオンラインだった．
+今回は，私が1年半体験したオンラインの物事について，私なりに感じたこと (良いと思った点と微妙だと思った点など) を書いていこうと思う．アンケートをとってデータを分析したわけでもなければ，文献を読んだわけでもないので，あくまで個人の感想程度に思っていただけたら幸いである．また，これはあくまでサービスを享受した側，特に学生視点の感想である．オンラインの物事を提供してくださる方には感謝したいと思う．
+きっと来年就職した後もリモートワークが主体だろうなと思うと，少しつらい．
+目次  1 講義 2 学会 3 就活 4 イベント (ライブ等) 5 まとめ  1.</description>
+      
+    </item>
+    
+    <item>
+      <title>PythonのPlotlyで遊んだ</title>
+      <link>https://SeeKT.github.io/portfolio/post/python_plotly/</link>
+      <pubDate>Fri, 17 Sep 2021 22:28:21 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/python_plotly/</guid>
+      
+        <description>0. はじめに Plotly1 をご存知だろうか．統計や金融，科学等の幅広い分野で用いられている，データの可視化のためのライブラリであり，Python や R などで用いることができる．
+Plotly を用いると，3d plot をとてもきれいにできる．今回は，Plotly を用いて適当なグラフを描画して遊ぼうと思う．</description>
+      
+    </item>
+    
+    <item>
+      <title>B4の頃に研究が辛かったときとその後の話</title>
+      <link>https://SeeKT.github.io/portfolio/post/blog_lab/</link>
+      <pubDate>Wed, 08 Sep 2021 18:46:10 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/blog_lab/</guid>
+      
+        <description>0. はじめに 自分の過去ツイをさかのぼっていたら，このようなツイートを見つけた．
+何もできてなさすぎて研究室にいるの辛くなって帰っちゃった
+&amp;mdash; 橘 あい (@tcbn_ai) October 31, 2019  これは私がB4で研究を初めて数ヶ月経過した頃，何も上手くいかずに辛くなっていたときのツイートである．今回は，このときのことを思い出して少し文章を書きたいと思う．</description>
+      
+    </item>
+    
+    <item>
+      <title>研究室に入った後今までお世話になっている神サイト/ツールたち</title>
+      <link>https://SeeKT.github.io/portfolio/post/good_references/</link>
+      <pubDate>Sat, 04 Sep 2021 17:26:46 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/good_references/</guid>
+      
+        <description>0. はじめに 研究室に残す予定のものをまとめているときに，色々と参考にしたウェブサイトや記事，使ったツールなどを記録しておこうと思った．
+目次  1 Ubuntu関連 2 Python関連 3 Docker関連 4 進捗管理関連 5 文献管理関連 6 論文関連 7 プレゼン関連 8 まとめ  1.</description>
+      
+    </item>
+    
+    <item>
+      <title>RStudio ServerをDockerで使うときのメモ</title>
+      <link>https://SeeKT.github.io/portfolio/post/docker_r/</link>
+      <pubDate>Mon, 30 Aug 2021 09:15:39 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/docker_r/</guid>
+      
+        <description>0. はじめに RとRStudioもDocker containerとして使えれば少しめんどくさかったインストール工程 (Ubuntu20.04にRとRStudioをインストールする) をやらなくても良いのではないだろうか，と考えた．
+調べたところ，RockerというものでRStudio ServerをDockerで使えるらしい1．
+今回は備忘録として，Rockerを使ったときのメモを残すことにした．
+1. 準備 最低限必要なことは，Docker Engineのインストールである．UbuntuへのDocker Engineのインストールは以前記事にした2．WindowsやMacについては他にも様々な記事があると思う．</description>
+      
+    </item>
+    
+    <item>
+      <title>大学生と大学院生のとき生活に必要だと思ったもの</title>
+      <link>https://SeeKT.github.io/portfolio/post/requirements/</link>
+      <pubDate>Fri, 27 Aug 2021 23:32:00 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/requirements/</guid>
+      
+        <description>0. はじめに 最近自分の生活について振り返る機会があった．今回は生活に必要だなと思ったものを何個か挙げていくことにする．
+私は理系 (情報系? 制御系?) の大学に進学し，そのまま同じ大学の研究科に進学した．私が大学入学時に欲しかった情報を書くことにする．
+目次  1 勉強・研究 2 日常生活 3 まとめ  1.</description>
+      
+    </item>
+    
+    <item>
+      <title>学部生の頃バーに行っていた話と学部卒業時にガールズバーに行った話</title>
+      <link>https://SeeKT.github.io/portfolio/post/blog_bar/</link>
+      <pubDate>Sun, 08 Aug 2021 21:56:49 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/blog_bar/</guid>
+      
+        <description>0. はじめに 最近体調が優れない (低気圧の影響) ことが多く，やる気も起こらず，研究の進捗もそれほど良くないということが続いている．このままでは良くない&amp;hellip;と思い，来週は1週間休みを取り，研究のことはあまり考えずにリフレッシュすることにした．来週休みを取るために，今週金曜までは集中講義に参加するほか，論文の修正作業を少しだけ頑張っていた．
+話は変わるが，私は学部1年から近所のバーに行くことが好きだった．今回はバーについて書こうと思う．
+流れてきたキャバクラ漫画見てこれ思い出した https://t.co/TqsBKW9YWW
+&amp;mdash; 橘 あい (@tcbn_ai) August 8, 2021  キャバクラの漫画を見て，これを思い出したので．</description>
+      
+    </item>
+    
+    <item>
+      <title>アルバイトの経験談</title>
+      <link>https://SeeKT.github.io/portfolio/post/blog_part_time/</link>
+      <pubDate>Sat, 24 Jul 2021 21:44:24 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/blog_part_time/</guid>
+      
+        <description>0. はじめに これまで体験したアルバイトと，経験したことについて書こうと思う．遊ぶためにバイトをしていたので，企業でプログラミングや機械学習の勉強をしながらバイト，というような経験をしてこなかったのは反省点である．
+私は学部入学が2016年4月，学部卒業が2020年3月であり，修士課程入学が2020年4月である．
+アルバイト歴    年 アルバイト先     2016.</description>
+      
+    </item>
+    
+    <item>
+      <title>古いバージョンのKali linuxをインストールしようとした</title>
+      <link>https://SeeKT.github.io/portfolio/post/kali-linux-log/</link>
+      <pubDate>Tue, 13 Jul 2021 21:47:32 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/kali-linux-log/</guid>
+      
+        <description>0. はじめに ハッキング・ラボのつくりかたという本を読み進めていたところ，最新版のKali linux 2021.2では実行できない部分があったので (4章, 252ページ等)，書籍の環境である Kali linux 2018.2に合わせることにした．インストールにかなり苦戦した．</description>
+      
+    </item>
+    
+    <item>
+      <title>書籍を読みながらMetasploitを使ってみて詰まったところ</title>
+      <link>https://SeeKT.github.io/portfolio/post/hacking-lab_1/</link>
+      <pubDate>Tue, 13 Jul 2021 21:24:32 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/hacking-lab_1/</guid>
+      
+        <description>0. はじめに 最近，ハッキング・ラボのつくりかたという本を読んでいる．ツイートされていた方もいらっしゃったが，書籍第4章のWindowsに紹介されているmeterpreterのプロンプトでrun hashdumpやrun scraperが実行できない．
+ 該当ツイート  Meterpreterがスクリプトの実行をサポートしなくなったことが原因の1つだと考えたので，何とか書籍のコードを実行できないか試してみたいと思った．
+ 該当ツイートへのリプライ GitHubのmetasploit-framework-webexec  今回は，書籍の環境に合わせることで実行した．もっと良い方法があるはずだが，知識のない私にはこれが限界だった．</description>
+      
+    </item>
+    
+    <item>
+      <title>ファイルサーバを構築したときのログ (Ubuntu18.04)</title>
+      <link>https://SeeKT.github.io/portfolio/post/create_server/</link>
+      <pubDate>Fri, 09 Jul 2021 18:39:46 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/create_server/</guid>
+      
+        <description>0. はじめに 以前ファイルサーバを構築したので，そのときのログを残す．
+色々と怪しい部分もあるかもしれないので，一個人の記録として見ていただければ幸いである．
+以下，LinuxサーバをUbuntu18.04とし，クライアント側はWindows10もしくはUbuntu20.04とする．Windows10の場合はGit Bashが導入済みであるものとする．
+ SSH接続の設定 Sambaの設定 バックアップの設定 CUI運用にする  という流れで実行した．</description>
+      
+    </item>
+    
+    <item>
+      <title>普段使っているPC周りの環境</title>
+      <link>https://SeeKT.github.io/portfolio/post/myenv/</link>
+      <pubDate>Thu, 08 Jul 2021 19:15:53 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/myenv/</guid>
+      
+        <description>0. はじめに この記事では，私が普段使っているPC周りの環境を書く．就職したらもっと良いのがほしい．
+1. 自宅の環境とノートPC  デスクトップ  Lenovo V530  色々手を加えた   OS: Windows11 SSD: 512GB  もともと256GB．換装した．   RAM: 16GB CPU: Core i5-9500 GPU (増設): GTX-1050Ti  PH-GTX1050TI-4G     ノート  iiyama 14インチ (BTO) OS: Ubuntu20.</description>
+      
+    </item>
+    
+    <item>
+      <title>Python3の開発環境をDocker containerとして作る</title>
+      <link>https://SeeKT.github.io/portfolio/post/docker_python/</link>
+      <pubDate>Thu, 08 Jul 2021 18:58:51 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/docker_python/</guid>
+      
+        <description>0. はじめに この記事では，Docker containerとしてPythonの開発環境を作ったときのメモを残す． この記事の内容は，GitHubのサブのアカウントのpublicリポジトリで公開している．
+1. 必要なもの  Docker Engineのインストール VSCodeのインストール  Remote Developementの導入    2.</description>
+      
+    </item>
+    
+    <item>
+      <title>Ubuntu20.04にDocker Engineをインストールする</title>
+      <link>https://SeeKT.github.io/portfolio/post/ubuntu_docker/</link>
+      <pubDate>Thu, 08 Jul 2021 18:25:39 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/ubuntu_docker/</guid>
+      
+        <description>0. はじめに 私が学部4年から修士1年までに使っていたPythonの開発環境はUbuntu上にpipとpipenvを入れ，pipenvで仮想環境を作って使うというものだった．Ubuntuを20にアップグレードしたときにこれまで使っていた仮想環境でプログラムが動かない，ということが起こった．
+このように，OSに1つの環境を作って動かそうとした際には，更新に伴いプログラムが動かなくなるというリスクがある．さらに，以下のような問題が挙げられる．
+ OSが汚れる  OSに直接インストールするので，複数のバージョンが共存するといったことが起こる．   問題の切り分けが難しい  OSのアップグレードの問題なのか，パッケージの問題なのか分からなくなる．    そんなときDockerに出会う．Dockerの説明は省略するが，イメージは1つのサーバに独立した複数のサーバを同時に構築することができる，というものである．これは良いと思い，研究の開発環境をDocker container上に作ることにした．</description>
+      
+    </item>
+    
+    <item>
+      <title>Ubuntu20.04にRとRStudioをインストールする</title>
+      <link>https://SeeKT.github.io/portfolio/post/ubuntu_rstudio/</link>
+      <pubDate>Thu, 08 Jul 2021 18:07:46 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/ubuntu_rstudio/</guid>
+      
+        <description>0. はじめに 授業でRとRStudioを使う必要があったのでインストールした． 前処理がめんどくさかったので，シェルスクリプトを書いた．
+参考  RとRStudioのインストールと初期設定 Linux (Ubuntu) 編  1.</description>
+      
+    </item>
+    
+    <item>
+      <title>Ubuntu20.04にTeX Liveをインストールする</title>
+      <link>https://SeeKT.github.io/portfolio/post/ubuntu_tex/</link>
+      <pubDate>Thu, 08 Jul 2021 18:00:11 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/ubuntu_tex/</guid>
+      
+        <description>0. はじめに  UbuntuにTeXを入れたときのメモ  1. やること 好きなエディタを入れる TeXLiveを入れる ~/.latexmkrcを作る 動作テスト  好きなエディタを入れる  私はTeXの文書を作るときはAtomを使うので，Atomを入れた．  公式サイト (https://atom.</description>
+      
+    </item>
+    
+    <item>
+      <title>自己紹介</title>
+      <link>https://SeeKT.github.io/portfolio/post/first-post/</link>
+      <pubDate>Thu, 08 Jul 2021 16:14:02 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/first-post/</guid>
+      
+        <description>0. 自己紹介 (2021年現在)  ハンドルネーム  たちばな / 橘 あい   居住地  大阪府   学歴  学士 現在修士2年   研究  計算機科学 非線形力学系   趣味  旅行 自転車 技術書を読んで手元で動かすこと    1.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

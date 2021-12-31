@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="jp"
+  data-theme=""
+><head>
+  <title>
+    Ai Tachibana (Kosuke Toda)
+      |
+      卒論・修論のテンプレート (TeX) について
+
+
+    
+
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.91.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta
+    name="description"
+    content="
+      Ai Tachibana
+
+
+    "
+  />
+  
+  
+  
+  <link
+    rel="stylesheet"
+    href="https://SeeKT.github.io/portfolio/css/main.min.861c630407a306e1a79890bffbab9b381c5a0b03cd0c3b79755cc5eeea04b6b0.css"
+    integrity="sha256-hhxjBAejBuGnmJC/&#43;6ubOBxaCwPNDDt5dVzF7uoEtrA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="https://SeeKT.github.io/portfolio/css/markupHighlight.min.058b31f17db60602cc415fd63b0427e7932fbf35c70d8e341a4c39385f5f6f3e.css"
+    integrity="sha256-BYsx8X22BgLMQV/WOwQn55MvvzXHDY40Gkw5OF9fbz4="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous"
+  />
+  
+  <link rel="shortcut icon" href="https://SeeKT.github.io/portfolio/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://SeeKT.github.io/portfolio/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://SeeKT.github.io/portfolio/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://SeeKT.github.io/portfolio/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://SeeKT.github.io/portfolio/post/thesis_template/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/anatole-header.min.2a2cd9614b7d007dfbb75e8da19e3a0fa872ceab53c6d000c00b7a0c89b85bfc.js"
+    integrity="sha256-KizZYUt9AH37t16NoZ46D6hyzqtTxtAAwAt6DIm4W/w="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="https://SeeKT.github.io/portfolio/js/anatole-theme-switcher.min.7fd87181cdd7e8413aa64b6867bb32f3a8dc242e684fc7d5bbb9f600dbc2b6eb.js"
+      integrity="sha256-f9hxgc3X6EE6pktoZ7sy86jcJC5oT8fVu7n2ANvCtus="
+      crossorigin="anonymous"
+    ></script>
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://SeeKT.github.io/portfolio/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="卒論・修論のテンプレート (TeX) について"/>
+<meta name="twitter:description" content="0. はじめに 研究室単位で修論のテンプレートがあると思う．私の研究室にあったテンプレートはTeXソースの分割がされていないようなものだったので，テンプレートを作り直すついでに備忘録として残しておくことにする．
+作ったテンプレートと同様のものは，GitHubリポジトリ SeeKT/thesis_template にアップロードした．自分が使うためのテンプレートなので色々と問題点もあるだろうが，ご容赦願いたい．
+1. ディレクトリ構成 卒論や修論は文章の量が多くなるので，1つのTeXソースに全て書こうとするとTeXソースの行数が増え，修正が大変になる．そこで，修論本体のTeXソースに各章のTeXソースをinputするようにする．
+今回は，以下のようなディレクトリ構成にする．"/>
+
+
+
+  
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "卒論・修論のテンプレート (TeX) について",
+        "headline": "卒論・修論のテンプレート (TeX) について",
+        "alternativeHeadline": "",
+        "description": "
+      
+        0. はじめに 研究室単位で修論のテンプレートがあると思う．私の研究室にあったテンプレートはTeXソースの分割がされていないようなものだったので，テンプレートを作り直すついでに備忘録として残しておくことにする．\n作ったテンプレートと同様のものは，GitHubリポジトリ SeeKT\/thesis_template にアップロードした．自分が使うためのテンプレートなので色々と問題点もあるだろうが，ご容赦願いたい．\n1. ディレクトリ構成 卒論や修論は文章の量が多くなるので，1つのTeXソースに全て書こうとするとTeXソースの行数が増え，修正が大変になる．そこで，修論本体のTeXソースに各章のTeXソースをinputするようにする．\n今回は，以下のようなディレクトリ構成にする．
+
+
+      
+
+
+    ",
+        "inLanguage": "jp",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/SeeKT.github.io\/portfolio\/post\/thesis_template\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Ai Tachibana (Kosuke Toda)"
+        },
+        "copyrightYear" : "2021",
+        "dateCreated": "2021-10-09T17:37:18.00Z",
+        "datePublished": "2021-10-09T17:37:18.00Z",
+        "dateModified": "2021-10-09T17:37:18.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Ai Tachibana (Kosuke Toda)",
+            "url": "https://SeeKT.github.io/portfolio/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/SeeKT.github.io\/portfolio\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://SeeKT.github.io/portfolio/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/SeeKT.github.io\/portfolio\/post\/thesis_template\/",
+        "wordCount" : "156",
+        "genre" : [ 
+      
+      "PC"
+
+    ],
+        "keywords" : [ 
+      
+      "TeX"
+
+    ]
+    }
+  </script>
+
+
+
+</head>
+<body>
+    <header><div
+  class="page-top 
+    animated fadeInDown
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a>
+  <nav>
+    <ul class="nav__list" id="navMenu">
+      <div class="nav__links">
+        
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/"
+              
+              title=""
+              >Home</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/post/"
+              
+              title=""
+              >Posts</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/profile/"
+              
+              title=""
+              >Profile</a
+            >
+          </li>
+
+        
+          
+          <li>
+            <a
+              
+              href="https://SeeKT.github.io/portfolio/publication/"
+              
+              title=""
+              >Publication</a
+            >
+          </li>
+
+        
+      </div>
+      <ul>
+        
+        
+          <li>
+            <a class="theme-switch" title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </li>
+
+        
+      </ul>
+    </ul>
+  </nav>
+</div>
+</header>
+    <div class="wrapper">
+      <aside><div
+  class="sidebar
+    animated fadeInDown
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://SeeKT.github.io/portfolio/images/avater.jpg" alt="profile picture" />
+        <h3 title=""><a href="https://SeeKT.github.io/portfolio/">立ち話</a></h3>
+        <div class="description">
+          <p>Ai Tachibana</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+      
+        <li>
+          <a href="https://github.com/SeeKT/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li>
+          <a href="https://twitter.com/tcbn_ai" rel="me" aria-label="twitter" title="twitter">
+            <i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+    </ul>
+  </div><footer class="footer footer--sidebar">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          Ai Tachibana (Kosuke Toda)
+          2021
+
+
+        
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
+    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
+    crossorigin="anonymous"
+  ></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR&#43;zwDAROtph0PXGte6ia8heboACF9R5l/DiY&#43;WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous" /><script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8&#43;w2LAIftJEULZABrF9PPFv&#43;tVkH" crossorigin="anonymous"></script><script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+      integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB&#43;w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script></div>
+</aside>
+      <main>
+        <div class="autopagerize_page_element">
+          <div class="content">
+  <div
+    class="post 
+      animated fadeInDown
+
+    "
+  >
+    <div class="post-content">
+      
+      <div class="post-title">
+        <h1>卒論・修論のテンプレート (TeX) について</h1>
+        
+          <div class="info">
+            <em class="fas fa-calendar-day"></em>
+            <span class="date"
+              >
+                2021/10/9
+
+
+              </span
+            >
+            <em class="fas fa-stopwatch"></em>
+            <span class="reading-time"></span>
+          </div>
+
+        
+      </div><h3 id="0-はじめに">0. はじめに</h3>
+<p>研究室単位で修論のテンプレートがあると思う．私の研究室にあったテンプレートはTeXソースの分割がされていないようなものだったので，テンプレートを作り直すついでに備忘録として残しておくことにする．</p>
+<p>作ったテンプレートと同様のものは，GitHubリポジトリ <a href="https://github.com/SeeKT/thesis_template">SeeKT/thesis_template</a> にアップロードした．自分が使うためのテンプレートなので色々と問題点もあるだろうが，ご容赦願いたい．</p>
+<h3 id="1-ディレクトリ構成">1. ディレクトリ構成</h3>
+<p>卒論や修論は文章の量が多くなるので，1つのTeXソースに全て書こうとするとTeXソースの行数が増え，修正が大変になる．そこで，修論本体のTeXソースに各章のTeXソースをinputするようにする．</p>
+<p>今回は，以下のようなディレクトリ構成にする．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="p">|</span>- bib/: bibtexするもの
+<span class="p">|</span>   <span class="p">|</span>- hogehoge.bib
+<span class="p">|</span>
+<span class="p">|</span>- fig/: 図を入れるディレクトリ
+<span class="p">|</span>
+<span class="p">|</span>- main/: main.tex のディレクトリ
+<span class="p">|</span>
+<span class="p">|</span>- tex/: main.texにinputするTeXソースのディレクトリ
+<span class="p">|</span>   <span class="p">|</span>- preamble_thesis.tex: プリアンブルをまとめたTeXファイル
+<span class="p">|</span>   <span class="p">|</span>- その他inputするTeXソース
+</code></pre></div><h3 id="2-コンパイル方法等">2. コンパイル方法等</h3>
+<p>今回は，documentclass を <code>jsbook</code> としている．コンパイルは <code>platex</code> 等で行うと良いように思う．</p>
+<p><a href="https://tachibana-ai.netlify.app/post/ubuntu_tex/">Ubuntu20.04にTeX Liveをインストールする</a> にまとめた<code>latexmk</code> を使うと，<code>bibtex</code> あたりの処理が楽になる．</p>
+<p>コンパイル時は，例えば</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">latexmk main.tex
+</code></pre></div><p>とする．</p>
+<details>
+<summary>卒論/修論本体のTeXソース</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="c">% 卒論/修論 テンプレート
+</span><span class="c"></span><span class="k">\documentclass</span><span class="na">[a4j,report,dvipdfmx]</span><span class="nb">{</span>jsbook<span class="nb">}</span>
+<span class="c">% 英語のときは
+</span><span class="c">% \documentclass[a4j,report,english]{jsbook}
+</span><span class="c"></span>
+<span class="c">% preamble_thesis.tex を input
+</span><span class="c"></span><span class="k">\input</span><span class="nb">{</span>../tex/preamble<span class="nb">_</span>thesis<span class="nb">}</span>
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+
+<span class="c">%%%%%%%%%%%% Title %%%%%%%%%%%%
+</span><span class="c"></span><span class="k">\input</span><span class="nb">{</span>../tex/title<span class="nb">}</span>
+<span class="c">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+</span><span class="c"></span>
+<span class="c">%%%%%%%%%%%% Table of Contents %%%%%%%%%%%%
+</span><span class="c"></span><span class="k">\clearpage</span>
+<span class="k">\tableofcontents</span>
+<span class="k">\clearpage</span>
+<span class="k">\setcounter</span><span class="nb">{</span>page<span class="nb">}{</span>0<span class="nb">}</span>
+<span class="k">\pagenumbering</span><span class="nb">{</span>arabic<span class="nb">}</span>
+<span class="c">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+</span><span class="c"></span>
+<span class="c">%%%%%%%%%%%% Chapter1 Introduction %%%%%%%%%%%%
+</span><span class="c"></span><span class="k">\input</span><span class="nb">{</span>../tex/1<span class="nb">_</span>Intro<span class="nb">}</span>
+<span class="c">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+</span><span class="c"></span>
+<span class="c">%%%%%%%%%%%% Chapter2 Preliminaries %%%%%%%%%%%%
+</span><span class="c"></span><span class="k">\input</span><span class="nb">{</span>../tex/2<span class="nb">_</span>preliminaries<span class="nb">}</span>
+<span class="c">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+</span><span class="c"></span>
+<span class="c">%%%%%%%%%%%% Chapter3 main1 %%%%%%%%%%%%
+</span><span class="c"></span><span class="k">\input</span><span class="nb">{</span>../tex/3<span class="nb">_</span>main1<span class="nb">}</span>
+<span class="c">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+</span><span class="c"></span>
+<span class="c">%%%%%%%%%%%% Chapter4 main2 %%%%%%%%%%%%
+</span><span class="c"></span><span class="k">\input</span><span class="nb">{</span>../tex/4<span class="nb">_</span>main2<span class="nb">}</span>
+<span class="c">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+</span><span class="c"></span>
+<span class="c">%%%%%%%%%%%% Chapter5 Conclusion %%%%%%%%%%%%
+</span><span class="c"></span><span class="k">\input</span><span class="nb">{</span>../tex/5<span class="nb">_</span>conclusion<span class="nb">}</span>
+<span class="c">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+</span><span class="c"></span>
+<span class="c">%%%%%%%%%%%% Acknowledgement %%%%%%%%%%%%
+</span><span class="c"></span><span class="k">\input</span><span class="nb">{</span>../tex/acknowledgement<span class="nb">}</span>
+<span class="c">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+</span><span class="c"></span>
+<span class="c">%%%%%%%%%%%% References %%%%%%%%%%%%
+</span><span class="c">% 参考文献のスタイルファイル (hogehoge.bst)
+</span><span class="c"></span><span class="k">\bibliographystyle</span><span class="nb">{</span>junsrt<span class="nb">}</span>
+<span class="c">% 参考文献のbibtexファイル (main.texからの相対パスで指定, hogehoge.bib)
+</span><span class="c"></span><span class="k">\bibliography</span><span class="nb">{</span>../bib/ref<span class="nb">_</span>circle,../bib/ref<span class="nb">_</span>triangle<span class="nb">}</span>
+<span class="c">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+</span><span class="c"></span>
+<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</code></pre></div></details>
+<h4 id="個人的に思う-利点">(個人的に思う) 利点</h4>
+<ul>
+<li>卒論や修論が長くなっても，本体の長さはそれほど変わらない．</li>
+<li>修正の際は各章のTeXソースを修正すれば良い．</li>
+</ul>
+<h3 id="3-githubリポジトリ">3. GitHubリポジトリ</h3>
+<p>GitHubリポジトリとして卒論や修論を管理するのが推奨されているように思う．ここでは，このリポジトリの <code>.gitignore</code> を紹介する．</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">*.aux
+*.fls
+*.log
+*.fdb_latexmk
+*.toc
+*.synctex.gz
+*.dvi
+</code></pre></div><p>TeXのコンパイルでは様々な副産物ができるが，提出時に必要なものはTeXソースとPDFファイルのみであることが多い．<a href="https://github.com/SeeKT/thesis_template">SeeKT/thesis_template</a> では副産物をGitの管理に含めないようにしている．</p>
+<h3 id="4-まとめ">4. まとめ</h3>
+<p>この記事では，作成した卒論/修論のテンプレートについて簡単に紹介した．私はこのテンプレートを卒論/修論だけでなく長めのTeXの資料 (<code>jsbook</code>) を作るときにも活用している．</p>
+</div>
+    <div class="post-footer">
+      <div class="info">
+        
+          <span class="separator"><a class="category" href="https://SeeKT.github.io/portfolio/categories/pc/">PC</a></span>
+
+
+
+
+        
+
+        
+          <span class="separator"><a class="tag" href="https://SeeKT.github.io/portfolio/tags/tex/">TeX</a></span>
+
+
+
+
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+
+          </div>
+        </div>
+      </main>
+    </div><footer class="footer footer--base">
+  <div class="by_farbox">
+    <ul class="footer__list">
+      <li class="footer__item">
+        &copy;
+        
+          Ai Tachibana (Kosuke Toda)
+          2021
+
+
+        
+      </li>
+      
+    </ul>
+  </div>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="https://SeeKT.github.io/portfolio/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js"
+    integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I="
+    crossorigin="anonymous"
+  ></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR&#43;zwDAROtph0PXGte6ia8heboACF9R5l/DiY&#43;WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous" /><script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8&#43;w2LAIftJEULZABrF9PPFv&#43;tVkH" crossorigin="anonymous"></script><script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+      integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB&#43;w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script></body>
+</html>

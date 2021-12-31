@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ubuntu on 立ち話</title>
+    <link>https://SeeKT.github.io/portfolio/categories/ubuntu/</link>
+    <description>Recent content in Ubuntu on 立ち話</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language>
+    <lastBuildDate>Sat, 20 Nov 2021 09:20:14 +0900</lastBuildDate><atom:link href="https://SeeKT.github.io/portfolio/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>KVM を使って仮想マシンを作成する (試験勉強用)</title>
+      <link>https://SeeKT.github.io/portfolio/post/setting_kvm/</link>
+      <pubDate>Sat, 20 Nov 2021 09:20:14 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/setting_kvm/</guid>
+      
+        <description>0. はじめに Linux の試験を受けようと考えている．普段家で使っている OS は Ubuntu 20.04 であるが，試験勉強用の環境を普段使っている OS とは隔離された形で作りたいと思った．</description>
+      
+    </item>
+    
+    <item>
+      <title>ファイルサーバを構築したときのログ (Ubuntu18.04)</title>
+      <link>https://SeeKT.github.io/portfolio/post/create_server/</link>
+      <pubDate>Fri, 09 Jul 2021 18:39:46 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/create_server/</guid>
+      
+        <description>0. はじめに 以前ファイルサーバを構築したので，そのときのログを残す．
+色々と怪しい部分もあるかもしれないので，一個人の記録として見ていただければ幸いである．
+以下，LinuxサーバをUbuntu18.04とし，クライアント側はWindows10もしくはUbuntu20.04とする．Windows10の場合はGit Bashが導入済みであるものとする．
+ SSH接続の設定 Sambaの設定 バックアップの設定 CUI運用にする  という流れで実行した．</description>
+      
+    </item>
+    
+    <item>
+      <title>Ubuntu20.04にDocker Engineをインストールする</title>
+      <link>https://SeeKT.github.io/portfolio/post/ubuntu_docker/</link>
+      <pubDate>Thu, 08 Jul 2021 18:25:39 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/ubuntu_docker/</guid>
+      
+        <description>0. はじめに 私が学部4年から修士1年までに使っていたPythonの開発環境はUbuntu上にpipとpipenvを入れ，pipenvで仮想環境を作って使うというものだった．Ubuntuを20にアップグレードしたときにこれまで使っていた仮想環境でプログラムが動かない，ということが起こった．
+このように，OSに1つの環境を作って動かそうとした際には，更新に伴いプログラムが動かなくなるというリスクがある．さらに，以下のような問題が挙げられる．
+ OSが汚れる  OSに直接インストールするので，複数のバージョンが共存するといったことが起こる．   問題の切り分けが難しい  OSのアップグレードの問題なのか，パッケージの問題なのか分からなくなる．    そんなときDockerに出会う．Dockerの説明は省略するが，イメージは1つのサーバに独立した複数のサーバを同時に構築することができる，というものである．これは良いと思い，研究の開発環境をDocker container上に作ることにした．</description>
+      
+    </item>
+    
+    <item>
+      <title>Ubuntu20.04にRとRStudioをインストールする</title>
+      <link>https://SeeKT.github.io/portfolio/post/ubuntu_rstudio/</link>
+      <pubDate>Thu, 08 Jul 2021 18:07:46 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/ubuntu_rstudio/</guid>
+      
+        <description>0. はじめに 授業でRとRStudioを使う必要があったのでインストールした． 前処理がめんどくさかったので，シェルスクリプトを書いた．
+参考  RとRStudioのインストールと初期設定 Linux (Ubuntu) 編  1.</description>
+      
+    </item>
+    
+    <item>
+      <title>Ubuntu20.04にTeX Liveをインストールする</title>
+      <link>https://SeeKT.github.io/portfolio/post/ubuntu_tex/</link>
+      <pubDate>Thu, 08 Jul 2021 18:00:11 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/ubuntu_tex/</guid>
+      
+        <description>0. はじめに  UbuntuにTeXを入れたときのメモ  1. やること 好きなエディタを入れる TeXLiveを入れる ~/.latexmkrcを作る 動作テスト  好きなエディタを入れる  私はTeXの文書を作るときはAtomを使うので，Atomを入れた．  公式サイト (https://atom.</description>
+      
+    </item>
+    
+  </channel>
+</rss>
