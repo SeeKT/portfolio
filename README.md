@@ -25,9 +25,5 @@ hugo
 
 新しいコンテンツの作成
 ```
-hugo new content/post/[contant name].md
-```
-または
-```
-hugo new post/[contant name]
+hugo new content/japanese/post/[]/index.md
 ```
