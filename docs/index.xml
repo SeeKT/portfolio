@@ -6,7 +6,23 @@
     <description>Recent content on 立ち話</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Tue, 07 Dec 2021 22:17:14 +0900</lastBuildDate><atom:link href="https://SeeKT.github.io/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 31 Dec 2021 16:54:20 +0900</lastBuildDate><atom:link href="https://SeeKT.github.io/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2021年を振り返る</title>
+      <link>https://SeeKT.github.io/portfolio/post/look_back_2021/</link>
+      <pubDate>Fri, 31 Dec 2021 16:54:20 +0900</pubDate>
+      
+      <guid>https://SeeKT.github.io/portfolio/post/look_back_2021/</guid>
+      
+        <description>2021年も早いもので，今日が大晦日である．今回は，写真を交えながら時系列順に2021年を振り返りたいと思う．
+1月 企業の研究インターンに参加していた．志望業界かつ行きたい企業の1つであったので，結構頑張って取り組んだと思う．
+また，企業の説明会が始まった．日程の勘違いで企業の方に迷惑をかけてしまったこともあった．
+前年に原稿を投稿した国際学会 (5月) の採択が決定した．
+2月 業界を絞って興味ある企業の説明会に参加したり，面談を受けたりした．2月後半には企業を2つに定めて，研究室の同期に見てもらいながらエントリーシートを作成したり，研究紹介のスライドを作ったりした．
+就活したくないと思ったときに大学の研究をしていた．面白い結果が出たので，出た結果をどこに載せるかも指導教員の先生と相談していた．</description>
+      
+    </item>
+    
     <item>
       <title>Docker Container として LaTeX の執筆環境を作る</title>
       <link>https://SeeKT.github.io/portfolio/post/docker_latex/</link>
