@@ -176,7 +176,7 @@ pf.plotly_surface_contour(
 
 また，このコードを Jupyter notebook 形式にして html に変換したものを以下のリンクに置いている (表示に少し時間がかかる)．
 
-- <a href="https://tachibana-ai.netlify.app/post/python_plotly/test_function_blog.html">変換した Jupyter Notebook</a>
+- <a href="/files/plotly/test_function_blog.html">変換した Jupyter Notebook</a>
 
 
 関数の表面がどうなっているか可視化されていて面白いと思う．また，動かすこともできるのが良い．
