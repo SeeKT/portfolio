@@ -10,7 +10,7 @@ categories: [blog]
 date: 2021-07-24T21:44:24+09:00
 lastmod: 2021-08-30T09:28:24+09:00
 featured: false
-draft: false
+draft: true
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.

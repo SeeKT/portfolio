@@ -5,7 +5,7 @@ Description: ""
 Tags: [blog]
 Categories: [blog]
 featured: false
-draft: false
+draft: true
 
 image:
   caption: ""

@@ -4,7 +4,7 @@ date: 2022-01-01T07:54:29+09:00
 Tags: [blog]
 Categories: [blog]
 featured: false
-draft: false
+draft: true
 
 image:
   caption: ""

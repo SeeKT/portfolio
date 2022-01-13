@@ -3,28 +3,10 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://SeeKT.github.io/portfolio/</loc>
-    <lastmod>2022-01-01T07:54:29+09:00</lastmod>
-  </url><url>
-    <loc>https://SeeKT.github.io/portfolio/post/goal_2022/</loc>
-    <lastmod>2022-01-01T07:54:29+09:00</lastmod>
-  </url><url>
-    <loc>https://SeeKT.github.io/portfolio/tags/blog/</loc>
-    <lastmod>2022-01-01T07:54:29+09:00</lastmod>
-  </url><url>
-    <loc>https://SeeKT.github.io/portfolio/categories/blog/</loc>
-    <lastmod>2022-01-01T07:54:29+09:00</lastmod>
+    <lastmod>2021-12-07T22:17:14+09:00</lastmod>
   </url><url>
     <loc>https://SeeKT.github.io/portfolio/categories/</loc>
-    <lastmod>2022-01-01T07:54:29+09:00</lastmod>
-  </url><url>
-    <loc>https://SeeKT.github.io/portfolio/post/</loc>
-    <lastmod>2022-01-01T07:54:29+09:00</lastmod>
-  </url><url>
-    <loc>https://SeeKT.github.io/portfolio/tags/</loc>
-    <lastmod>2022-01-01T07:54:29+09:00</lastmod>
-  </url><url>
-    <loc>https://SeeKT.github.io/portfolio/post/look_back_2021/</loc>
-    <lastmod>2021-12-31T16:54:20+09:00</lastmod>
+    <lastmod>2021-12-07T22:17:14+09:00</lastmod>
   </url><url>
     <loc>https://SeeKT.github.io/portfolio/tags/docker/</loc>
     <lastmod>2021-12-07T22:17:14+09:00</lastmod>
@@ -36,6 +18,12 @@
     <lastmod>2021-12-07T22:17:14+09:00</lastmod>
   </url><url>
     <loc>https://SeeKT.github.io/portfolio/tags/latex/</loc>
+    <lastmod>2021-12-07T22:17:14+09:00</lastmod>
+  </url><url>
+    <loc>https://SeeKT.github.io/portfolio/post/</loc>
+    <lastmod>2021-12-07T22:17:14+09:00</lastmod>
+  </url><url>
+    <loc>https://SeeKT.github.io/portfolio/tags/</loc>
     <lastmod>2021-12-07T22:17:14+09:00</lastmod>
   </url><url>
     <loc>https://SeeKT.github.io/portfolio/tags/kvm/</loc>
@@ -52,9 +40,6 @@
   </url><url>
     <loc>https://SeeKT.github.io/portfolio/categories/ubuntu/</loc>
     <lastmod>2021-11-20T09:20:14+09:00</lastmod>
-  </url><url>
-    <loc>https://SeeKT.github.io/portfolio/post/fav_music/</loc>
-    <lastmod>2021-10-26T20:26:46+09:00</lastmod>
   </url><url>
     <loc>https://SeeKT.github.io/portfolio/profile/</loc>
     <lastmod>2021-10-20T21:52:34+09:00</lastmod>
@@ -80,11 +65,11 @@
     <loc>https://SeeKT.github.io/portfolio/publication/</loc>
     <lastmod>2021-10-01T19:14:32+09:00</lastmod>
   </url><url>
-    <loc>https://SeeKT.github.io/portfolio/post/blog_old_self_2/</loc>
-    <lastmod>2021-09-27T19:18:20+09:00</lastmod>
+    <loc>https://SeeKT.github.io/portfolio/tags/blog/</loc>
+    <lastmod>2021-09-20T22:10:44+09:00</lastmod>
   </url><url>
-    <loc>https://SeeKT.github.io/portfolio/post/blog_old_self/</loc>
-    <lastmod>2021-09-26T00:18:45+09:00</lastmod>
+    <loc>https://SeeKT.github.io/portfolio/categories/blog/</loc>
+    <lastmod>2021-09-20T22:10:44+09:00</lastmod>
   </url><url>
     <loc>https://SeeKT.github.io/portfolio/post/blog_online/</loc>
     <lastmod>2021-09-20T22:10:44+09:00</lastmod>
@@ -94,9 +79,6 @@
   </url><url>
     <loc>https://SeeKT.github.io/portfolio/post/python_plotly/</loc>
     <lastmod>2021-09-20T21:53:21+09:00</lastmod>
-  </url><url>
-    <loc>https://SeeKT.github.io/portfolio/post/blog_lab/</loc>
-    <lastmod>2021-09-08T18:46:10+09:00</lastmod>
   </url><url>
     <loc>https://SeeKT.github.io/portfolio/tags/pc/</loc>
     <lastmod>2021-09-04T17:26:46+09:00</lastmod>
@@ -125,20 +107,8 @@
     <loc>https://SeeKT.github.io/portfolio/post/optimal_control_numerical/</loc>
     <lastmod>2021-08-27T22:55:15+09:00</lastmod>
   </url><url>
-    <loc>https://SeeKT.github.io/portfolio/tags/%E3%83%90%E3%83%BC/</loc>
-    <lastmod>2021-08-08T21:56:49+09:00</lastmod>
-  </url><url>
-    <loc>https://SeeKT.github.io/portfolio/post/blog_bar/</loc>
-    <lastmod>2021-08-08T21:56:49+09:00</lastmod>
-  </url><url>
     <loc>https://SeeKT.github.io/portfolio/post/optimal_control_dp/</loc>
     <lastmod>2021-08-02T21:12:28+09:00</lastmod>
-  </url><url>
-    <loc>https://SeeKT.github.io/portfolio/tags/%E3%82%A2%E3%83%AB%E3%83%90%E3%82%A4%E3%83%88/</loc>
-    <lastmod>2021-08-30T09:28:24+09:00</lastmod>
-  </url><url>
-    <loc>https://SeeKT.github.io/portfolio/post/blog_part_time/</loc>
-    <lastmod>2021-08-30T09:28:24+09:00</lastmod>
   </url><url>
     <loc>https://SeeKT.github.io/portfolio/post/optimal_control_continuous/</loc>
     <lastmod>2021-07-22T16:14:47+09:00</lastmod>
