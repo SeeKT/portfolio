@@ -15,7 +15,7 @@
   </title>
 
   
-  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.91.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.85.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta
     name="description"
     content="
@@ -411,12 +411,12 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">gpg --keyserver hkp://keys.gnupg.net --recv-key 7D8D0BF6
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">gpg --keyserver hkp://keys.gnupg.net --recv-key 7D8D0BF6
 gpg --fingerprint 7D8D0BF6
 gpg -a --export 7D8D0BF6 <span class="p">|</span> apt-key add -
 apt update
 </code></pre></div><p>と</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">wget -q -O - https://archive.kali.org/archive-key.asc <span class="p">|</span> apt-key add
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">wget -q -O - https://archive.kali.org/archive-key.asc <span class="p">|</span> apt-key add
 </code></pre></div><p>が紹介されていた．前者でうまくいかなかったので，後者を試した．</p>
 <p><img src="./kali_2018_2_key_add.png" alt="key" title="gpgキーを追加する"></p>
 <h4 id="22-依存関係">2.2. 依存関係</h4>
@@ -431,7 +431,7 @@ apt update
 </li>
 </ul>
 <p><img src="./kali_2018_4_apt_listchanges.png" alt="ruby_parser" title="ruby-http-parser.rbのインストール"></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">apt-get install ruby-http-parser.rb
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">apt-get install ruby-http-parser.rb
 </code></pre></div><p>を実行したところ，上のapt-listchangesが出力された．末尾まで見てqで進めた．途中に質問されたが，そのまま答えた．</p>
 <p><img src="./kali_2018_5.png" alt="question" title="質問"></p>
 <p><img src="./kali_2018_6_cron.png" alt="cron" title="cron"></p>
@@ -448,22 +448,22 @@ apt update
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">dpkg --audit
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dpkg --audit
 dpkg --configure thin
 </code></pre></div><p><img src="./kali_2018_9.png" alt="dpkg_command" title="dpkgコマンド"></p>
 <p>参考サイトによると，<code>/var/lib/dpkg/info</code>以下の関連するファイルを削除すれば良いらしい．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /var/lib/dpkg/info
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /var/lib/dpkg/info
 rm -rf thin.postinst thin.postrm thin.prerm
 </code></pre></div><p><img src="./kali_2018_10.png" alt="remove" title="ファイルの削除"></p>
 <p>この後に</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">dpkg --configure thin
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dpkg --configure thin
 </code></pre></div><p>をすれば良いらしいが，何故かうまくいかなかった．</p>
 <p><img src="./kali_2018_11.png" alt="thin_config" title="thinのsetup"></p>
 <p>仕方ないので，thinをインストールすることにした．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">apt install thin
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">apt install thin
 </code></pre></div><p><img src="./kali_2018_12.png" alt="install_thin" title="thinのインストール"></p>
 <p>エラーが出なかったので，確認する．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">dpkg -s thin
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dpkg -s thin
 </code></pre></div><p><img src="./kali_2018_13.png" alt="noterror" title="status"></p>
 <p><code>Status install ok installed</code>になっているので，良さそう．</p>
 <ul>
@@ -480,11 +480,11 @@ rm -rf thin.postinst thin.postrm thin.prerm
 <p>またエラーが出たので，原因を探す．とりあえず，<code>apt-get clean</code>とかを実行する．</p>
 <p><img src="./kali_2018_15.png" alt="apt-get-clean" title="apt-get cleanを実行"></p>
 <p>&ldquo;ruby-cms-scanner: &ldquo;の行から，依存関係の問題があることが分かった．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">apt install ruby-progressbar
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">apt install ruby-progressbar
 </code></pre></div><p>でインストールしようとしたが，先ほどと同様のエラーが出た．</p>
 <p><img src="./kali_2018_16.png" alt="error3" title="上と同様のエラー"></p>
 <p>以下のサイトと類似しているエラーだったので，関連debを上書きインストールする方法を試してみた．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">dpkg -i --force-overwrite /var/cache/apt/archives/ruby-progressbar_1.10.1-1_all.deb
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dpkg -i --force-overwrite /var/cache/apt/archives/ruby-progressbar_1.10.1-1_all.deb
 apt --fix-broken install
 </code></pre></div><ul>
 <li>参考
@@ -516,50 +516,50 @@ apt --fix-broken install
 <p><img src="./kali_2018_19.png" alt="network_config"></p>
 <h4 id="24-ユーザの追加">2.4. ユーザの追加</h4>
 <p>&ldquo;ai&quot;というユーザを追加する．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">useradd -m ai
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">useradd -m ai
 passwd ai
 usermod -a -G sudo ai
 chsh -s /bin/bash ai
 </code></pre></div><p><img src="./kali_2018_20.png" alt="useradd" title="ユーザを追加"></p>
 <h4 id="25-ssh環境">2.5. ssh環境</h4>
 <h5 id="1-sshホスト鍵の再生成">(1) SSHホスト鍵の再生成</h5>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /etc/ssh
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /etc/ssh
 mkdir default_keys
 mv ssh_host_* default_keys/
 dpkg-reconfigure openssh-server
 </code></pre></div><h5 id="2-sshdの起動">(2) sshdの起動</h5>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">service ssh start
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">service ssh start
 update-rc.d ssh <span class="nb">enable</span>
 apt install sysv-rc-conf -y
 </code></pre></div><h5 id="3-ログインできるか確認">(3) ログインできるか確認</h5>
 <p>ローカルから</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh ai@localhost
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh ai@localhost
 </code></pre></div><p><img src="./kali_2018_21.png" alt="ssh" title="ローカルからssh接続"></p>
 <p>Windows側から</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh ai@10.0.0.3
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh ai@10.0.0.3
 </code></pre></div><p><img src="./kali_2018_22.png" alt="ssh_win" title="Windowsからssh接続"></p>
 <p>どちらも接続できている．</p>
 <h5 id="4-rootログインの許可">(4) rootログインの許可</h5>
 <p><code>/etc/ssh/sshd_config</code>を編集して</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">PermitRootLogin yes
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">PermitRootLogin yes
 </code></pre></div><p>にする．</p>
 <p><img src="./kali_2018_23.png" alt="root" title="rootログイン"></p>
 <h5 id="5-公開鍵認証">(5) 公開鍵認証</h5>
 <p>Windows側で公開鍵があるディレクトリで，</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">scp .<span class="se">\i</span>d_rsa.pub root@10.0.0.3:/root/
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">scp .<span class="se">\i</span>d_rsa.pub root@10.0.0.3:/root/
 </code></pre></div><p>とする．</p>
 <p>kali linux側で，</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">cat id_rsa.pub &gt;&gt; ./.ssh/authorized_keys
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cat id_rsa.pub &gt;&gt; ./.ssh/authorized_keys
 chmod -R <span class="m">700</span> ./.ssh/
 chmod -R <span class="m">600</span> ./.ssh/authorized_keys
 </code></pre></div><p>を実行．</p>
 <p><code>/etc/ssh/sshd_config</code>の<code>PubkeyAuthentication</code>と<code>AuthorizedKeysFile</code>のコメントを外す．</p>
 <p>Windows側の<code>.ssh/config</code>に以下を追加．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">Host kali_2018
+<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">Host kali_2018
     HostName 10.0.0.3
     User root
     IdentityFile [authorized_keysに対応する秘密鍵のパス]
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh kali_2018
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh kali_2018
 </code></pre></div><p>でログインできることを確認する．</p>
 <h3 id="3-まとめ">3. まとめ</h3>
 <p>kali linux 2018.2を導入し，初期設定をした．2018を入れたつもりだが，アップグレードされていた．結局消したが，苦労したので戒めとして残した．真似はしない方が良い．</p>

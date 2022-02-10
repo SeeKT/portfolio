@@ -15,7 +15,7 @@
   </title>
 
   
-  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.91.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.85.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta
     name="description"
     content="
@@ -455,7 +455,7 @@
 <p>うまくいくと，以下のようなデスクトップとして起動できる．</p>
 <p><img src="./kali_2018_1.png" alt="kali_2018_1" title="デスクトップの起動"></p>
 <p>IPアドレスの編集を行う．Virtualbox側でホストオンリーネットワークを指定し，Kali linux側の<code>/etc/network/interfaces</code>に以下を追加．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">allow-hotplug eth0
+<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">allow-hotplug eth0
 iface eth0 inet static
 address 10.0.0.3
 netmask 255.255.255.0

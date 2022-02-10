@@ -15,7 +15,7 @@
   </title>
 
   
-  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.91.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.85.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta
     name="description"
     content="
@@ -369,22 +369,22 @@
 <p>以下，サーバ側のシェルに<code>(server)</code>とし，接続するクライアント側のシェルに<code>(client)</code>と書くものとする．</p>
 <h4 id="1-sshdのインストールと自動起動の設定-サーバ側">(1) sshdのインストールと自動起動の設定 (サーバ側)</h4>
 <p>ホスト側でsshをインストールして，自動起動の設定を行う．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> sudo apt update <span class="o">&amp;&amp;</span> sudo apt -y upgrade
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> sudo apt update <span class="o">&amp;&amp;</span> sudo apt -y upgrade
 <span class="o">(</span>server<span class="o">)</span> sudo apt -y install ssh
 <span class="o">(</span>server<span class="o">)</span> sudo systemctl start ssh.service
 <span class="o">(</span>server<span class="o">)</span> sudo systemctl <span class="nb">enable</span> ssh.service
 </code></pre></div><p>この後サーバを再起動し，以下のコマンドを実行．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> sudo systemctl is-enabled ssh.service
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> sudo systemctl is-enabled ssh.service
 <span class="o">(</span>server<span class="o">)</span> sudo systemctl status ssh.service
 </code></pre></div><p>上のコマンドを実行し，<code>enabled</code>と出力されれば，ブート時に起動する．下のコマンドを実行し，<code>Active: active (running)</code>と出力されれば現在sshdが起動している．</p>
 <p>この時点でサーバ側にパスワード認証で入ることができる．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>client<span class="o">)</span> ssh <span class="o">[</span>user<span class="o">]</span>@<span class="o">[</span>IP address of the server<span class="o">]</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>client<span class="o">)</span> ssh <span class="o">[</span>user<span class="o">]</span>@<span class="o">[</span>IP address of the server<span class="o">]</span>
 </code></pre></div><p>(userはサーバのユーザ名)とすると，特に設定が間違えていなければ接続できる．</p>
 <p>今回の目的は公開鍵認証で入ることなので，以下の手順を</p>
 <h4 id="2-キーペアを作る-クライアント側">(2) キーペアを作る (クライアント側)</h4>
 <p>クライアント側でキーペアを作る．キーペアの作り方については以下の記事を参考にした．</p>
 <p>Git Bash (Ubuntuはterminal)で，以下のコマンドを実行する．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>client<span class="o">)</span> ssh-keygen -t rsa -b <span class="m">4096</span> -C <span class="s2">&#34;comment&#34;</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>client<span class="o">)</span> ssh-keygen -t rsa -b <span class="m">4096</span> -C <span class="s2">&#34;comment&#34;</span>
 </code></pre></div><p>上記のコマンドを実行すると，鍵のパスを変えるか，パスフレーズは必要か聞かれる．鍵はデフォルトでは<code>&lt;user&gt;/.ssh</code>直下に<code>id_rsa</code>と<code>id_rsa.pub</code>として保存されるが，複数の鍵を作る場合は新しいディレクトリを<code>.ssh</code>以下に作るなどすれば良いと思う．</p>
 <p>commentは任意だが，複数人が管理するファイルサーバという機能を持たせると考えると，自分の名字にするのが良いように思う．</p>
 <h5 id="参考">参考</h5>
@@ -393,41 +393,41 @@
 </ul>
 <h4 id="3-クライアント側からホスト側に公開鍵を送信する">(3) クライアント側からホスト側に公開鍵を送信する</h4>
 <p>(1)でSSH接続ができているとすると，クライアント側でscpコマンドを実行すると，サーバ側のuserのホームディレクトリ直下に公開鍵を転送できる．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>client<span class="o">)</span> scp <span class="o">[</span>client rsa pub key path<span class="o">]</span> <span class="o">[</span>user<span class="o">]</span>@<span class="o">[</span>IP address of the server<span class="o">]</span>:/home/<span class="o">[</span>user<span class="o">]</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>client<span class="o">)</span> scp <span class="o">[</span>client rsa pub key path<span class="o">]</span> <span class="o">[</span>user<span class="o">]</span>@<span class="o">[</span>IP address of the server<span class="o">]</span>:/home/<span class="o">[</span>user<span class="o">]</span>
 </code></pre></div><p>ここで，scpはSSHを使ってリモートホストとローカルホストの通信を暗号化した上で，ファイルの送信をするコマンドであり，<code>scp [from] [to]</code>のように書けば，fromのパスで指定したファイルがtoのパスの下に送られる．</p>
 <p><code>[client rsa pub key path]</code>は，キーペアを作るときに変えていなければ，(Windowsの場合は)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">C<span class="p">:</span><span class="nl">\Users\[user]\.ssh\id_rsa.pub</span>
+<div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd">C<span class="p">:</span><span class="nl">\Users\[user]\.ssh\id_rsa.pub</span>
 </code></pre></div><p>である．</p>
 <h4 id="4-authorized_keysファイルを作る">(4) <code>authorized_keys</code>ファイルを作る</h4>
 <p>次に，サーバ側で鍵の設定をする．(3)で，ホームディレクトリ直下に公開鍵が送られたとする．このファイルの内容を<code>authorized_keys</code>ファイルにコピーする．その後，<code>chmod</code>コマンドで所有者のみが読めるようにする．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> cat id_rsa.pub &gt;&gt; ./.ssh/authorized_keys
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> cat id_rsa.pub &gt;&gt; ./.ssh/authorized_keys
 <span class="o">(</span>server<span class="o">)</span> chmod <span class="m">700</span> ./.ssh
 <span class="o">(</span>server<span class="o">)</span> chmod <span class="m">600</span> ./.ssh/authorized_keys
 <span class="o">(</span>server<span class="o">)</span> rm -rf id_rsa.pub
 </code></pre></div><h4 id="5-sshd_configの設定-サーバ側">(5) <code>sshd_config</code>の設定 (サーバ側)</h4>
 <p>公開鍵認証を有効化するために，sshdの設定ファイルを編集する．一旦バックアップをとる．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> <span class="nb">cd</span> /etc/ssh
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> <span class="nb">cd</span> /etc/ssh
 <span class="o">(</span>server<span class="o">)</span> sudo cp sshd_config sshd_config.bk
 <span class="o">(</span>server<span class="o">)</span> sudo vim sshd_config
 </code></pre></div><p>以下の行のコメントを外し，有効化する．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">#PubkeyAuthentication yes
+<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">#PubkeyAuthentication yes
 #AuthorizedKeysFile .ssh/authorized_keys  .ssh/authorized_keys2
 </code></pre></div><p>一応Rootでのログインはできないようにしておく．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">PermitRootLogin no
+<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">PermitRootLogin no
 </code></pre></div><h5 id="参考-1">参考</h5>
 <ul>
 <li><a href="https://qiita.com/gotohiro55/items/36a22516de2b381b3c6e">SSHの鍵認証設定</a></li>
 </ul>
 <h4 id="6-sshのconfigファイルの設定-クライアント側">(6) <code>.ssh</code>のconfigファイルの設定 (クライアント側)</h4>
 <p>(5)までで公開鍵認証でSSH接続できるようになった．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">ssh -i [client rsa private key path] [user]@[IP address of the server]
+<div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd">ssh -i [client rsa private key path] [user]@[IP address of the server]
 </code></pre></div><p>接続のたびにこのコマンドを打つのはめんどくさいので，エイリアス設定をする．<code>.ssh/config</code>ファイルに以下を追加 (Windowsの場合．秘密鍵が<code>.ssh</code>直下にあるとする)．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">Host [server name]
+<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">Host [server name]
   HostName xxx.xxx.xxx.xxx  # IP address of the server
   User [user]               # user name of the server
   Identityfile C:\Users\[user]\.ssh\id_rsa
 </code></pre></div><p>このようにすると，</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ssh [servername]
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">ssh [servername]
 </code></pre></div><p>でサーバに接続できる．</p>
 <h3 id="2-sambaの設定">2 Sambaの設定</h3>
 <p>Sambaとは，Linux上でWindowsのネットワーク機能を実現するソフトウェアである．これを使うことで，ファイルサーバの機能が実現される．</p>
@@ -441,13 +441,13 @@
 </li>
 </ul>
 <h4 id="1-sambaのインストール">(1) Sambaのインストール</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> sudo apt install -y samba
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> sudo apt install -y samba
 </code></pre></div><h4 id="2-sambaconfのバックアップと編集">(2) <code>samba.conf</code>のバックアップと編集</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> <span class="nb">cd</span> /etc/samba/
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> <span class="nb">cd</span> /etc/samba/
 <span class="o">(</span>server<span class="o">)</span> sudo cp smb.conf smb.conf.bk
 <span class="o">(</span>server<span class="o">)</span> sudo vim smb.conf
 </code></pre></div><p>末尾に以下を追加．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"># fileserver
+<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt"># fileserver
 [fileserver]
 comment = Ubuntu FileServer
 path = /home/[user]/Share_dir/
@@ -458,32 +458,32 @@ guest only = yes
 create mode = 0777
 directory mode = 0777
 </code></pre></div><h4 id="3-再起動と自動起動の設定">(3) 再起動と自動起動の設定</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> sudo systemctl restart smbd nmbd
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> sudo systemctl restart smbd nmbd
 <span class="o">(</span>server<span class="o">)</span> sudo systemctl <span class="nb">enable</span> smbd nmbd
 </code></pre></div><h3 id="3-バックアップ">3. バックアップ</h3>
 <p>共有したディレクトリをHDDなどにバックアップすることを考える．これは，突然PCが落ちてデータが飛ぶようなリスクへの対策となる．</p>
 <p>ここではHDDがマウントポイント<code>/mnt/Elements</code>にマウントされているとし，システム起動時にマウントするように設定したとする．</p>
 <h4 id="1-バックアップ用のディレクトリの作成">(1) バックアップ用のディレクトリの作成</h4>
 <p><code>Server_backup</code>ディレクトリにバックアップを取るものとする．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> mkdir /mnt/Elements/Server_backup
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> mkdir /mnt/Elements/Server_backup
 </code></pre></div><h4 id="2-バックアップの設定">(2) バックアップの設定</h4>
 <p>ここでは，差分バックアップを取るものとする．このときに使うコマンドは<code>rsync</code>である．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> sudo rsync -av /home/<span class="o">[</span>user<span class="o">]</span>/Share_dir/ /mnt/Elements/Server_backup
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> sudo rsync -av /home/<span class="o">[</span>user<span class="o">]</span>/Share_dir/ /mnt/Elements/Server_backup
 </code></pre></div><p>これは，<code>Share_dir</code>の中身を<code>/mnt/Elements/Server_backup</code>にバックアップするというようなものである．ここで，引数<code>-av</code>は，今どこをコピーしているのかを表示出力するためのものである．</p>
 <h4 id="3-バックアップのスケジューラの設定">(3) バックアップのスケジューラの設定</h4>
 <p>毎日バックアップを更新するために，スケジューラを用いる．crontabを編集すれば良い．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> sudo vim /etc/crontab
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>server<span class="o">)</span> sudo vim /etc/crontab
 </code></pre></div><p>以下を追加した．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># m h dom mon dow user	command</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># m h dom mon dow user	command</span>
 <span class="m">00</span> 3	* * *	root    rsync -av /home/<span class="o">[</span>user<span class="o">]</span>/Share_dir/ /mnt/Elements/Server_backup
 </code></pre></div><h3 id="4-cui運用にする">4. CUI運用にする</h3>
 <p>ファイルサーバとしての運用であれば，CUI運用の方が良い．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 一時的にCUIモードにする</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 一時的にCUIモードにする</span>
 <span class="o">(</span>server<span class="o">)</span> sudo systemctl isolate multi-user.target
 <span class="c1"># デフォルトをCUIモードにする</span>
 <span class="o">(</span>server<span class="o">)</span> sudo systemctl set-default multi-user.target
 </code></pre></div><p>GUIに戻したいときは以下のコマンドを実行．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 一時的にGUIモードにする</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 一時的にGUIモードにする</span>
 <span class="o">(</span>server<span class="o">)</span> sudo systemctl isolate graphical.target
 <span class="c1"># デフォルトをGUIモードにする</span>
 <span class="o">(</span>server<span class="o">)</span> sudo systemctl set-default graphical.target

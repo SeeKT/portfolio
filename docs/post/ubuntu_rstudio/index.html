@@ -15,7 +15,7 @@
   </title>
 
   
-  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.91.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.85.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta
     name="description"
     content="
@@ -360,7 +360,7 @@
 </ul>
 <h3 id="1-前処理">1. 前処理</h3>
 <p>次のようなシェルスクリプトを書き，<code>~/install_R_requirement.sh</code>として保存した．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
 </span><span class="cp"></span>
 <span class="c1"># Written by A.Tachibana, 2021/4/28</span>
 
@@ -394,11 +394,11 @@ fc-cache -f -v
 <span class="c1">## requirement tools</span>
 sudo -S apt -y install build-essential libxml2-dev libssl-dev libx11-dev libglu1-mesa-dev libmagick++-dev libudunits2-0 libudunits2-dev libgdal-dev libproj-dev libgmp3-dev curl 
 </code></pre></div><p>このファイルに実行権限を与え，実行する．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">chmod <span class="m">755</span> install_R_requirement.sh
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">chmod <span class="m">755</span> install_R_requirement.sh
 ./install_R_requirement.sh
 </code></pre></div><h3 id="2-rとrstudioのインストール">2. RとRStudioのインストール</h3>
 <p>次のようなシェルスクリプトを書き，<code>~/install_R.sh</code>として保存した．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
 </span><span class="cp"></span>
 <span class="c1"># Written by A.Tachibana, 2021/4/28</span>
 
@@ -430,7 +430,7 @@ sudo -S apt -y install r-base
 wget https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.4.1106-amd64.deb
 sudo -S gdebi rstudio-1.4.1106-amd64.deb
 </code></pre></div><p>このファイルに実行権限を与え，実行する．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">chmod <span class="m">755</span> install_R.sh
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">chmod <span class="m">755</span> install_R.sh
 ./install_R.sh
 </code></pre></div><h4 id="注意点">注意点</h4>
 <ul>

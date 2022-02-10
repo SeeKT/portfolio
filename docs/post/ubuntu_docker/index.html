@@ -15,7 +15,7 @@
   </title>
 
   
-  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.91.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.85.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta
     name="description"
     content="
@@ -390,7 +390,7 @@
 <h3 id="2-インストールのためのシェルスクリプト">2. インストールのためのシェルスクリプト</h3>
 <p>福山大学の<a href="https://www.kkaneko.jp/tools/docker/ubuntu_docker.html">金子邦彦先生のウェブサイト</a> がかなり参考になった．Docker Engineの導入以外にもかなり参考にさせていただいた．</p>
 <p>次のようなシェルスクリプトを作り，<code>~/install_docker.sh</code>として保存した．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
 </span><span class="cp"></span>
 <span class="c1"># Written by A.Tachibana, 2021/3/19</span>
 
@@ -440,7 +440,7 @@ sudo -S systemctl is-enabled docker
 <span class="c1">## let user ubuntu use docker</span>
 sudo gpasswd -a <span class="nv">$USER</span> docker
 </code></pre></div><p>このファイルに実行権限を与え，実行する．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">chmod <span class="m">755</span> install_docker.sh
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">chmod <span class="m">755</span> install_docker.sh
 ./install_docker.sh
 </code></pre></div><p>なお，このシェルスクリプトは，私のサブのGitHubアカウントの<a href="https://github.com/tcbn-ai/TIL/blob/main/Study_Docker/shellscript/install_docker.sh">publicリポジトリ</a>にアップロードしている．</p>
 <h4 id="参考">参考</h4>

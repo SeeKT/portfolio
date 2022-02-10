@@ -69,13 +69,15 @@ slides: ""
 ---
 
 ## Journal Paper
-1. Kosuke Toda, Naomi Kuze, and Toshimitsu Ushio, "Effects of miners' location on blocks selection in blockchain," IEICE Communications Express, vol.9, no.12, pp.610-615, December 2020, DOI: 10.1587/comex.2020COL0012 [[paper]](https://www.jstage.jst.go.jp/article/comex/9/12/9_2020COL0012/_article/-char/en)
+1. Kosuke Toda, Naomi Kuze, and Toshimitsu Ushio, "Effects of Miners' Location on Blocks Selection in Blockchain," IEICE Communications Express, vol.9, no.12, pp.610-615, December 2020, DOI: 10.1587/comex.2020COL0012 [[paper]](https://www.jstage.jst.go.jp/article/comex/9/12/9_2020COL0012/_article/-char/en)
 
-1. Kosuke Toda, Naomi Kuze, and Toshimitsu Ushio, "Modeling Modeling and Supervisory Control of Blockchain Forks," IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, vol.E104.A, no.2, pp.474-475, February 2021, DOI: 10.1587/transfun.2020MAL0001 [[paper]](https://www.jstage.jst.go.jp/article/transfun/E104.A/2/E104.A_2020MAL0001/_article)
+1. Kosuke Toda, Naomi Kuze, and Toshimitsu Ushio, "Modeling and Supervisory Control of Blockchain Forks," IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, vol.E104.A, no.2, pp.474-475, February 2021, DOI: 10.1587/transfun.2020MAL0001 [[paper]](https://www.jstage.jst.go.jp/article/transfun/E104.A/2/E104.A_2020MAL0001/_article)
 
 1. Kosuke Toda, Naomi Kuze, and Toshimitsu Ushio, "Game-Theoretic Approach to a Decision-Making Problem for Blockchain Mining," IEEE Control Systems Letters, vol.5, no.5, pp.1783-1788, November 2021, DOI: 10.1109/LCSYS.2020.3043834. [[paper]](https://ieeexplore.ieee.org/document/9290112) [[arXiv]](https://arxiv.org/abs/2010.05370)
 
-1. Kosuke Toda, Naomi Kuze, and Toshimitsu Ushio, "Stability analysis and control of decision-making of miners in blockchain," IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, vol.E105-A, no.4, pp.-, April 2022. [[arXiv]](https://arxiv.org/abs/2104.08460)
+1. Kosuke Toda, Naomi Kuze, and Toshimitsu Ushio, "Stability Analysis and Control of Decision-making of Miners in Blockchain," IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, vol.E105-A, no.4, pp.-, April 2022. [[arXiv]](https://arxiv.org/abs/2104.08460)
+
+1. Kosuke Toda, Naomi Kuze, and Toshimistu Ushio, "Dynamics of Miners' Decision Making Under Taxation in Blockchain," Nonlinear Theory and Its Applications, IEICE, vol.~E13-N, no.~2, pp.-, 2022.
 
 ## International Conference
 1. Kosuke Toda, Naomi Kuze, and Toshimitsu Ushio, "Game-Theoretic Approach to a Decision-Making Problem for Blockchain Mining," in Proceedings of the 2021 American Control Conference (ACC 2021), Online, May 2021. [[link]](https://ieeexplore.ieee.org/document/9482696)
@@ -85,4 +87,6 @@ slides: ""
 ## Domestic Conference
 1. 戸田康介・久世尚美・潮俊光, "ブロックチェーンマイニングの意思決定問題の解析 ～ マイナーが3人の場合 ～," 電子情報通信学会技術研究報告, (信学技報), vol.120, no.246, pp.85-90, オンライン, 11月 2020.
 
-1. 戸田 康介，久世 尚美，潮 俊光, "ブロックチェーンにおけるマイナーの意思決定ダイナミクス," 2021年 電子情報通信学会 NOLTA ソサイエティ大会, (IEICE, NOLTA ソサイエティ), p.19, オンライン, 6月 2021.
+1. 戸田康介・久世尚美・潮俊光, "ブロックチェーンにおけるマイナーの意思決定ダイナミクス," 2021年 電子情報通信学会 NOLTA ソサイエティ大会, (IEICE, NOLTA ソサイエティ), p.19, オンライン, 6月 2021.
+
+1. 戸田康介・久世尚美・潮俊光 "ブロックチェーンにおけるマイナーの意思決定の進化ゲームによるモデリング," 電子情報通信学会技術研究報告 (信学技報), 3月 2022.

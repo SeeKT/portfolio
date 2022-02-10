@@ -15,7 +15,7 @@
   </title>
 
   
-  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.91.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.85.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta
     name="description"
     content="
@@ -371,7 +371,7 @@
 </ul>
 </li>
 <li>ディレクトリ構成
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">|- test_code/   # コードを置いている
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">|- test_code/   # コードを置いている
 |- .devcontainer/
     |- devcontainer.json
     |- docker-compose.yml
@@ -384,23 +384,23 @@
 <li><code>devcontainer.json</code>
 <ul>
 <li>VSCodeのRemoteを使うときの設定
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="c1">// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-</span><span class="c1">// https://github.com/microsoft/vscode-dev-containers/tree/v0.177.0/containers/docker-existing-dockerfile
-</span><span class="c1"></span><span class="p">{</span>
-  <span class="c1">// 名前は任意
-</span><span class="c1"></span>  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Docker-Python&#34;</span><span class="p">,</span>
-  <span class="c1">// dockercomposefileの場所 (同階層に置いている)
-</span><span class="c1"></span>  <span class="nt">&#34;dockerComposeFile&#34;</span><span class="p">:</span> <span class="s2">&#34;docker-compose.yml&#34;</span><span class="p">,</span>
-  <span class="c1">// 使う拡張機能
-</span><span class="c1"></span>  <span class="nt">&#34;extensions&#34;</span><span class="p">:</span> <span class="p">[</span>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">//</span> <span class="err">For</span> <span class="err">format</span> <span class="err">details,</span> <span class="err">see</span> <span class="err">https://aka.ms/devcontainer.json.</span> <span class="err">For</span> <span class="err">config</span> <span class="err">options,</span> <span class="err">see</span> <span class="err">the</span> <span class="err">README</span> <span class="err">at:</span>
+<span class="err">//</span> <span class="err">https://github.com/microsoft/vscode-dev-containers/tree/v</span><span class="mf">0.177</span><span class="err">.</span><span class="mi">0</span><span class="err">/containers/docker-existing-dockerfile</span>
+<span class="p">{</span>
+  <span class="err">//</span> <span class="err">名前は任意</span>
+  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Docker-Python&#34;</span><span class="p">,</span>
+  <span class="err">//</span> <span class="err">dockercomposefileの場所</span> <span class="err">(同階層に置いている)</span>
+  <span class="nt">&#34;dockerComposeFile&#34;</span><span class="p">:</span> <span class="s2">&#34;docker-compose.yml&#34;</span><span class="p">,</span>
+  <span class="err">//</span> <span class="err">使う拡張機能</span>
+  <span class="nt">&#34;extensions&#34;</span><span class="p">:</span> <span class="p">[</span>
     <span class="s2">&#34;ms-python.python&#34;</span>
   <span class="p">],</span>
-  <span class="c1">// ここに記載している&#34;service&#34;名とdocker-compose.ymlに記載している&#34;service&#34;を一致させる
-</span><span class="c1"></span>  <span class="nt">&#34;service&#34;</span><span class="p">:</span> <span class="s2">&#34;python&#34;</span><span class="p">,</span>
-  <span class="c1">// コンテナ内に入ったときのworkdir
-</span><span class="c1"></span>  <span class="nt">&#34;workspaceFolder&#34;</span><span class="p">:</span> <span class="s2">&#34;/code&#34;</span><span class="p">,</span>
-  <span class="c1">// VSCodeを閉じたときのアクション
-</span><span class="c1"></span>  <span class="nt">&#34;shutdownAction&#34;</span><span class="p">:</span> <span class="s2">&#34;stopCompose&#34;</span>
+  <span class="err">//</span> <span class="err">ここに記載している</span><span class="nt">&#34;service&#34;</span><span class="err">名とdocker-compose.ymlに記載している</span><span class="s2">&#34;service&#34;</span><span class="err">を一致させる</span>
+  <span class="s2">&#34;service&#34;</span><span class="p">:</span> <span class="s2">&#34;python&#34;</span><span class="p">,</span>
+  <span class="err">//</span> <span class="err">コンテナ内に入ったときのworkdir</span>
+  <span class="nt">&#34;workspaceFolder&#34;</span><span class="p">:</span> <span class="s2">&#34;/code&#34;</span><span class="p">,</span>
+  <span class="err">//</span> <span class="err">VSCodeを閉じたときのアクション</span>
+  <span class="nt">&#34;shutdownAction&#34;</span><span class="p">:</span> <span class="s2">&#34;stopCompose&#34;</span>
 <span class="p">}</span>
 </code></pre></div></li>
 </ul>
@@ -409,7 +409,7 @@
 <ul>
 <li>複数のコンテナを定義し，実行することができる．</li>
 <li>今回は，1つのコンテナに対する処理を記述
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3&#34;</span><span class="w">    </span><span class="c"># 3が最新版</span><span class="w">
+<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3&#34;</span><span class="w">    </span><span class="c"># 3が最新版</span><span class="w">
 </span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w"> 
 </span><span class="w">    </span><span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="c"># ここの名前とdevcontainer.jsonの&#34;service&#34;を一致させる</span><span class="w">
 </span><span class="w">        </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l">.   </span><span class="w"> </span><span class="c"># 同階層のdockerfileからビルドする</span><span class="w">
@@ -424,7 +424,7 @@
 <li><code>dockerfile</code>
 <ul>
 <li>コンテナを作るための処理
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="c">########### Image file ###########</span><span class="err">
+<div class="highlight"><pre class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="c">########### Image file ###########</span><span class="err">
 </span><span class="err"></span><span class="k">FROM</span><span class="s"> python:3.8.10-buster</span><span class="err">
 </span><span class="err"></span><span class="c">##################################</span><span class="err">
 </span><span class="err">
@@ -452,7 +452,7 @@
 <li><code>requirements.txt</code>
 <ul>
 <li><code>pip install</code>するファイル
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">############ Requirements Packages ############
+<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">############ Requirements Packages ############
 pylint
 numpy
 scipy

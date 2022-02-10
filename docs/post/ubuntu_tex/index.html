@@ -15,7 +15,7 @@
   </title>
 
   
-  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.91.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.85.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta
     name="description"
     content="
@@ -366,7 +366,7 @@
 <li>私はTeXの文書を作るときはAtomを使うので，Atomを入れた．
 <ul>
 <li>公式サイト (<a href="https://atom.io/">https://atom.io/</a>) からdebをダウンロードして実行．
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">sudo apt install ./atom-amd64.deb
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo apt install ./atom-amd64.deb
 </code></pre></div></li>
 <li>パッケージを入れる．
 <ul>
@@ -382,18 +382,18 @@
 <h4 id="texliveを入れる">TeXLiveを入れる</h4>
 <ul>
 <li>日本の大学(e.g. NAIST)のリポジトリからダウンロードして中身を展開する．
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">wget http://ftp.naist.jp/pub/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">wget http://ftp.naist.jp/pub/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz
 tar -zxvf install-tl-unx.tar.gz
 cd install-tl-[date]
 </code></pre></div></li>
 <li>管理者権限で実行する．リポジトリはダウンロードしたところ．
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">sudo ./install-tl --repository http://ftp.naist.jp/pub/CTAN/systems/texlive/tlnet/
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo ./install-tl --repository http://ftp.naist.jp/pub/CTAN/systems/texlive/tlnet/
 </code></pre></div><ul>
 <li>&ldquo;I&quot;でインストール</li>
 </ul>
 </li>
 <li>パスを通す．
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">sudo /usr/local/texlive/2020/bin/x86_64-linux/tlmgr path add
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo /usr/local/texlive/2020/bin/x86_64-linux/tlmgr path add
 </code></pre></div><ul>
 <li>これは私の例である．</li>
 </ul>
@@ -401,10 +401,10 @@ cd install-tl-[date]
 <li>TeXLiveのアップデート
 <ul>
 <li>参照するリポジトリの指定
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">sudo tlmgr option repository http://ftp.naist.jp/pub/CTAN/systems/texlive/tlnet/
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo tlmgr option repository http://ftp.naist.jp/pub/CTAN/systems/texlive/tlnet/
 </code></pre></div></li>
 <li>アップデート
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">sudo tlmgr update --self --all
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo tlmgr update --self --all
 </code></pre></div></li>
 </ul>
 </li>
@@ -416,7 +416,7 @@ cd install-tl-[date]
 <li>参考: <a href="https://qiita.com/tdrk/items/16f31e45826c57bce412">latexmkの薦め</a></li>
 <li>Ubuntuでは以下のファイルをホームディレクトリ直下(~/.latexmkrc)に配置したところ，正常に動作した．</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-perl" data-lang="perl"><span class="ch">#!/usr/bin/perl</span>
+<div class="highlight"><pre class="chroma"><code class="language-perl" data-lang="perl"><span class="ch">#!/usr/bin/perl</span>
 <span class="nv">$latex</span> <span class="o">=</span> <span class="s">&#39;platex -guess-input-enc -src-specials -interaction=nonstopmode -synctex=1&#39;</span><span class="p">;</span>
 <span class="nv">$latex_silent</span> <span class="o">=</span> <span class="s">&#39;platex -interaction=batchmode&#39;</span><span class="p">;</span>
 <span class="nv">$dvips</span> <span class="o">=</span> <span class="s">&#39;dvips&#39;</span><span class="p">;</span>
@@ -430,8 +430,9 @@ cd install-tl-[date]
 <span class="nv">$pdf_update_method</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
 </code></pre></div><ul>
 <li>latexmkについては，
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">vim ~/.latexmkrc
-</code></pre></div>などとして，上記のようなものを作ればよい．</li>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">vim ~/.latexmkrc
+</code></pre></div><p>などとして，上記のようなものを作ればよい．</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -439,7 +440,7 @@ cd install-tl-[date]
 <h5 id="platex">platex</h5>
 <ul>
 <li>&ldquo;test.tex&quot;という名前のファイルをtextestというディレクトリの中に作った．
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\documentclass</span><span class="na">[dvipdfmx]</span><span class="nb">{</span>jsarticle<span class="nb">}</span>
+<div class="highlight"><pre class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\documentclass</span><span class="na">[dvipdfmx]</span><span class="nb">{</span>jsarticle<span class="nb">}</span>
 <span class="k">\title</span><span class="nb">{</span> <span class="nb">{</span><span class="k">\LaTeX</span><span class="nb">}</span> 動作テスト・サンプルファイル<span class="nb">}</span>
 <span class="k">\date</span><span class="nb">{</span><span class="k">\today</span><span class="nb">}</span>
 <span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
@@ -452,14 +453,16 @@ cd install-tl-[date]
 <span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
 </code></pre></div></li>
 <li>textestというディレクトリに移動して，以下のコマンドを実行する．
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">platex test.tex <span class="o">&amp;&amp;</span> dvipdfmx test.dvi
-</code></pre></div>実行後にpdfファイルが問題なく生成されていたら良い．</li>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">platex test.tex <span class="o">&amp;&amp;</span> dvipdfmx test.dvi
+</code></pre></div><p>実行後にpdfファイルが問題なく生成されていたら良い．</p>
+</li>
 </ul>
 <h5 id="latexmk">latexmk</h5>
 <ul>
 <li>先程のファイルに対して，
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">latexmk test.tex
-</code></pre></div>として，正しくpdfファイルが生成され，変更して保存した後にpdfファイルが更新されたら問題なく導入されている．</li>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">latexmk test.tex
+</code></pre></div><p>として，正しくpdfファイルが生成され，変更して保存した後にpdfファイルが更新されたら問題なく導入されている．</p>
+</li>
 </ul>
 </div>
     <div class="post-footer">

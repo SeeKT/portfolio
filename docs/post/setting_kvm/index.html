@@ -15,7 +15,7 @@
   </title>
 
   
-  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.91.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.85.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta
     name="description"
     content="
@@ -382,10 +382,10 @@
 <h3 id="2-a-namesection2kvm-の導入と仮想マシンの作成a">2. <a name="section2">KVM の導入と仮想マシンの作成</a></h3>
 <h4 id="21-a-namesection2-1kvm-の導入a">2.1. <a name="section2-1">KVM の導入</a></h4>
 <p>仮想化機能の KVM を導入する (参考:<a href="https://www.tecmint.com/install-kvm-on-ubuntu/">How to Install KVM on Ubuntu 20.04</a>)．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(Host)
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">(Host)
 sudo apt -y install virt-manager qemu-system
 </code></pre></div><p>KVM をインストールすると，デフォルトで <code>virbr0</code> というブリッジが作成される (参考: <a href="https://qiita.com/yoshiyasu1111/items/8d07a4fd55116fba07f7">KVMでゲストOSをブリッジ接続する</a>)．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(Host)
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">(Host)
 tcbn@tcbn-V530-15ICR:~$ ifconfig virbr0
 virbr0: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500
         inet 192.168.122.1  netmask 255.255.255.0  broadcast 192.168.122.255
@@ -402,7 +402,7 @@ virbr0: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500
 <li><a href="https://jp.ubuntu.com/download">Ubuntu 20.04</a></li>
 <li><a href="https://www.centos.org/download/">CentOS 7</a></li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(Host)
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">(Host)
 virt-manager
 </code></pre></div><p>で virt-manager を起動し，&ldquo;Create a new virtual machine&rdquo; を選択する．基本的に手順にしたがって新しい仮想マシンを作成する．ネットワークは，Virtual network &lsquo;default&rsquo;: NAT を選択する (これを選択するとインターネットに接続できたため．他の方法もあるだろう)．</p>
 <p><img src="./step1.png" alt="" title="Step 1 of 5, Local install media を選択．"></p>
@@ -414,13 +414,13 @@ virt-manager
 <h3 id="3-a-namesection3ssh-接続の設定a">3. <a name="section3">SSH 接続の設定</a></h3>
 <p>以降，Ubuntu での操作を載せる．CentOS は異なるコマンドだが，同様の操作をすることで実現できる．</p>
 <p>OS のインストール後は <code>update</code> と <code>upgrade</code> を行う．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(Guest)
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">(Guest)
 sudo apt update &amp;&amp; sudo apt -y upgrade
 </code></pre></div><p>次に，SSH 接続のために OpenSSH Server を導入する．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(Guest)
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">(Guest)
 sudo apt -y install openssh-server
 </code></pre></div><p>また，<code>ssh.service</code> が active か，マシンの起動後に active になるか (enable か) を確認する．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(Guest)
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">(Guest)
 sudo systemctl is-enabled ssh
 sudo systemctl status ssh
 </code></pre></div><p><img src="./ssh.png" alt="" title="ssh の状態の確認．"></p>
@@ -429,7 +429,7 @@ sudo systemctl status ssh
 <p>今回，Ubuntu 20.04 には <code>192.168.122.165</code> という IP address が割り当てられている．この IP address は <a href="https://www.nic.ad.jp/ja/basics/terms/dhcp.html#:~:text=DHCP%E3%81%A8%E3%81%AF%E3%80%8CDynamic%20Host,%E8%A1%8C%E3%81%86%E3%81%9F%E3%82%81%E3%81%AE%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB%E3%81%A7%E3%81%99%E3%80%82&amp;text=%E3%81%AA%E3%81%8ADHCP%E3%81%AB%E3%81%AF%E8%AA%8D%E8%A8%BC,%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E8%84%86%E5%BC%B1%E3%81%A7%E3%81%99%E3%80%82">DHCP</a> で割り当てられたものである<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>．</p>
 <p>ホスト OS とゲスト OS 間の接続ができるかどうか，確認する．</p>
 <p>ホスト OS → ゲスト OS:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">tcbn@tcbn-V530-15ICR:~$ ping -c 3 192.168.122.165
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">tcbn@tcbn-V530-15ICR:~$ ping -c 3 192.168.122.165
 PING 192.168.122.165 (192.168.122.165) 56(84) bytes of data.
 64 bytes from 192.168.122.165: icmp_seq=1 ttl=64 time=0.544 ms
 64 bytes from 192.168.122.165: icmp_seq=2 ttl=64 time=0.201 ms
@@ -442,7 +442,7 @@ rtt min/avg/max/mdev = 0.201/0.370/0.544/0.140 ms
 <img src="./ping.png" alt="" title="ゲスト OS → ホスト OS に ping."></p>
 <p>両方向に接続できていることが確認される．</p>
 <p>SSH 接続を行う．学習用環境なので，パスワード認証で十分だろう． ホスト OS 側で <code>ssh [username]@[IP address]</code> とする．初回接続時は確認が出るが，yes を選択する．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(Host)
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">(Host)
 tcbn@tcbn-V530-15ICR:~$ ssh ai@192.168.122.165
 ai@192.168.122.165&#39;s password: 
 Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.11.0-40-generic x86_64)
@@ -456,7 +456,7 @@ Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.11.0-40-generic x86_64)
 Your Hardware Enablement Stack (HWE) is supported until April 2025.
 Last login: Sat Nov 20 09:08:44 2021 from 192.168.122.1
 </code></pre></div><p>毎回このコマンドを打つのは面倒 (特に，公開鍵認証を用いている場合) なので，ホスト OS 側の <code>~/.ssh/config</code> ファイルに設定を書く (パスはこれではない可能性もある)．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Host Host_name
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">Host Host_name
     HostName [IP address]
     User [username]
 </code></pre></div><p>という書式である (参考: <a href="https://linux.die.net/man/5/ssh_config">ssh_config(5) - Linux man page</a>)．<code>ssh Host_name</code> で接続できる<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>．</p>

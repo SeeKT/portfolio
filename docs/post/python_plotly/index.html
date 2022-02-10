@@ -15,7 +15,7 @@
   </title>
 
   
-  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.91.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.85.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta
     name="description"
     content="
@@ -350,7 +350,7 @@ Plotly を用いると，3d plot をとてもきれいにできる．今回は�
 <h3 id="1-a-namesection1準備a">1. <a name="section1">準備</a></h3>
 <h4 id="11-インストール">1.1. インストール</h4>
 <p>Python にインストールするのであれば，<code>pip install</code> すればよい．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">pip install plotly
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pip install plotly
 </code></pre></div><h4 id="12-プロットするもの">1.2. プロットするもの</h4>
 <p>最適化のためのテスト関数<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> の一部をプロットする．</p>
 <p>ここでは，次の2つの関数をプロットする．</p>
@@ -388,7 +388,7 @@ $$ f(0, 0) = 0. $$</p>
 <p>ここでは，3D Surface Plot を行う．コードの書き方は，<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>を参考にした．</p>
 <details>
 <summary>実装した Python のコード</summary>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1">########## Packages ##########</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">########## Packages ##########</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span> 
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">e</span> 

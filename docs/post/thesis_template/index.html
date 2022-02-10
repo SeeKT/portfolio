@@ -15,7 +15,7 @@
   </title>
 
   
-  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.91.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.85.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta
     name="description"
     content="
@@ -352,7 +352,7 @@
 <h3 id="1-ディレクトリ構成">1. ディレクトリ構成</h3>
 <p>卒論や修論は文章の量が多くなるので，1つのTeXソースに全て書こうとするとTeXソースの行数が増え，修正が大変になる．そこで，修論本体のTeXソースに各章のTeXソースをinputするようにする．</p>
 <p>今回は，以下のようなディレクトリ構成にする．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="p">|</span>- bib/: bibtexするもの
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="p">|</span>- bib/: bibtexするもの
 <span class="p">|</span>   <span class="p">|</span>- hogehoge.bib
 <span class="p">|</span>
 <span class="p">|</span>- fig/: 図を入れるディレクトリ
@@ -366,11 +366,11 @@
 <p>今回は，documentclass を <code>jsbook</code> としている．コンパイルは <code>platex</code> 等で行うと良いように思う．</p>
 <p><a href="https://tachibana-ai.netlify.app/post/ubuntu_tex/">Ubuntu20.04にTeX Liveをインストールする</a> にまとめた<code>latexmk</code> を使うと，<code>bibtex</code> あたりの処理が楽になる．</p>
 <p>コンパイル時は，例えば</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">latexmk main.tex
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">latexmk main.tex
 </code></pre></div><p>とする．</p>
 <details>
 <summary>卒論/修論本体のTeXソース</summary>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="c">% 卒論/修論 テンプレート
+<div class="highlight"><pre class="chroma"><code class="language-tex" data-lang="tex"><span class="c">% 卒論/修論 テンプレート
 </span><span class="c"></span><span class="k">\documentclass</span><span class="na">[a4j,report,dvipdfmx]</span><span class="nb">{</span>jsbook<span class="nb">}</span>
 <span class="c">% 英語のときは
 </span><span class="c">% \documentclass[a4j,report,english]{jsbook}
@@ -431,7 +431,7 @@
 </ul>
 <h3 id="3-githubリポジトリ">3. GitHubリポジトリ</h3>
 <p>GitHubリポジトリとして卒論や修論を管理するのが推奨されているように思う．ここでは，このリポジトリの <code>.gitignore</code> を紹介する．</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">*.aux
+<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">*.aux
 *.fls
 *.log
 *.fdb_latexmk
