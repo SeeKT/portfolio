@@ -75,9 +75,9 @@ slides: ""
 
 1. Kosuke Toda, Naomi Kuze, and Toshimitsu Ushio, "Game-Theoretic Approach to a Decision-Making Problem for Blockchain Mining," IEEE Control Systems Letters, vol.5, no.5, pp.1783-1788, November 2021, DOI: 10.1109/LCSYS.2020.3043834. [[paper]](https://ieeexplore.ieee.org/document/9290112) [[arXiv]](https://arxiv.org/abs/2010.05370)
 
-1. Kosuke Toda, Naomi Kuze, and Toshimitsu Ushio, "Stability Analysis and Control of Decision-making of Miners in Blockchain," IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, vol.E105-A, no.4, pp.-, April 2022. [[arXiv]](https://arxiv.org/abs/2104.08460)
+1. Kosuke Toda, Naomi Kuze, and Toshimitsu Ushio, "Stability Analysis and Control of Decision-making of Miners in Blockchain," IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, vol.E105-A, no.4, pp.682-688, April 2022. [[paper]](https://www.jstage.jst.go.jp/article/transfun/E105.A/4/E105.A_2021EAP1099/_article/-char/en) [[arXiv]](https://arxiv.org/abs/2104.08460)
 
-1. Kosuke Toda, Naomi Kuze, and Toshimistu Ushio, "Dynamics of Miners' Decision Making Under Taxation in Blockchain," Nonlinear Theory and Its Applications, IEICE, vol.~E13-N, no.~2, pp.-, 2022.
+1. Kosuke Toda, Naomi Kuze, and Toshimistu Ushio, "Dynamics of Miners' Decision Making Under Taxation in Blockchain," Nonlinear Theory and Its Applications, IEICE, vol.E13-N, no.2, pp.233-238, 2022. [[paper]](https://www.jstage.jst.go.jp/article/nolta/13/2/13_233/_article/-char/en)
 
 ## International Conference
 1. Kosuke Toda, Naomi Kuze, and Toshimitsu Ushio, "Game-Theoretic Approach to a Decision-Making Problem for Blockchain Mining," in Proceedings of the 2021 American Control Conference (ACC 2021), Online, May 2021. [[link]](https://ieeexplore.ieee.org/document/9482696)
@@ -92,4 +92,4 @@ slides: ""
 1. 戸田康介・久世尚美・潮俊光 "ブロックチェーンにおけるマイナーの意思決定の進化ゲームによるモデリング," 電子情報通信学会技術研究報告 (信学技報), 3月 2022.
 
 ## Award
-1. 戸田康介，2021年度 SICE優秀学生賞
+1. 戸田康介，2021年度 [SICE優秀学生賞](https://www.sice.jp/about/awards/sice_student_award.html)
